@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sample Trip Site | Cute Little Site Co.</title>
+  <meta name="description" content="A sample custom mini-site for a group trip itinerary." />
+  <style>
+    :root {
+      --navy:#132344;
+      --ink:#17213a;
+      --cream:#fff7ea;
+      --soft:#f8efe2;
+      --peach:#ffad73;
+      --pink:#ff7eaa;
+      --teal:#72d7d0;
+      --lav:#b9a7ff;
+      --gold:#ffd36e;
+      --muted:#586277;
+      --white:#ffffff;
+      --shadow: 0 24px 70px rgba(19,35,68,.16);
+      --radius: 30px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 12% 10%, rgba(255,126,170,.35), transparent 24%),
+        radial-gradient(circle at 88% 0%, rgba(114,215,208,.42), transparent 28%),
+        radial-gradient(circle at 8% 90%, rgba(255,211,110,.35), transparent 25%),
+        linear-gradient(135deg,#fff7ea 0%,#eefbfb 100%);
+      color:var(--ink);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .wrap{max-width:1120px;margin:0 auto;padding:24px}
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+      padding:18px 0;
+    }
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900;color:var(--navy)}
+    .logo{
+      width:42px;height:42px;border-radius:14px;
+      background:linear-gradient(135deg,var(--pink),var(--gold),var(--teal));
+      display:grid;place-items:center;box-shadow:0 10px 24px rgba(19,35,68,.12);
+    }
+    .logo:before{content:"";width:20px;height:20px;border:3px solid #fff;border-radius:8px}
+    .navlinks{display:flex;gap:20px;font-weight:800;font-size:.92rem;color:#3f4a61}
+    .navlinks a{text-decoration:none}
+    .pill{
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
+      border-radius:999px;padding:12px 18px;background:var(--navy);color:white;
+      text-decoration:none;font-weight:900;box-shadow:0 14px 28px rgba(19,35,68,.16);
+    }
+    .hero{
+      display:grid;grid-template-columns:1.12fr .88fr;gap:28px;align-items:stretch;
+      background:rgba(255,250,240,.76);backdrop-filter:blur(14px);
+      border:1px solid rgba(255,255,255,.65);border-radius:44px;
+      padding:44px;box-shadow:var(--shadow);overflow:hidden;position:relative;
+    }
+    .eyebrow{font-weight:900;color:var(--pink);text-transform:uppercase;letter-spacing:.12em;font-size:.78rem}
+    h1{font-size:clamp(2.6rem,7vw,5.4rem);line-height:.95;margin:14px 0;color:var(--navy);letter-spacing:-.06em}
+    .lead{font-size:1.23rem;color:var(--muted);max-width:640px}
+    .hero-card{
+      background:white;border-radius:34px;padding:26px;box-shadow:0 18px 45px rgba(19,35,68,.10);
+      display:flex;flex-direction:column;gap:16px;
+    }
+    .countdown{
+      background:linear-gradient(135deg,var(--navy),#223b71);
+      color:white;border-radius:28px;padding:24px;
+    }
+    .countdown small{opacity:.8;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
+    .countdown .date{font-size:2.4rem;font-weight:950;letter-spacing:-.05em;margin-top:8px}
+    .mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .mini{border-radius:22px;background:var(--cream);padding:16px}
+    .mini strong{display:block;color:var(--navy);font-size:1.04rem}
+    .section{padding:34px 0}
+    .section h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1;margin:0 0 14px;color:var(--navy);letter-spacing:-.04em}
+    .section > p{color:var(--muted);font-size:1.1rem;max-width:760px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+    .card{background:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.75);border-radius:var(--radius);padding:24px;box-shadow:0 14px 40px rgba(19,35,68,.09)}
+    .card h3{margin:0 0 8px;color:var(--navy);font-size:1.35rem}
+    .card p{margin:0;color:var(--muted)}
+    .tag{display:inline-flex;border-radius:999px;padding:8px 12px;font-weight:900;font-size:.82rem;margin-bottom:14px;background:#ffe8f0;color:#a42658}
+    .schedule{display:grid;gap:14px;margin-top:22px}
+    .day{display:grid;grid-template-columns:110px 1fr;gap:18px;align-items:start;background:rgba(255,255,255,.8);border-radius:28px;padding:20px;border:1px solid rgba(255,255,255,.7)}
+    .day .time{font-weight:950;color:var(--pink)}
+    .day h3{margin:0;color:var(--navy)}
+    .day p{margin:5px 0 0;color:var(--muted)}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .footer{text-align:center;padding:40px 0 60px;color:var(--muted)}
+    .sample-note{background:#fff;border-radius:26px;padding:18px 22px;margin:16px 0 28px;border:2px dashed rgba(19,35,68,.18);color:#48536a}
+    @media(max-width:850px){
+      .hero,.two{grid-template-columns:1fr;padding:28px}.cards{grid-template-columns:1fr}.navlinks{display:none}.day{grid-template-columns:1fr}
+      .wrap{padding:18px} h1{font-size:3.25rem}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand"><span class="logo"></span><span>Cute Little Site Co.</span></div>
+      <div class="navlinks">
+        <a href="#plan">The Plan</a>
+        <a href="#food">Food</a>
+        <a href="#links">Links</a>
+      </div>
+      <a class="pill" href="mailto:littlesiteco@gmail.com?subject=I want a trip site like the sample">Make Me One</a>
+    </nav>
+
+    <main class="hero">
+      <div>
+        <div class="eyebrow">Sample trip mini-site</div>
+        <h1>Girls Weekend in Austin</h1>
+        <p class="lead">One cute little place for the flight info, hotel address, food ideas, activities, links, reminders, and the plans everyone keeps asking someone to resend.</p>
+        <div class="sample-note">This is a sample site. Your version could match any trip theme, color palette, inside joke, city, or itinerary style.</div>
+        <a class="pill" href="#plan">View the weekend plan</a>
+      </div>
+      <aside class="hero-card">
+        <div class="countdown">
+          <small>Countdown to takeoff</small>
+          <div class="date" id="countdown">Loading...</div>
+        </div>
+        <div class="mini-grid">
+          <div class="mini"><strong>Hotel</strong>South Congress</div>
+          <div class="mini"><strong>Vibe</strong>Colorful + chill</div>
+          <div class="mini"><strong>Group</strong>6 friends</div>
+          <div class="mini"><strong>Must-have</strong>Good food</div>
+        </div>
+      </aside>
+    </main>
+
+    <section class="section" id="plan">
+      <h2>The weekend plan</h2>
+      <p>A simple scrollable schedule keeps everyone on the same page without digging through texts.</p>
+      <div class="schedule">
+        <div class="day"><div class="time">Friday</div><div><h3>Arrive + settle in</h3><p>Check into the hotel, grab snacks, then dinner on South Congress. Optional rooftop drinks after.</p></div></div>
+        <div class="day"><div class="time">Saturday AM</div><div><h3>Brunch + shopping</h3><p>Start slow with brunch, then wander shops, murals, and coffee spots nearby.</p></div></div>
+        <div class="day"><div class="time">Saturday PM</div><div><h3>Dinner + night out</h3><p>Reservation-friendly dinner, one photo stop, then choose between live music or a low-key bar.</p></div></div>
+        <div class="day"><div class="time">Sunday</div><div><h3>Pack + goodbye breakfast</h3><p>Easy breakfast, checkout reminders, airport rides, and one last group photo.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="food">
+      <h2>Food + activity options</h2>
+      <p>Cards make it easy to offer options without overplanning every second.</p>
+      <div class="cards">
+        <div class="card"><span class="tag">Brunch</span><h3>Pretty patio brunch</h3><p>Good for photos, mimosas, and starting the day without rushing.</p></div>
+        <div class="card"><span class="tag">Activity</span><h3>Murals + shopping</h3><p>A flexible daytime option with no tickets, no stress, and lots of places to stop.</p></div>
+        <div class="card"><span class="tag">Dinner</span><h3>Reservation night</h3><p>A planned dinner option so nobody has to make decisions while hungry.</p></div>
+      </div>
+    </section>
+
+    <section class="section two" id="links">
+      <div class="card">
+        <h3>Helpful links</h3>
+        <p>Hotel address, rideshare link, airport info, restaurant reservations, shared playlist, packing list, and emergency contacts can all live here.</p>
+      </div>
+      <div class="card">
+        <h3>Reminders</h3>
+        <p>Bring your ID, comfy shoes, portable charger, outfit options, swimsuit, and patience for whoever is definitely running late.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Sample by Cute Little Site Co. · cutelittlesite.co · littlesiteco@gmail.com
+    </footer>
+  </div>
+  <script>
+    const target = new Date();
+    target.setDate(target.getDate() + 27);
+    target.setHours(9, 30, 0, 0);
+    function tick(){
+      const now = new Date();
+      const diff = target - now;
+      if(diff <= 0){ document.getElementById('countdown').textContent = "It’s time!"; return; }
+      const d = Math.floor(diff / (1000*60*60*24));
+      const h = Math.floor((diff / (1000*60*60)) % 24);
+      const m = Math.floor((diff / (1000*60)) % 60);
+      document.getElementById('countdown').textContent = `${d}d ${h}h ${m}m`;
+    }
+    tick(); setInterval(tick, 60000);
+  </script>
+</body>
+</html>
