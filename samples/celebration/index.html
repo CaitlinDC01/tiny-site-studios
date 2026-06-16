@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sample Celebration Site | Cute Little Site Co.</title>
+  <meta name="description" content="A sample custom mini-site for a celebration or event information hub." />
+  <style>
+    :root {
+      --navy:#132344;
+      --ink:#18213b;
+      --cream:#fff7ea;
+      --rose:#ff7eaa;
+      --peach:#ffb06b;
+      --teal:#72d7d0;
+      --lav:#b9a7ff;
+      --gold:#ffd36e;
+      --sage:#dff4e7;
+      --muted:#586277;
+      --white:#fff;
+      --shadow: 0 24px 70px rgba(19,35,68,.15);
+      --radius: 30px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255,126,170,.32), transparent 25%),
+        radial-gradient(circle at 86% 7%, rgba(255,211,110,.35), transparent 24%),
+        radial-gradient(circle at 70% 92%, rgba(114,215,208,.38), transparent 30%),
+        linear-gradient(135deg,#fff7ea 0%,#f5f1ff 100%);
+      color:var(--ink);
+      line-height:1.55;
+    }
+    .wrap{max-width:1120px;margin:0 auto;padding:24px}
+    .nav{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:18px 0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:950;color:var(--navy)}
+    .logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--rose),var(--gold),var(--teal));display:grid;place-items:center}
+    .logo:before{content:"";width:20px;height:20px;border:3px solid white;border-radius:8px}
+    .navlinks{display:flex;gap:20px;font-weight:850;font-size:.92rem;color:#3f4a61}
+    .navlinks a{text-decoration:none;color:inherit}
+    .pill{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:12px 18px;background:var(--navy);color:white;text-decoration:none;font-weight:950}
+    .hero{
+      position:relative;overflow:hidden;
+      background:rgba(255,250,240,.82);border:1px solid rgba(255,255,255,.72);border-radius:44px;
+      padding:48px;box-shadow:var(--shadow);
+      display:grid;grid-template-columns:1fr .95fr;gap:28px;align-items:center;
+    }
+    .eyebrow{font-weight:950;text-transform:uppercase;letter-spacing:.12em;color:#b34a73;font-size:.78rem}
+    h1{font-size:clamp(2.8rem,7vw,5.55rem);line-height:.92;letter-spacing:-.065em;margin:14px 0;color:var(--navy)}
+    .lead{font-size:1.22rem;color:var(--muted);max-width:620px}
+    .event-card{
+      background:white;border-radius:36px;padding:28px;box-shadow:0 18px 45px rgba(19,35,68,.1);
+    }
+    .big-date{display:grid;grid-template-columns:95px 1fr;gap:18px;align-items:center}
+    .cal{background:linear-gradient(135deg,var(--rose),var(--peach));color:white;border-radius:26px;text-align:center;padding:16px}
+    .cal strong{display:block;font-size:2.5rem;line-height:1}.cal span{font-weight:900;text-transform:uppercase;letter-spacing:.08em}
+    .event-card h2{margin:0;color:var(--navy);font-size:1.8rem;line-height:1}
+    .event-card p{color:var(--muted)}
+    .detail-list{display:grid;gap:12px;margin-top:20px}
+    .detail{display:flex;gap:12px;align-items:flex-start;background:var(--cream);border-radius:20px;padding:14px}
+    .dot{width:14px;height:14px;border-radius:50%;background:var(--teal);margin-top:5px;flex:0 0 auto}
+    .section{padding:34px 0}
+    .section h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1;margin:0 0 14px;color:var(--navy);letter-spacing:-.04em}
+    .section > p{color:var(--muted);font-size:1.1rem;max-width:760px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+    .card{background:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.78);border-radius:var(--radius);padding:24px;box-shadow:0 14px 40px rgba(19,35,68,.08)}
+    .card h3{margin:0 0 8px;color:var(--navy);font-size:1.35rem}
+    .card p{margin:0;color:var(--muted)}
+    .timeline{display:grid;gap:14px;margin-top:22px}
+    .item{display:grid;grid-template-columns:120px 1fr;gap:18px;background:rgba(255,255,255,.82);border-radius:28px;padding:20px;border:1px solid rgba(255,255,255,.75)}
+    .time{font-weight:950;color:#b34a73}
+    .item h3{margin:0;color:var(--navy)}.item p{margin:5px 0 0;color:var(--muted)}
+    details{background:rgba(255,255,255,.82);border-radius:22px;padding:18px 20px;margin:12px 0;border:1px solid rgba(255,255,255,.75)}
+    summary{cursor:pointer;font-weight:950;color:var(--navy)}
+    details p{color:var(--muted);margin-bottom:0}
+    .sample-note{background:#fff;border-radius:26px;padding:18px 22px;margin:16px 0 28px;border:2px dashed rgba(19,35,68,.18);color:#48536a}
+    .footer{text-align:center;padding:40px 0 60px;color:var(--muted)}
+    @media(max-width:850px){
+      .hero{grid-template-columns:1fr;padding:28px}.cards{grid-template-columns:1fr}.navlinks{display:none}.item{grid-template-columns:1fr}.wrap{padding:18px}
+      h1{font-size:3.25rem}.big-date{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand"><span class="logo"></span><span>Cute Little Site Co.</span></div>
+      <div class="navlinks"><a href="#details">Details</a><a href="#schedule">Schedule</a><a href="#faq">FAQ</a></div>
+      <a class="pill" href="mailto:littlesiteco@gmail.com?subject=I want an event site like the sample">Make Me One</a>
+    </nav>
+
+    <main class="hero">
+      <div>
+        <div class="eyebrow">Sample celebration mini-site</div>
+        <h1>Maya’s Graduation Weekend</h1>
+        <p class="lead">A polished info hub for the people who need addresses, times, parking details, photos, dinner plans, and answers without texting the host 17 times.</p>
+        <div class="sample-note">This sample could easily become a graduation hub, shower page, birthday weekend, family reunion, bachelorette page, or wedding-weekend info site.</div>
+        <a class="pill" href="#details">See the event details</a>
+      </div>
+      <aside class="event-card">
+        <div class="big-date">
+          <div class="cal"><span>May</span><strong>18</strong></div>
+          <div>
+            <h2>Class of 2027 Celebration</h2>
+            <p>Saturday · 4:00 PM ceremony · dinner after</p>
+          </div>
+        </div>
+        <div class="detail-list">
+          <div class="detail"><span class="dot"></span><div><strong>Ceremony</strong><br/>Civic Center Auditorium · Doors open at 3:15 PM</div></div>
+          <div class="detail"><span class="dot" style="background:var(--rose)"></span><div><strong>Dinner</strong><br/>Reservation at 6:30 PM · Family-style seating</div></div>
+          <div class="detail"><span class="dot" style="background:var(--gold)"></span><div><strong>Reminder</strong><br/>Bring tickets, arrive early, and save room for cake.</div></div>
+        </div>
+      </aside>
+    </main>
+
+    <section class="section" id="details">
+      <h2>Everything guests need</h2>
+      <p>Instead of sending the same details over and over, this type of site keeps all the important information in one place.</p>
+      <div class="cards">
+        <div class="card"><h3>Event Details</h3><p>Date, time, venue, address, parking, dress code, accessibility notes, and important reminders.</p></div>
+        <div class="card"><h3>Helpful Links</h3><p>Maps, livestream, photo album, registry, RSVP form, playlist, hotel block, or group chat link.</p></div>
+        <div class="card"><h3>Personal Touches</h3><p>Photos, colors, quotes, memories, inside jokes, custom graphics, and the whole vibe.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="schedule">
+      <h2>Weekend schedule</h2>
+      <p>A clean schedule helps guests know where to be and when.</p>
+      <div class="timeline">
+        <div class="item"><div class="time">3:15 PM</div><div><h3>Doors open</h3><p>Guests should arrive early for parking, seating, and photos.</p></div></div>
+        <div class="item"><div class="time">4:00 PM</div><div><h3>Ceremony begins</h3><p>Please silence phones and stay seated until the recessional.</p></div></div>
+        <div class="item"><div class="time">5:30 PM</div><div><h3>Photos outside</h3><p>Meet near the front fountain for family and friend photos.</p></div></div>
+        <div class="item"><div class="time">6:30 PM</div><div><h3>Dinner celebration</h3><p>Reservation under “Maya.” Cake, cards, and hugs encouraged.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <h2>Quick FAQ</h2>
+      <details open><summary>Where should I park?</summary><p>Use the main lot on the west side of the venue. Overflow parking is available across the street.</p></details>
+      <details><summary>Can I bring flowers or gifts?</summary><p>Yes. Small gifts and flowers are welcome. There will be a card basket at dinner.</p></details>
+      <details><summary>What should I wear?</summary><p>Dressy casual is perfect. The family color palette is blush, cream, and navy if you want to coordinate for photos.</p></details>
+      <details><summary>Will there be food?</summary><p>Yes. Dinner is planned after the ceremony, and dessert is absolutely happening.</p></details>
+    </section>
+
+    <footer class="footer">
+      Sample by Cute Little Site Co. · cutelittlesite.co · littlesiteco@gmail.com
+    </footer>
+  </div>
+</body>
+</html>
