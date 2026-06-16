@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cute Little Site Co. | Custom Mini-Sites for Big Little Moments</title>
+  <meta name="description" content="Custom one-page mini-sites for trips, celebrations, events, group plans, and personal projects. Launch pricing starts at $75." />
+  <meta property="og:title" content="Cute Little Site Co." />
+  <meta property="og:description" content="Custom mini-sites for trips, celebrations, events, and all the details people keep asking you to resend." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://cutelittlesite.co" />
+  <link rel="canonical" href="https://cutelittlesite.co" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #14213d;
+      --ink-2: #263859;
+      --cream: #fff8ee;
+      --paper: #ffffff;
+      --peach: #ffb199;
+      --pink: #ff7aa2;
+      --lavender: #c9a8ff;
+      --sky: #8fd3ff;
+      --mint: #9ce6c7;
+      --gold: #ffd166;
+      --coral: #ff6b6b;
+      --line: rgba(20, 33, 61, 0.14);
+      --shadow: 0 24px 70px rgba(20, 33, 61, 0.16);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 12%, rgba(255, 209, 102, .45), transparent 28%),
+        radial-gradient(circle at 94% 4%, rgba(143, 211, 255, .42), transparent 28%),
+        radial-gradient(circle at 82% 48%, rgba(201, 168, 255, .32), transparent 26%),
+        linear-gradient(135deg, #fff8ee 0%, #fff0f7 48%, #eef9ff 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { max-width: 100%; display: block; }
+
+    .site-shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(255, 248, 238, 0.78);
+      border-bottom: 1px solid rgba(20, 33, 61, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      font-size: 1.15rem;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--pink), var(--gold), var(--sky));
+      box-shadow: 0 10px 24px rgba(255, 122, 162, 0.32);
+      display: grid;
+      place-items: center;
+      transform: rotate(-4deg);
+    }
+
+    .brand-mark span {
+      width: 18px;
+      height: 18px;
+      border: 3px solid white;
+      border-radius: 6px;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .92rem;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      padding: 10px 12px;
+      border-radius: 999px;
+      color: rgba(20, 33, 61, 0.78);
+    }
+
+    .nav-links a:hover { background: rgba(255, 255, 255, 0.65); }
+    .nav-links a.btn-primary { color: white; }
+    .nav-links a.btn-primary:hover { background: var(--ink); color: white; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--ink);
+      color: white;
+      box-shadow: 0 16px 30px rgba(20, 33, 61, .24);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.78);
+      color: var(--ink);
+      border-color: rgba(20, 33, 61, 0.13);
+    }
+
+    .hero {
+      padding: 74px 0 58px;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.03fr .97fr;
+      align-items: center;
+      gap: 44px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(20, 33, 61, 0.12);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      padding: 9px 14px;
+      font-size: .86rem;
+      font-weight: 800;
+      color: var(--ink-2);
+      margin-bottom: 22px;
+      box-shadow: 0 12px 34px rgba(20, 33, 61, 0.07);
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--pink), var(--gold));
+      box-shadow: 0 0 0 5px rgba(255, 122, 162, .14);
+    }
+
+    h1, h2, h3 {
+      font-family: 'Fraunces', Georgia, serif;
+      line-height: .96;
+      letter-spacing: -0.055em;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(3.25rem, 8vw, 6.9rem);
+      max-width: 760px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(100deg, var(--pink), #aa65ff 44%, #268bd2 75%, #0aa67a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      white-space: nowrap;
+    }
+
+    .lead {
+      font-size: clamp(1.08rem, 2vw, 1.35rem);
+      line-height: 1.55;
+      color: rgba(20, 33, 61, 0.78);
+      margin: 24px 0 0;
+      max-width: 660px;
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .tiny-note {
+      font-size: .9rem;
+      color: rgba(20, 33, 61, .68);
+      font-weight: 700;
+      margin-top: 18px;
+    }
+
+    .mockup-wrap {
+      position: relative;
+      min-height: 540px;
+    }
+
+    .phone {
+      width: min(380px, 82vw);
+      margin-left: auto;
+      margin-right: 34px;
+      border: 12px solid var(--ink);
+      border-radius: 42px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transform: rotate(3.2deg);
+      position: relative;
+      z-index: 2;
+    }
+
+    .phone-top {
+      height: 34px;
+      background: var(--ink);
+      display: grid;
+      place-items: center;
+    }
+
+    .notch {
+      width: 92px;
+      height: 9px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.22);
+    }
+
+    .phone-screen {
+      padding: 18px;
+      background:
+        radial-gradient(circle at 80% 0%, rgba(255, 209, 102, .55), transparent 32%),
+        linear-gradient(180deg, #fff7fb 0%, #f4fbff 100%);
+    }
+
+    .mini-site-card {
+      border-radius: 24px;
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(20,33,61,.1);
+      padding: 20px;
+      box-shadow: 0 16px 36px rgba(20, 33, 61, 0.12);
+    }
+
+    .mini-hero {
+      min-height: 145px;
+      border-radius: 20px;
+      padding: 18px;
+      color: white;
+      background:
+        linear-gradient(135deg, rgba(20,33,61,.82), rgba(255,122,162,.4)),
+        linear-gradient(135deg, var(--pink), var(--lavender), var(--sky));
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mini-hero:before,
+    .mini-hero:after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255,255,255,.18);
+    }
+
+    .mini-hero:before { width: 110px; height: 110px; right: -38px; top: -22px; }
+    .mini-hero:after { width: 65px; height: 65px; left: 18px; top: 14px; }
+
+    .mini-title {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 2rem;
+      line-height: .9;
+      letter-spacing: -.05em;
+      z-index: 1;
+    }
+
+    .mini-subtitle {
+      font-size: .8rem;
+      font-weight: 800;
+      margin-top: 6px;
+      z-index: 1;
+      opacity: .92;
+    }
+
+    .mini-list { display: grid; gap: 10px; margin-top: 14px; }
+
+    .mini-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(20,33,61,.08);
+      background: rgba(255,255,255,.7);
+      border-radius: 16px;
+      padding: 10px;
+      font-weight: 800;
+      font-size: .82rem;
+    }
+
+    .mini-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 209, 102, .5);
+    }
+
+    .floating-card {
+      position: absolute;
+      z-index: 3;
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(20,33,61,.1);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 18px 45px rgba(20, 33, 61, 0.14);
+      backdrop-filter: blur(14px);
+      font-weight: 800;
+      max-width: 210px;
+    }
+
+    .floating-card small {
+      display: block;
+      margin-top: 6px;
+      color: rgba(20, 33, 61, 0.64);
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .float-1 { left: 20px; top: 52px; transform: rotate(-6deg); }
+    .float-2 { right: 0; bottom: 46px; transform: rotate(7deg); }
+    .float-3 { left: 8px; bottom: 144px; transform: rotate(4deg); }
+
+    section { padding: 64px 0; }
+
+    .section-heading {
+      max-width: 780px;
+      margin-bottom: 30px;
+    }
+
+    .section-heading.center {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: clamp(2.4rem, 5vw, 4.7rem);
+    }
+
+    .section-copy {
+      font-size: 1.08rem;
+      line-height: 1.65;
+      color: rgba(20, 33, 61, 0.74);
+      font-weight: 500;
+      margin: 16px 0 0;
+    }
+
+    .panel {
+      background: rgba(255,255,255,.74);
+      border: 1px solid rgba(20,33,61,.1);
+      border-radius: var(--radius);
+      box-shadow: 0 18px 60px rgba(20, 33, 61, 0.09);
+      backdrop-filter: blur(18px);
+    }
+
+    .wide-panel {
+      padding: clamp(24px, 4vw, 44px);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .example-visual {
+      min-height: 360px;
+      border-radius: 24px;
+      padding: 20px;
+      background:
+        linear-gradient(135deg, rgba(20,33,61,.78), rgba(20,33,61,.34)),
+        radial-gradient(circle at 22% 20%, var(--gold), transparent 20%),
+        radial-gradient(circle at 78% 16%, var(--pink), transparent 26%),
+        radial-gradient(circle at 72% 80%, var(--sky), transparent 24%),
+        linear-gradient(135deg, var(--lavender), var(--mint));
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .example-visual:before {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border: 1px solid rgba(255,255,255,.32);
+      border-radius: 20px;
+    }
+
+    .example-badge {
+      position: relative;
+      align-self: flex-start;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.24);
+      border-radius: 999px;
+      padding: 9px 12px;
+      font-weight: 900;
+      font-size: .78rem;
+      backdrop-filter: blur(14px);
+    }
+
+    .example-title {
+      position: relative;
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: clamp(2.3rem, 5vw, 4.4rem);
+      line-height: .9;
+      letter-spacing: -.06em;
+      max-width: 460px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .feature-card, .fit-card, .price-card, .faq-item, .step-card {
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(20,33,61,.1);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 14px 34px rgba(20, 33, 61, 0.07);
+    }
+
+    .feature-card h3, .fit-card h3, .price-card h3, .step-card h3 {
+      font-size: 1.55rem;
+      letter-spacing: -.04em;
+      line-height: 1;
+      margin-bottom: 9px;
+    }
+
+    .feature-card p, .fit-card li, .step-card p, .faq-item p, .price-card li {
+      color: rgba(20, 33, 61, 0.72);
+      line-height: 1.55;
+      font-weight: 500;
+      margin: 0;
+    }
+
+    .icon-bubble {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(255,122,162,.24), rgba(143,211,255,.28));
+      font-size: 1.35rem;
+      margin-bottom: 18px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .price-card {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .price-card.featured {
+      border: 2px solid rgba(255, 122, 162, .42);
+      box-shadow: 0 24px 70px rgba(255, 122, 162, 0.17);
+      transform: translateY(-8px);
+    }
+
+    .price-card.featured:before {
+      content: "Most Flexible";
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      background: var(--ink);
+      color: white;
+      font-size: .72rem;
+      font-weight: 900;
+      padding: 8px 10px;
+      border-radius: 999px;
+      letter-spacing: .02em;
+    }
+
+    .price {
+      font-size: 3.6rem;
+      font-weight: 900;
+      letter-spacing: -.08em;
+      margin: 12px 0 2px;
+    }
+
+    .price-note {
+      font-size: .9rem;
+      color: rgba(20,33,61,.62);
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .price-card ul, .fit-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0 0;
+      display: grid;
+      gap: 11px;
+    }
+
+    .price-card li, .fit-card li {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 9px;
+    }
+
+    .check, .x {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      font-size: .8rem;
+      font-weight: 900;
+      margin-top: 1px;
+    }
+
+    .check { background: rgba(156,230,199,.42); color: #08795b; }
+    .x { background: rgba(255,107,107,.16); color: #ba2a2a; }
+
+    .price-card .btn { margin-top: auto; width: 100%; }
+
+    .scope-note {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.58);
+      border: 1px dashed rgba(20,33,61,.22);
+      color: rgba(20,33,61,.76);
+      line-height: 1.55;
+      font-weight: 600;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step-number {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      background: var(--ink);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .fit-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .faq-item h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      letter-spacing: -.02em;
+      margin-bottom: 8px;
+      line-height: 1.25;
+    }
+
+    .cta {
+      padding-bottom: 88px;
+    }
+
+    .cta-panel {
+      padding: clamp(28px, 6vw, 58px);
+      background:
+        linear-gradient(135deg, rgba(20,33,61,.92), rgba(20,33,61,.76)),
+        radial-gradient(circle at 13% 20%, rgba(255,122,162,.85), transparent 24%),
+        radial-gradient(circle at 84% 22%, rgba(255,209,102,.82), transparent 24%),
+        radial-gradient(circle at 76% 82%, rgba(143,211,255,.78), transparent 28%);
+      color: white;
+      border-radius: 36px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cta-panel h2 { max-width: 760px; }
+    .cta-panel p { color: rgba(255,255,255,.78); max-width: 680px; }
+    .cta-panel .btn-primary { background: white; color: var(--ink); box-shadow: none; }
+    .cta-panel .btn-secondary { background: rgba(255,255,255,.12); color: white; border-color: rgba(255,255,255,.22); }
+
+    .cta-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
+
+    footer {
+      padding: 34px 0;
+      border-top: 1px solid rgba(20,33,61,.08);
+      background: rgba(255,248,238,.5);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: rgba(20,33,61,.68);
+      font-size: .92rem;
+      font-weight: 700;
+    }
+
+    .mobile-request { display: none; }
+
+    @media (max-width: 920px) {
+      .hero-grid, .split, .cta-panel { grid-template-columns: 1fr; }
+      .mockup-wrap { min-height: 500px; }
+      .phone { margin: 0 auto; }
+      .pricing-grid, .steps-grid { grid-template-columns: 1fr; }
+      .price-card.featured { transform: none; }
+      .feature-grid, .faq-grid, .fit-grid { grid-template-columns: 1fr; }
+      .cta-actions { justify-content: flex-start; }
+      .nav-links { display: none; }
+      .mobile-request { display: inline-flex; }
+    }
+
+    @media (max-width: 560px) {
+      .site-shell { width: min(100% - 24px, 1180px); }
+      .hero { padding-top: 46px; }
+      .brand { font-size: 1.02rem; }
+      h1 { font-size: clamp(3rem, 16vw, 4.2rem); }
+      .hero h1 span { white-space: normal; }
+      .hero-actions .btn { width: 100%; }
+      .mockup-wrap { min-height: 455px; }
+      .phone { width: min(330px, 86vw); border-width: 10px; }
+      .floating-card { display: none; }
+      section { padding: 46px 0; }
+      .cta { padding-bottom: 60px; }
+      .cta-actions .btn { width: 100%; }
+      .price { font-size: 3.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="site-shell nav">
+      <a class="brand" href="#top" aria-label="Cute Little Site Co. home">
+        <span class="brand-mark" aria-hidden="true"><span></span></span>
+        <span>Cute Little Site Co.</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#examples">Examples</a>
+        <a href="#includes">What’s Included</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#process">How It Works</a>
+        <a href="#start" class="btn btn-primary">Start My Site</a>
+      </nav>
+      <a href="#start" class="btn btn-primary mobile-request">Start</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="site-shell hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Launch pricing now open</div>
+          <h1>A custom little website for your <span>big little plans.</span></h1>
+          <p class="lead">Cute Little Site Co. creates fun, polished, mobile-friendly mini-sites for trips, celebrations, events, group plans, and personal projects that deserve more than a group text.</p>
+          <div class="hero-actions">
+            <a href="#pricing" class="btn btn-primary">View Launch Pricing</a>
+            <a href="#examples" class="btn btn-secondary">See What I Can Make</a>
+          </div>
+          <p class="tiny-note">Current launch pricing starts at $75. Prices will increase once the school year starts and my schedule fills up.</p>
+        </div>
+
+        <div class="mockup-wrap" aria-label="Mini-site preview graphic">
+          <div class="floating-card float-1">Countdowns <small>Perfect for trips, parties, graduations, and surprise plans.</small></div>
+          <div class="floating-card float-2">All the details <small>Links, maps, times, FAQs, photos, and reminders in one place.</small></div>
+          <div class="floating-card float-3">Cute + useful <small>Not a template. Not overbuilt. Just what you need.</small></div>
+
+          <div class="phone">
+            <div class="phone-top"><div class="notch"></div></div>
+            <div class="phone-screen">
+              <div class="mini-site-card">
+                <div class="mini-hero">
+                  <div class="mini-title">ATL Weekend</div>
+                  <div class="mini-subtitle">June 2026 • Plans, food, links & vibes</div>
+                </div>
+                <div class="mini-list">
+                  <div class="mini-row"><span class="mini-icon">✈️</span><span>Flight countdown + airport details</span></div>
+                  <div class="mini-row"><span class="mini-icon">🍽️</span><span>Breakfast, lunch, dinner options</span></div>
+                  <div class="mini-row"><span class="mini-icon">📍</span><span>Maps, times, links, and reminders</span></div>
+                  <div class="mini-row"><span class="mini-icon">🌈</span><span>Custom colors, images, and theme</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="intro">
+      <div class="site-shell panel wide-panel split">
+        <div class="section-heading">
+          <h2>Not every plan needs a full website.</h2>
+        </div>
+        <div>
+          <p class="section-copy">Sometimes you just need one beautiful page where everyone can find the details without digging through screenshots, group texts, old emails, or “wait, what time are we leaving?” messages.</p>
+          <p class="section-copy">I build custom one-page mini-sites that are easy to share, easy to use, and designed around the exact thing you’re planning.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="examples">
+      <div class="site-shell">
+        <div class="section-heading">
+          <h2>Made for the plans people keep asking you to resend.</h2>
+          <p class="section-copy">Think of it as a home base for all the tiny details that make a trip, event, or celebration smoother and more fun.</p>
+        </div>
+
+        <div class="panel wide-panel split">
+          <div class="example-visual">
+            <div class="example-badge">Example vibe</div>
+            <div class="example-title">A trip site with the whole weekend in one place.</div>
+          </div>
+          <div class="feature-grid">
+            <div class="feature-card">
+              <div class="icon-bubble">✈️</div>
+              <h3>Trip hubs</h3>
+              <p>Flights, lodging, restaurants, daily plans, activity options, maps, reminders, packing notes, and countdowns.</p>
+            </div>
+            <div class="feature-card">
+              <div class="icon-bubble">🎉</div>
+              <h3>Celebrations</h3>
+              <p>Birthday weekends, showers, bachelorette trips, family reunions, graduation gatherings, and milestone moments.</p>
+            </div>
+            <div class="feature-card">
+              <div class="icon-bubble">🎓</div>
+              <h3>Info pages</h3>
+              <p>Graduation details, event logistics, parking, schedules, dress code, FAQs, livestream links, and contact info.</p>
+            </div>
+            <div class="feature-card">
+              <div class="icon-bubble">💌</div>
+              <h3>Just-for-fun sites</h3>
+              <p>Gift pages, memory pages, inside-joke sites, love-note sites, countdown pages, and personal surprises.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="includes">
+      <div class="site-shell">
+        <div class="section-heading center">
+          <h2>Your mini-site can include...</h2>
+          <p class="section-copy">Every site is built around your actual need, theme, timeline, and audience.</p>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="icon-bubble">📌</div>
+            <h3>Important details</h3>
+            <p>Dates, times, locations, addresses, parking info, FAQs, dress code, reminders, and helpful links.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon-bubble">🗺️</div>
+            <h3>Plans + options</h3>
+            <p>Schedules, maps, restaurants, activity ideas, vote-style choices, notes, and shared decision-making sections.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon-bubble">📸</div>
+            <h3>Photos + personality</h3>
+            <p>Photos, custom colors, themed graphics, playlists, quotes, inside jokes, mood boards, and personal touches.</p>
+          </div>
+          <div class="feature-card">
+            <div class="icon-bubble">✨</div>
+            <h3>Interactive extras</h3>
+            <p>Countdown timers, buttons, collapsible FAQs, simple forms, maps, translation buttons, carousels, and clickable menus.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="site-shell">
+        <div class="section-heading center">
+          <div class="eyebrow"><span class="dot"></span> Limited launch pricing</div>
+          <h2>Simple pricing while I build this out.</h2>
+          <p class="section-copy">These rates are available for a limited time. Once the school year starts and my availability gets tighter, prices will go up.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <article class="price-card">
+            <h3>Starter Site</h3>
+            <div class="price">$75</div>
+            <div class="price-note">Best for simple, polished mini-sites.</div>
+            <ul>
+              <li><span class="check">✓</span><span>Custom one-page mini-site</span></li>
+              <li><span class="check">✓</span><span>Mobile-friendly design</span></li>
+              <li><span class="check">✓</span><span>Up to 5 small updates or revisions</span></li>
+              <li><span class="check">✓</span><span>Basic sections, links, buttons, images, and details</span></li>
+              <li><span class="check">✓</span><span>Delivered ready to publish or share</span></li>
+            </ul>
+            <a href="#start" class="btn btn-secondary">Choose Starter</a>
+          </article>
+
+          <article class="price-card">
+            <h3>Standard Site</h3>
+            <div class="price">$100</div>
+            <div class="price-note">Best for more back-and-forth.</div>
+            <ul>
+              <li><span class="check">✓</span><span>Everything in Starter</span></li>
+              <li><span class="check">✓</span><span>Up to 10 small updates or revisions</span></li>
+              <li><span class="check">✓</span><span>More content sections</span></li>
+              <li><span class="check">✓</span><span>More design polish</span></li>
+              <li><span class="check">✓</span><span>Optional extras like FAQs, countdowns, maps, schedules, or image sections</span></li>
+            </ul>
+            <a href="#start" class="btn btn-secondary">Choose Standard</a>
+          </article>
+
+          <article class="price-card featured">
+            <h3>VIP Month</h3>
+            <div class="price">$150</div>
+            <div class="price-note">Best for plans that keep changing.</div>
+            <ul>
+              <li><span class="check">✓</span><span>Custom one-page mini-site</span></li>
+              <li><span class="check">✓</span><span>Unlimited small updates for 30 days</span></li>
+              <li><span class="check">✓</span><span>Great for events, trips, launches, and changing details</span></li>
+              <li><span class="check">✓</span><span>Updates to links, photos, schedules, sections, and wording</span></li>
+              <li><span class="check">✓</span><span>Priority-friendly support during your 30-day window</span></li>
+            </ul>
+            <a href="#start" class="btn btn-primary">Choose VIP Month</a>
+          </article>
+        </div>
+
+        <div class="scope-note"><strong>Quick scope note:</strong> Unlimited updates include reasonable small edits to existing content, layout, links, images, and details. Full redesigns, new pages, major content rewrites, or entirely new site concepts may require a separate quote.</div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="site-shell">
+        <div class="section-heading center">
+          <h2>How it works</h2>
+          <p class="section-copy">Simple, clear, and low-stress.</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Tell me the idea</h3>
+            <p>Send the purpose, vibe, colors, must-have details, links, photos, and anything people need to know.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>I build the draft</h3>
+            <p>I create a custom one-page site based on your content, package, and style direction.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>You review it</h3>
+            <p>You send revision notes, and I make updates based on the package you selected.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <h3>You share it</h3>
+            <p>Once it’s ready, you get a shareable link or the files you need to publish it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fit">
+      <div class="site-shell">
+        <div class="section-heading center">
+          <h2>What this is, and what it is not.</h2>
+          <p class="section-copy">This keeps the offer affordable, focused, and actually fun.</p>
+        </div>
+        <div class="fit-grid">
+          <div class="fit-card">
+            <h3>Great fit</h3>
+            <ul>
+              <li><span class="check">✓</span><span>Trip itinerary sites</span></li>
+              <li><span class="check">✓</span><span>Birthday, shower, graduation, or reunion pages</span></li>
+              <li><span class="check">✓</span><span>Wedding weekend or bachelorette trip details</span></li>
+              <li><span class="check">✓</span><span>Group event info hubs</span></li>
+              <li><span class="check">✓</span><span>Gift sites, memory pages, countdowns, and just-for-fun projects</span></li>
+            </ul>
+          </div>
+          <div class="fit-card">
+            <h3>Not the right fit</h3>
+            <ul>
+              <li><span class="x">×</span><span>Business websites</span></li>
+              <li><span class="x">×</span><span>Professional portfolios or resumes</span></li>
+              <li><span class="x">×</span><span>E-commerce, payments, booking systems, or customer portals</span></li>
+              <li><span class="x">×</span><span>Multi-page company sites or advanced SEO strategy</span></li>
+              <li><span class="x">×</span><span>Complex forms, databases, memberships, or long-term tech support</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="site-shell">
+        <div class="section-heading center">
+          <h2>Questions people usually ask</h2>
+        </div>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h3>How long does it take?</h3>
+            <p>Most simple sites can be created once all content is submitted. Timeline depends on the complexity of the request and my current availability.</p>
+          </div>
+          <div class="faq-item">
+            <h3>What counts as an update?</h3>
+            <p>Small updates include changes to wording, links, images, sections, colors, layout tweaks, or details. Major redesigns or new concepts are outside the included updates.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Do I need to know anything about websites?</h3>
+            <p>Nope. You send the information, images, links, and general vibe. I handle the build.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Can you help me publish it?</h3>
+            <p>Yes. I can provide the site files or help you get it published using a simple hosting option like GitHub Pages.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Can you make it match a theme?</h3>
+            <p>Yes. Themes are the fun part. You can send colors, inspiration images, mood words, examples, or just tell me the vibe.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Can you update it later?</h3>
+            <p>Yes. Updates are included based on your package. After that, additional updates can be purchased separately.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="start" class="cta">
+      <div class="site-shell">
+        <div class="cta-panel">
+          <div>
+            <h2>Ready to make your plan easier to share?</h2>
+            <p class="section-copy">Send me the idea, the vibe, and the details. I’ll turn it into a polished little site people can actually use.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="mailto:littlesiteco@gmail.com?subject=Cute%20Little%20Site%20Co.%20Site%20Request&body=Hi!%20I%27d%20like%20to%20request%20a%20mini-site.%0A%0AName:%0AEmail:%0APackage:%0AType%20of%20site:%0ADesired%20deadline:%0AVibe/colors:%0AMust-have%20details:%0ALinks/photos%20I%20have%20ready:%0AAnything%20else:%0A">Start My Site Request</a>
+            <a class="btn btn-secondary" href="mailto:littlesiteco@gmail.com?subject=Question%20about%20Cute%20Little%20Site%20Co.">Email Me First</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="site-shell footer-inner">
+      <div>© <span id="year"></span> Cute Little Site Co.</div>
+      <div>cutelittlesite.co · Custom mini-sites for trips, celebrations, events, and big little plans.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
