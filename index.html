@@ -496,7 +496,57 @@
       font-size: 1.35rem;
       margin-bottom: 18px;
     }
+.sample-links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 34px;
+}
 
+.sample-card-link {
+  background: rgba(255,255,255,.78);
+  border: 1px solid rgba(20,33,61,.1);
+  border-radius: 24px;
+  padding: 22px;
+  box-shadow: 0 14px 34px rgba(20, 33, 61, 0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.sample-card-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 48px rgba(20, 33, 61, 0.12);
+}
+
+.sample-icon {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255,122,162,.24), rgba(143,211,255,.28));
+  font-size: 1.35rem;
+}
+
+.sample-card-link h3 {
+  font-size: 1.55rem;
+  letter-spacing: -.04em;
+  line-height: 1;
+}
+
+.sample-card-link p {
+  color: rgba(20, 33, 61, 0.72);
+  line-height: 1.55;
+  font-weight: 500;
+  margin: 0;
+}
+
+.sample-card-link span:last-child {
+  font-weight: 900;
+  margin-top: auto;
+}
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -675,7 +725,7 @@
       .hero-grid, .split, .cta-panel { grid-template-columns: 1fr; }
       .mockup-wrap { min-height: 500px; }
       .phone { margin: 0 auto; }
-      .pricing-grid, .steps-grid { grid-template-columns: 1fr; }
+      .pricing-grid, .steps-grid, .sample-links { grid-template-columns: 1fr; }
       .price-card.featured { transform: none; }
       .feature-grid, .faq-grid, .fit-grid { grid-template-columns: 1fr; }
       .cta-actions { justify-content: flex-start; }
@@ -778,33 +828,24 @@
         </div>
 
         <div class="sample-links" aria-label="Sample mini-sites">
-          <a class="sample-card-link" href="/samples/beach-weekend/" target="_blank" rel="noopener">
-  <article class="sample-card">
-    <div class="sample-image">
-      <img
-        src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80"
-        alt="Family enjoying a beach weekend together"
-      />
-    </div>
-
-    <div class="sample-content">
-      <div class="sample-tag">Family Gathering</div>
-
-      <h3>Shark Week Beach Weekend</h3>
-
-      <p>
-        A shared home base for a large family beach trip with schedules,
-        who's bringing what, activities, packing lists, sleeping
-        arrangements, local recommendations, and all the details everyone
-        keeps asking in the group chat.
-      </p>
-
-      <span class="sample-link">
-        View Sample →
-      </span>
-    </div>
-  </article>
-</a>
+          <a class="sample-card-link" href="/samples/atl/" target="_blank" rel="noopener">
+            <div class="sample-icon">🍑</div>
+            <h3>ATL Trip Sample</h3>
+            <p>A real-feel trip hub with travel details, food options, activities, countdowns, and helpful links.</p>
+            <span>View ATL sample →</span>
+          </a>
+          <a class="sample-card-link" href="/samples/trip/" target="_blank" rel="noopener">
+            <div class="sample-icon">✈️</div>
+            <h3>Weekend Trip Sample</h3>
+            <p>A group getaway site with itinerary sections, reminders, activity ideas, and a countdown.</p>
+            <span>View trip sample →</span>
+          </a>
+          <a class="sample-card-link" href="/samples/celebration/" target="_blank" rel="noopener">
+            <div class="sample-icon">🎓</div>
+            <h3>Celebration Sample</h3>
+            <p>An event info hub with schedule, guest details, FAQ, links, and celebration reminders.</p>
+            <span>View celebration sample →</span>
+          </a>
         </div>
 
         <div class="panel wide-panel split">
