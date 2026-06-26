@@ -3,878 +3,365 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cute Little Site Co. | Custom Mini-Sites for Big Little Moments</title>
-  <meta name="description" content="Custom one-page mini-sites for trips, celebrations, events, group plans, and personal projects. Launch pricing starts at $75." />
-  <meta property="og:title" content="Cute Little Site Co." />
-  <meta property="og:description" content="Custom mini-sites for trips, celebrations, events, and all the details people keep asking you to resend." />
+
+  <title>Tiny Site Studios | Tiny Sites for Life’s Biggest Moments</title>
+  <meta name="description" content="Tiny Site Studios creates custom one-page websites for trips, celebrations, events, reunions, showers, graduations, birthdays, and life's biggest moments." />
+  <meta property="og:title" content="Tiny Site Studios" />
+  <meta property="og:description" content="Tiny sites for life’s biggest moments. One beautiful place for every detail." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://cutelittlesite.co" />
-  <link rel="canonical" href="https://cutelittlesite.co" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta property="og:url" content="https://tinysitestudios.com" />
+
   <style>
     :root {
-      --ink: #14213d;
-      --ink-2: #263859;
-      --cream: #fff8ee;
-      --paper: #ffffff;
-      --peach: #ffb199;
-      --pink: #ff7aa2;
-      --lavender: #c9a8ff;
-      --sky: #8fd3ff;
-      --mint: #9ce6c7;
-      --gold: #ffd166;
-      --coral: #ff6b6b;
-      --line: rgba(20, 33, 61, 0.14);
-      --shadow: 0 24px 70px rgba(20, 33, 61, 0.16);
-      --radius: 28px;
+      --navy: #102447;
+      --ink: #17213a;
+      --cream: #fff8ef;
+      --paper: #fffdf8;
+      --soft: #f8efe5;
+      --blush: #f49aa0;
+      --rose: #df7d82;
+      --peach: #f6c7a5;
+      --sage: #a9b99f;
+      --mint: #cde8e3;
+      --lav: #d9ccef;
+      --gold: #d8a142;
+      --muted: #586277;
+      --shadow: 0 24px 70px rgba(16, 36, 71, .14);
+      --soft-shadow: 0 14px 40px rgba(16, 36, 71, .09);
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at 8% 12%, rgba(255, 209, 102, .45), transparent 28%),
-        radial-gradient(circle at 94% 4%, rgba(143, 211, 255, .42), transparent 28%),
-        radial-gradient(circle at 82% 48%, rgba(201, 168, 255, .32), transparent 26%),
-        linear-gradient(135deg, #fff8ee 0%, #fff0f7 48%, #eef9ff 100%);
-      min-height: 100vh;
-      overflow-x: hidden;
+        radial-gradient(circle at 5% 4%, rgba(244,154,160,.32), transparent 25%),
+        radial-gradient(circle at 93% 2%, rgba(205,232,227,.55), transparent 27%),
+        radial-gradient(circle at 5% 90%, rgba(217,204,239,.45), transparent 25%),
+        radial-gradient(circle at 94% 88%, rgba(246,199,165,.45), transparent 27%),
+        linear-gradient(135deg, #fff8ef 0%, #fffdf8 54%, #f4fbfa 100%);
+      color: var(--ink);
+      line-height: 1.55;
     }
 
-    a { color: inherit; text-decoration: none; }
-
-    img { max-width: 100%; display: block; }
-
-    .site-shell {
-      width: min(1180px, calc(100% - 32px));
-      margin: 0 auto;
-    }
+    a { color: inherit; }
+    .site-shell { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
 
     header {
       position: sticky;
       top: 0;
       z-index: 50;
+      background: rgba(255, 248, 239, .86);
       backdrop-filter: blur(18px);
-      background: rgba(255, 248, 238, 0.78);
-      border-bottom: 1px solid rgba(20, 33, 61, 0.08);
+      border-bottom: 1px solid rgba(16, 36, 71, .08);
     }
 
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 18px 0;
-    }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 17px 0; }
 
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      font-size: 1.15rem;
+      display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--navy);
+      font-weight: 950; letter-spacing: -.03em; font-size: 1.08rem; white-space: nowrap;
     }
 
     .brand-mark {
-      width: 38px;
-      height: 38px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--pink), var(--gold), var(--sky));
-      box-shadow: 0 10px 24px rgba(255, 122, 162, 0.32);
-      display: grid;
-      place-items: center;
-      transform: rotate(-4deg);
+      width: 43px; height: 43px; border-radius: 999px; display: grid; place-items: center;
+      color: var(--navy); background: var(--paper); border: 2px solid rgba(244,154,160,.72);
+      box-shadow: var(--soft-shadow); position: relative; font-family: Georgia, serif; font-weight: 900; font-size: 1.35rem;
     }
 
-    .brand-mark span {
-      width: 18px;
-      height: 18px;
-      border: 3px solid white;
-      border-radius: 6px;
-      display: block;
-    }
+    .brand-mark::after { content: "♥"; position: absolute; right: 4px; bottom: 1px; color: var(--blush); font-size: .7rem; }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: .92rem;
-      font-weight: 700;
-    }
-
-    .nav-links a {
-      padding: 10px 12px;
-      border-radius: 999px;
-      color: rgba(20, 33, 61, 0.78);
-    }
-
-    .nav-links a:hover { background: rgba(255, 255, 255, 0.65); }
-    .nav-links a.btn-primary { color: white; }
-    .nav-links a.btn-primary:hover { background: var(--ink); color: white; }
+    .nav-links { display: flex; align-items: center; gap: 22px; font-weight: 850; color: #3f4a61; font-size: .93rem; }
+    .nav-links a { text-decoration: none; }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      min-height: 48px;
-      padding: 14px 20px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 13px 19px;
+      border-radius: 999px; font-weight: 950; text-decoration: none; border: 0; cursor: pointer; line-height: 1;
       transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
-      white-space: nowrap;
     }
 
     .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--navy); color: white; box-shadow: 0 14px 30px rgba(16, 36, 71, .18); }
+    .btn-secondary { background: rgba(255,255,255,.72); color: var(--navy); border: 1px solid rgba(16, 36, 71, .12); box-shadow: var(--soft-shadow); }
+    .mobile-request { display: none; }
 
-    .btn-primary {
-      background: var(--ink);
-      color: white;
-      box-shadow: 0 16px 30px rgba(20, 33, 61, .24);
+    main { overflow: hidden; }
+    .hero { padding: 72px 0 48px; }
+
+    .hero-panel {
+      position: relative; overflow: hidden; border-radius: 48px; background: rgba(255, 253, 248, .78);
+      border: 1px solid rgba(255,255,255,.78); box-shadow: var(--shadow); padding: clamp(28px, 5vw, 58px);
     }
 
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.78);
-      color: var(--ink);
-      border-color: rgba(20, 33, 61, 0.13);
+    .hero-panel::before {
+      content: ""; position: absolute; inset: -30% auto auto -12%; width: 390px; height: 390px;
+      background: rgba(244,154,160,.22); border-radius: 999px; filter: blur(8px);
     }
 
-    .hero {
-      padding: 74px 0 58px;
-      position: relative;
+    .hero-panel::after {
+      content: ""; position: absolute; right: -12%; bottom: -28%; width: 430px; height: 430px;
+      background: rgba(205,232,227,.45); border-radius: 999px; filter: blur(10px);
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.03fr .97fr;
-      align-items: center;
-      gap: 44px;
-    }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr .92fr; gap: 42px; align-items: center; }
 
     .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border: 1px solid rgba(20, 33, 61, 0.12);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.72);
-      padding: 9px 14px;
-      font-size: .86rem;
-      font-weight: 800;
-      color: var(--ink-2);
-      margin-bottom: 22px;
-      box-shadow: 0 12px 34px rgba(20, 33, 61, 0.07);
+      display: inline-flex; align-items: center; gap: 9px; color: var(--rose); font-weight: 950;
+      text-transform: uppercase; letter-spacing: .12em; font-size: .78rem;
     }
 
-    .dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--pink), var(--gold));
-      box-shadow: 0 0 0 5px rgba(255, 122, 162, .14);
-    }
-
-    h1, h2, h3 {
-      font-family: 'Fraunces', Georgia, serif;
-      line-height: .96;
-      letter-spacing: -0.055em;
-      margin: 0;
-    }
+    .eyebrow .spark { color: var(--gold); font-size: 1rem; }
 
     h1 {
-      font-size: clamp(3.25rem, 8vw, 6.9rem);
-      max-width: 760px;
+      margin: 16px 0 18px; color: var(--navy); font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.2rem, 8vw, 6.45rem); line-height: .9; letter-spacing: -.07em; max-width: 760px;
     }
 
-    .hero h1 span {
-      background: linear-gradient(100deg, var(--pink), #aa65ff 44%, #268bd2 75%, #0aa67a);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      white-space: nowrap;
-    }
+    .lead { color: var(--muted); font-size: clamp(1.08rem, 2vw, 1.28rem); max-width: 690px; margin: 0 0 25px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; align-items: center; margin-top: 24px; }
+    .tiny-note { margin: 20px 0 0; color: #6b7488; font-size: .95rem; font-weight: 700; }
 
-    .lead {
-      font-size: clamp(1.08rem, 2vw, 1.35rem);
-      line-height: 1.55;
-      color: rgba(20, 33, 61, 0.78);
-      margin: 24px 0 0;
-      max-width: 660px;
-      font-weight: 500;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 32px;
-    }
-
-    .tiny-note {
-      font-size: .9rem;
-      color: rgba(20, 33, 61, .68);
-      font-weight: 700;
-      margin-top: 18px;
-    }
-
-    .mockup-wrap {
-      position: relative;
-      min-height: 540px;
-    }
-
+    .phone-scene { position: relative; min-height: 520px; display: grid; place-items: center; }
     .phone {
-      width: min(380px, 82vw);
-      margin-left: auto;
-      margin-right: 34px;
-      border: 12px solid var(--ink);
-      border-radius: 42px;
-      background: var(--paper);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      transform: rotate(3.2deg);
-      position: relative;
-      z-index: 2;
-    }
-
-    .phone-top {
-      height: 34px;
-      background: var(--ink);
-      display: grid;
-      place-items: center;
-    }
-
-    .notch {
-      width: 92px;
-      height: 9px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.22);
+      width: min(310px, 78vw); border-radius: 42px; padding: 12px; background: #17213a;
+      box-shadow: 0 28px 65px rgba(16, 36, 71, .24); transform: rotate(-2deg); z-index: 2;
     }
 
     .phone-screen {
-      padding: 18px;
-      background:
-        radial-gradient(circle at 80% 0%, rgba(255, 209, 102, .55), transparent 32%),
-        linear-gradient(180deg, #fff7fb 0%, #f4fbff 100%);
+      min-height: 480px; border-radius: 32px;
+      background: radial-gradient(circle at 20% 10%, rgba(246,199,165,.5), transparent 25%),
+                  radial-gradient(circle at 90% 0%, rgba(205,232,227,.8), transparent 26%),
+                  linear-gradient(180deg,#fffdf8,#f8efe5);
+      padding: 22px; overflow: hidden;
     }
 
-    .mini-site-card {
-      border-radius: 24px;
-      background: rgba(255,255,255,.86);
-      border: 1px solid rgba(20,33,61,.1);
-      padding: 20px;
-      box-shadow: 0 16px 36px rgba(20, 33, 61, 0.12);
+    .notch { width: 92px; height: 21px; background: #17213a; border-radius: 0 0 16px 16px; margin: -22px auto 18px; }
+    .mini-label { color: var(--rose); font-family: "Brush Script MT", "Segoe Script", cursive; font-size: 2.2rem; text-align: center; margin: 8px 0 0; }
+    .mini-title { text-align: center; color: var(--navy); font-weight: 950; letter-spacing: .18em; text-transform: uppercase; font-size: 1rem; margin-bottom: 16px; }
+    .mini-button {
+      display: flex; gap: 10px; align-items: center; background: rgba(255,255,255,.78);
+      border: 1px solid rgba(16, 36, 71, .08); border-radius: 16px; padding: 12px 13px; margin: 10px 0;
+      box-shadow: 0 8px 18px rgba(16, 36, 71, .07); color: var(--navy); font-weight: 900; font-size: .83rem;
+      text-transform: uppercase; letter-spacing: .04em;
     }
 
-    .mini-hero {
-      min-height: 145px;
-      border-radius: 20px;
-      padding: 18px;
-      color: white;
-      background:
-        linear-gradient(135deg, rgba(20,33,61,.82), rgba(255,122,162,.4)),
-        linear-gradient(135deg, var(--pink), var(--lavender), var(--sky));
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      position: relative;
-      overflow: hidden;
+    .mini-heart { width: 34px; height: 34px; border-radius: 50%; background: var(--mint); display: grid; place-items: center; color: var(--navy); }
+
+    .postcard {
+      position: absolute; right: -6px; top: 52px; width: 210px; height: 140px; border: 10px solid white;
+      background: linear-gradient(135deg, #f8c4a7, #cfe9e7 55%, #7fb7c2); box-shadow: var(--soft-shadow);
+      transform: rotate(7deg); z-index: 1;
     }
 
-    .mini-hero:before,
-    .mini-hero:after {
-      content: "";
-      position: absolute;
-      border-radius: 999px;
-      background: rgba(255,255,255,.18);
+    .note-card {
+      position: absolute; left: 4px; bottom: 80px; width: 250px; background: #fff7ea; border-radius: 6px;
+      padding: 24px 20px; box-shadow: var(--soft-shadow); transform: rotate(-4deg); z-index: 3;
+      color: var(--navy); text-align: center; font-family: "Brush Script MT", "Segoe Script", cursive;
+      font-size: 1.75rem; line-height: 1.08;
     }
 
-    .mini-hero:before { width: 110px; height: 110px; right: -38px; top: -22px; }
-    .mini-hero:after { width: 65px; height: 65px; left: 18px; top: 14px; }
-
-    .mini-title {
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: 2rem;
-      line-height: .9;
-      letter-spacing: -.05em;
-      z-index: 1;
-    }
-
-    .mini-subtitle {
-      font-size: .8rem;
-      font-weight: 800;
-      margin-top: 6px;
-      z-index: 1;
-      opacity: .92;
-    }
-
-    .mini-list { display: grid; gap: 10px; margin-top: 14px; }
-
-    .mini-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border: 1px solid rgba(20,33,61,.08);
-      background: rgba(255,255,255,.7);
-      border-radius: 16px;
-      padding: 10px;
-      font-weight: 800;
-      font-size: .82rem;
-    }
-
-    .mini-icon {
-      width: 30px;
-      height: 30px;
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      background: rgba(255, 209, 102, .5);
-    }
-
-    .floating-card {
-      position: absolute;
-      z-index: 3;
-      background: rgba(255,255,255,.88);
-      border: 1px solid rgba(20,33,61,.1);
-      border-radius: 22px;
-      padding: 16px;
-      box-shadow: 0 18px 45px rgba(20, 33, 61, 0.14);
-      backdrop-filter: blur(14px);
-      font-weight: 800;
-      max-width: 210px;
-    }
-
-    .floating-card small {
-      display: block;
-      margin-top: 6px;
-      color: rgba(20, 33, 61, 0.64);
-      font-weight: 700;
-      line-height: 1.35;
-    }
-
-    .float-1 { left: 20px; top: 52px; transform: rotate(-6deg); }
-    .float-2 { right: 0; bottom: 46px; transform: rotate(7deg); }
-    .float-3 { left: 8px; bottom: 144px; transform: rotate(4deg); }
-
-    section { padding: 64px 0; }
-
-    .section-heading {
-      max-width: 780px;
-      margin-bottom: 30px;
-    }
-
-    .section-heading.center {
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-    }
+    section { padding: 54px 0; }
+    .section-heading { max-width: 760px; margin-bottom: 24px; }
+    .section-heading.center { text-align: center; margin-left: auto; margin-right: auto; }
 
     h2 {
-      font-size: clamp(2.4rem, 5vw, 4.7rem);
+      font-size: clamp(2.1rem, 4.2vw, 3.45rem); line-height: 1; letter-spacing: -.045em;
+      margin: 0 0 14px; color: var(--navy); font-family: Georgia, "Times New Roman", serif;
     }
 
-    .section-copy {
-      font-size: 1.08rem;
-      line-height: 1.65;
-      color: rgba(20, 33, 61, 0.74);
-      font-weight: 500;
-      margin: 16px 0 0;
-    }
+    .section-copy { color: var(--muted); font-size: 1.11rem; margin: 0; }
 
     .panel {
-      background: rgba(255,255,255,.74);
-      border: 1px solid rgba(20,33,61,.1);
-      border-radius: var(--radius);
-      box-shadow: 0 18px 60px rgba(20, 33, 61, 0.09);
-      backdrop-filter: blur(18px);
+      background: rgba(255, 253, 248, .82); border: 1px solid rgba(255,255,255,.76);
+      border-radius: 38px; padding: clamp(24px, 4vw, 40px); box-shadow: var(--shadow);
     }
 
-    .wide-panel {
-      padding: clamp(24px, 4vw, 44px);
+    .sample-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 24px; }
+
+    .sample-card-link {
+      display: flex; flex-direction: column; min-height: 275px; text-decoration: none; color: inherit;
+      background: rgba(255,255,255,.88); border: 1px solid rgba(255,255,255,.76); border-radius: 30px;
+      padding: 24px; box-shadow: var(--soft-shadow); transition: transform .18s ease, box-shadow .18s ease;
     }
 
-    .split {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 28px;
-      align-items: stretch;
+    .sample-card-link:hover { transform: translateY(-5px); box-shadow: 0 24px 55px rgba(16, 36, 71, .14); }
+
+    .sample-icon {
+      width: 54px; height: 54px; border-radius: 20px; display: grid; place-items: center; margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--blush), var(--peach), var(--mint)); font-size: 1.5rem;
     }
 
-    .example-visual {
-      min-height: 360px;
-      border-radius: 24px;
-      padding: 20px;
-      background:
-        linear-gradient(135deg, rgba(20,33,61,.78), rgba(20,33,61,.34)),
-        radial-gradient(circle at 22% 20%, var(--gold), transparent 20%),
-        radial-gradient(circle at 78% 16%, var(--pink), transparent 26%),
-        radial-gradient(circle at 72% 80%, var(--sky), transparent 24%),
-        linear-gradient(135deg, var(--lavender), var(--mint));
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      overflow: hidden;
-      position: relative;
-    }
+    .sample-card-link h3 { margin: 0 0 10px; color: var(--navy); font-size: 1.35rem; letter-spacing: -.02em; }
+    .sample-card-link p { margin: 0 0 16px; color: var(--muted); flex: 1; }
+    .sample-card-link span { color: var(--navy); font-weight: 950; }
 
-    .example-visual:before {
-      content: "";
-      position: absolute;
-      inset: 16px;
-      border: 1px solid rgba(255,255,255,.32);
-      border-radius: 20px;
-    }
+    .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; }
+    .feature-card { background: rgba(255,255,255,.78); border-radius: 26px; padding: 22px; box-shadow: 0 10px 28px rgba(16,36,71,.07); }
+    .icon-bubble { width: 46px; height: 46px; border-radius: 18px; display: grid; place-items: center; background: var(--soft); margin-bottom: 13px; font-size: 1.35rem; }
+    .feature-card h3 { margin: 0 0 8px; color: var(--navy); font-size: 1.21rem; }
+    .feature-card p { margin: 0; color: var(--muted); }
 
-    .example-badge {
-      position: relative;
-      align-self: flex-start;
-      background: rgba(255,255,255,.18);
-      border: 1px solid rgba(255,255,255,.24);
-      border-radius: 999px;
-      padding: 9px 12px;
-      font-weight: 900;
-      font-size: .78rem;
-      backdrop-filter: blur(14px);
-    }
-
-    .example-title {
-      position: relative;
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: clamp(2.3rem, 5vw, 4.4rem);
-      line-height: .9;
-      letter-spacing: -.06em;
-      max-width: 460px;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .feature-card, .fit-card, .price-card, .faq-item, .step-card {
-      background: rgba(255,255,255,.78);
-      border: 1px solid rgba(20,33,61,.1);
-      border-radius: 24px;
-      padding: 22px;
-      box-shadow: 0 14px 34px rgba(20, 33, 61, 0.07);
-    }
-
-    .feature-card h3, .fit-card h3, .price-card h3, .step-card h3 {
-      font-size: 1.55rem;
-      letter-spacing: -.04em;
-      line-height: 1;
-      margin-bottom: 9px;
-    }
-
-    .feature-card p, .fit-card li, .step-card p, .faq-item p, .price-card li {
-      color: rgba(20, 33, 61, 0.72);
-      line-height: 1.55;
-      font-weight: 500;
-      margin: 0;
-    }
-
-    .icon-bubble {
-      width: 46px;
-      height: 46px;
-      display: grid;
-      place-items: center;
-      border-radius: 16px;
-      background: linear-gradient(135deg, rgba(255,122,162,.24), rgba(143,211,255,.28));
-      font-size: 1.35rem;
-      margin-bottom: 18px;
-    }
-.sample-links {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-  margin-bottom: 34px;
-}
-
-.sample-card-link {
-  background: rgba(255,255,255,.78);
-  border: 1px solid rgba(20,33,61,.1);
-  border-radius: 24px;
-  padding: 22px;
-  box-shadow: 0 14px 34px rgba(20, 33, 61, 0.07);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  transition: transform .18s ease, box-shadow .18s ease;
-}
-
-.sample-card-link:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 20px 48px rgba(20, 33, 61, 0.12);
-}
-
-.sample-icon {
-  width: 46px;
-  height: 46px;
-  display: grid;
-  place-items: center;
-  border-radius: 16px;
-  background: linear-gradient(135deg, rgba(255,122,162,.24), rgba(143,211,255,.28));
-  font-size: 1.35rem;
-}
-
-.sample-card-link h3 {
-  font-size: 1.55rem;
-  letter-spacing: -.04em;
-  line-height: 1;
-}
-
-.sample-card-link p {
-  color: rgba(20, 33, 61, 0.72);
-  line-height: 1.55;
-  font-weight: 500;
-  margin: 0;
-}
-
-.sample-card-link span:last-child {
-  font-weight: 900;
-  margin-top: auto;
-}
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      align-items: stretch;
-    }
-
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
     .price-card {
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      overflow: hidden;
+      background: rgba(255,255,255,.84); border: 1px solid rgba(255,255,255,.72); border-radius: 34px;
+      padding: 28px; box-shadow: var(--soft-shadow); position: relative; overflow: hidden;
     }
+    .price-card.featured { transform: translateY(-8px); border: 2px solid rgba(244,154,160,.46); }
+    .price-card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 10px; background: linear-gradient(90deg, var(--blush), var(--peach), var(--mint), var(--lav)); }
+    .price-label { color: var(--navy); font-size: 1.35rem; font-weight: 950; margin: 12px 0 8px; }
+    .price { color: var(--navy); font-family: Georgia, "Times New Roman", serif; font-weight: 900; font-size: 4rem; line-height: 1; letter-spacing: -.05em; margin: 8px 0 16px; }
+    .price-card p { color: var(--muted); margin: 0 0 18px; }
 
-    .price-card.featured {
-      border: 2px solid rgba(255, 122, 162, .42);
-      box-shadow: 0 24px 70px rgba(255, 122, 162, 0.17);
-      transform: translateY(-8px);
-    }
+    ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+    li { color: #4c566d; display: flex; gap: 9px; align-items: flex-start; }
+    li::before { content: "♥"; color: var(--blush); font-size: .85rem; margin-top: 2px; }
 
-    .price-card.featured:before {
-      content: "Most Flexible";
-      position: absolute;
-      right: 18px;
-      top: 18px;
-      background: var(--ink);
-      color: white;
-      font-size: .72rem;
-      font-weight: 900;
-      padding: 8px 10px;
-      border-radius: 999px;
-      letter-spacing: .02em;
-    }
+    .fine-print { margin-top: 24px; color: #6b7488; font-size: .96rem; background: rgba(255,255,255,.7); border-radius: 22px; padding: 18px 20px; }
 
-    .price {
-      font-size: 3.6rem;
-      font-weight: 900;
-      letter-spacing: -.08em;
-      margin: 12px 0 2px;
-    }
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .step { background: rgba(255,255,255,.82); border-radius: 30px; padding: 24px; box-shadow: var(--soft-shadow); }
+    .step-number { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--navy); color: white; font-weight: 950; margin-bottom: 14px; }
+    .step h3 { margin: 0 0 8px; color: var(--navy); }
+    .step p { margin: 0; color: var(--muted); }
 
-    .price-note {
-      font-size: .9rem;
-      color: rgba(20,33,61,.62);
-      font-weight: 800;
-      margin-bottom: 20px;
-    }
+    .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .fit-card { background: rgba(255,255,255,.82); border-radius: 34px; padding: 28px; box-shadow: var(--soft-shadow); }
+    .fit-card h3 { color: var(--navy); margin: 0 0 14px; font-size: 1.42rem; }
 
-    .price-card ul, .fit-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 18px 0 0;
-      display: grid;
-      gap: 11px;
-    }
+    details { background: rgba(255,255,255,.84); border: 1px solid rgba(255,255,255,.75); border-radius: 24px; padding: 18px 20px; margin: 12px 0; box-shadow: 0 8px 22px rgba(16, 36, 71, .06); }
+    summary { cursor: pointer; color: var(--navy); font-weight: 950; }
+    details p { color: var(--muted); margin-bottom: 0; }
 
-    .price-card li, .fit-card li {
-      display: grid;
-      grid-template-columns: 22px 1fr;
-      gap: 9px;
-    }
+    .cta { padding-bottom: 78px; }
+    .cta-panel { display: grid; grid-template-columns: 1.15fr .85fr; gap: 24px; align-items: center; background: var(--navy); color: white; border-radius: 44px; padding: clamp(28px, 5vw, 50px); box-shadow: var(--shadow); }
+    .cta-panel h2 { color: white; margin: 0 0 10px; }
+    .cta-panel .section-copy { color: rgba(255,255,255,.78); }
+    .cta-actions { display: flex; flex-direction: column; gap: 12px; align-items: stretch; }
+    .cta-actions .btn-secondary { background: white; }
 
-    .check, .x {
-      width: 22px;
-      height: 22px;
-      border-radius: 999px;
-      display: grid;
-      place-items: center;
-      font-size: .8rem;
-      font-weight: 900;
-      margin-top: 1px;
-    }
+    footer { padding: 28px 0 44px; color: #6b7488; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; border-top: 1px solid rgba(16, 36, 71, .12); padding-top: 24px; font-size: .95rem; }
 
-    .check { background: rgba(156,230,199,.42); color: #08795b; }
-    .x { background: rgba(255,107,107,.16); color: #ba2a2a; }
-
-    .price-card .btn { margin-top: auto; width: 100%; }
-
-    .scope-note {
-      margin-top: 18px;
-      padding: 18px 20px;
-      border-radius: 22px;
-      background: rgba(255,255,255,.58);
-      border: 1px dashed rgba(20,33,61,.22);
-      color: rgba(20,33,61,.76);
-      line-height: 1.55;
-      font-weight: 600;
-    }
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .step-number {
-      width: 38px;
-      height: 38px;
-      border-radius: 14px;
-      background: var(--ink);
-      color: white;
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      margin-bottom: 18px;
-    }
-
-    .fit-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .faq-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .faq-item h3 {
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
-      letter-spacing: -.02em;
-      margin-bottom: 8px;
-      line-height: 1.25;
-    }
-
-    .cta {
-      padding-bottom: 88px;
-    }
-
-    .cta-panel {
-      padding: clamp(28px, 6vw, 58px);
-      background:
-        linear-gradient(135deg, rgba(20,33,61,.92), rgba(20,33,61,.76)),
-        radial-gradient(circle at 13% 20%, rgba(255,122,162,.85), transparent 24%),
-        radial-gradient(circle at 84% 22%, rgba(255,209,102,.82), transparent 24%),
-        radial-gradient(circle at 76% 82%, rgba(143,211,255,.78), transparent 28%);
-      color: white;
-      border-radius: 36px;
-      box-shadow: var(--shadow);
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 24px;
-      align-items: center;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .cta-panel h2 { max-width: 760px; }
-    .cta-panel p { color: rgba(255,255,255,.78); max-width: 680px; }
-    .cta-panel .btn-primary { background: white; color: var(--ink); box-shadow: none; }
-    .cta-panel .btn-secondary { background: rgba(255,255,255,.12); color: white; border-color: rgba(255,255,255,.22); }
-
-    .cta-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; }
-
-    footer {
-      padding: 34px 0;
-      border-top: 1px solid rgba(20,33,61,.08);
-      background: rgba(255,248,238,.5);
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-      color: rgba(20,33,61,.68);
-      font-size: .92rem;
-      font-weight: 700;
-    }
-
-    .mobile-request { display: none; }
-
-    @media (max-width: 920px) {
-      .hero-grid, .split, .cta-panel { grid-template-columns: 1fr; }
-      .mockup-wrap { min-height: 500px; }
-      .phone { margin: 0 auto; }
-      .pricing-grid, .steps-grid, .sample-links { grid-template-columns: 1fr; }
+    @media (max-width: 980px) {
+      .hero-grid, .cta-panel, .fit-grid { grid-template-columns: 1fr; }
+      .sample-links, .pricing-grid { grid-template-columns: 1fr; }
+      .feature-grid, .steps { grid-template-columns: repeat(2, 1fr); }
       .price-card.featured { transform: none; }
-      .feature-grid, .faq-grid, .fit-grid { grid-template-columns: 1fr; }
-      .cta-actions { justify-content: flex-start; }
+      .phone-scene { min-height: 470px; }
+    }
+
+    @media (max-width: 760px) {
       .nav-links { display: none; }
       .mobile-request { display: inline-flex; }
-    }
-
-    @media (max-width: 560px) {
-      .site-shell { width: min(100% - 24px, 1180px); }
-      .hero { padding-top: 46px; }
-      .brand { font-size: 1.02rem; }
-      h1 { font-size: clamp(3rem, 16vw, 4.2rem); }
-      .hero h1 span { white-space: normal; }
-      .hero-actions .btn { width: 100%; }
-      .mockup-wrap { min-height: 455px; }
-      .phone { width: min(330px, 86vw); border-width: 10px; }
-      .floating-card { display: none; }
-      section { padding: 46px 0; }
-      .cta { padding-bottom: 60px; }
-      .cta-actions .btn { width: 100%; }
-      .price { font-size: 3.2rem; }
+      .hero { padding-top: 38px; }
+      h1 { font-size: 3.5rem; }
+      .hero-panel { border-radius: 34px; }
+      .phone-scene { min-height: 430px; }
+      .postcard { display: none; }
+      .note-card { left: auto; right: 0; bottom: 28px; width: 210px; }
+      .feature-grid, .steps { grid-template-columns: 1fr; }
+      .footer-inner { display: grid; }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="site-shell nav">
-      <a class="brand" href="#top" aria-label="Cute Little Site Co. home">
-        <span class="brand-mark" aria-hidden="true"><span></span></span>
-        <span>Cute Little Site Co.</span>
+      <a class="brand" href="#top" aria-label="Tiny Site Studios home">
+        <span class="brand-mark" aria-hidden="true">t</span>
+        <span>Tiny Site Studios</span>
       </a>
+
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="#examples">Examples</a>
+        <a href="#samples">Samples</a>
         <a href="#includes">What’s Included</a>
         <a href="#pricing">Pricing</a>
         <a href="#process">How It Works</a>
         <a href="https://forms.gle/LHubEz2hcxd3kshz9" class="btn btn-primary" target="_blank" rel="noopener">Start My Site</a>
       </nav>
+
       <a href="https://forms.gle/LHubEz2hcxd3kshz9" class="btn btn-primary mobile-request" target="_blank" rel="noopener">Start</a>
     </div>
   </header>
 
   <main id="top">
     <section class="hero">
-      <div class="site-shell hero-grid">
-        <div>
-          <div class="eyebrow"><span class="dot"></span> Launch pricing now open</div>
-          <h1>A custom little website for your <span>big little plans.</span></h1>
-          <p class="lead">Cute Little Site Co. creates fun, polished, mobile-friendly mini-sites for trips, celebrations, events, group plans, and personal projects that deserve more than a group text.</p>
-          <div class="hero-actions">
-            <a href="#pricing" class="btn btn-primary">View Launch Pricing</a>
-            <a href="#examples" class="btn btn-secondary">See What I Can Make</a>
-          </div>
-          <p class="tiny-note">Current launch pricing starts at $75. Prices will increase once the school year starts and my schedule fills up.</p>
-        </div>
+      <div class="site-shell">
+        <div class="hero-panel">
+          <div class="hero-grid">
+            <div>
+              <div class="eyebrow"><span class="spark">✦</span> Launch pricing now open</div>
+              <h1>Tiny sites for life’s biggest moments.</h1>
+              <p class="lead">Tiny Site Studios creates custom one-page websites for trips, celebrations, events, group plans, and personal projects that deserve one beautiful place for every detail.</p>
 
-        <div class="mockup-wrap" aria-label="Mini-site preview graphic">
-          <div class="floating-card float-1">Countdowns <small>Perfect for trips, parties, graduations, and surprise plans.</small></div>
-          <div class="floating-card float-2">All the details <small>Links, maps, times, FAQs, photos, and reminders in one place.</small></div>
-          <div class="floating-card float-3">Cute + useful <small>Not a template. Not overbuilt. Just what you need.</small></div>
+              <div class="hero-actions">
+                <a href="#samples" class="btn btn-primary">View Samples</a>
+                <a href="https://forms.gle/LHubEz2hcxd3kshz9" class="btn btn-secondary" target="_blank" rel="noopener">Start My Site</a>
+              </div>
 
-          <div class="phone">
-            <div class="phone-top"><div class="notch"></div></div>
-            <div class="phone-screen">
-              <div class="mini-site-card">
-                <div class="mini-hero">
-                  <div class="mini-title">ATL Weekend</div>
-                  <div class="mini-subtitle">June 2026 • Plans, food, links & vibes</div>
-                </div>
-                <div class="mini-list">
-                  <div class="mini-row"><span class="mini-icon">✈️</span><span>Flight countdown + airport details</span></div>
-                  <div class="mini-row"><span class="mini-icon">🍽️</span><span>Breakfast, lunch, dinner options</span></div>
-                  <div class="mini-row"><span class="mini-icon">📍</span><span>Maps, times, links, and reminders</span></div>
-                  <div class="mini-row"><span class="mini-icon">🌈</span><span>Custom colors, images, and theme</span></div>
+              <p class="tiny-note">Launch pricing starts at $75. Prices will increase once the school year starts and my schedule fills up.</p>
+            </div>
+
+            <div class="phone-scene" aria-label="Example tiny site preview">
+              <div class="postcard" aria-hidden="true"></div>
+              <div class="phone">
+                <div class="phone-screen">
+                  <div class="notch"></div>
+                  <div class="mini-label">Beach Weekend</div>
+                  <div class="mini-title">All the details</div>
+                  <div class="mini-button"><span class="mini-heart">♡</span> Itinerary</div>
+                  <div class="mini-button"><span class="mini-heart">✈</span> Travel details</div>
+                  <div class="mini-button"><span class="mini-heart">⌂</span> Where to stay</div>
+                  <div class="mini-button"><span class="mini-heart">☼</span> Activities</div>
+                  <div class="mini-button"><span class="mini-heart">?</span> FAQs</div>
                 </div>
               </div>
+              <div class="note-card">one place for<br>all the details ♥</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="intro">
-      <div class="site-shell panel wide-panel split">
+    <section>
+      <div class="site-shell panel">
         <div class="section-heading">
-          <h2>Not every plan needs a full website.</h2>
+          <h2>Big moments deserve more than a group text.</h2>
         </div>
-        <div>
-          <p class="section-copy">Sometimes you just need one beautiful page where everyone can find the details without digging through screenshots, group texts, old emails, or “wait, what time are we leaving?” messages.</p>
-          <p class="section-copy">I build custom one-page mini-sites that are easy to share, easy to use, and designed around the exact thing you’re planning.</p>
-        </div>
+        <p class="section-copy">If people keep asking for the address, the schedule, the link, the dress code, the parking details, the dinner plan, or the “wait, what time are we leaving?” text, a tiny site gives everyone one clean place to go.</p>
       </div>
     </section>
 
-    <section id="examples">
+    <section id="samples">
       <div class="site-shell">
-        <div class="section-heading">
-          <h2>Made for the plans people keep asking you to resend.</h2>
-          <p class="section-copy">Think of it as a home base for all the tiny details that make a trip, event, or celebration smoother and more fun.</p>
+        <div class="section-heading center">
+          <h2>See what I can make.</h2>
+          <p class="section-copy">Browse the sample sites below to get a feel for the kinds of tiny sites I can build for trips, celebrations, and group plans.</p>
         </div>
 
         <div class="sample-links" aria-label="Sample mini-sites">
-          <a class="sample-card-link" href="/samples/atl/" target="_blank" rel="noopener">
-            <div class="sample-icon">🍑</div>
-            <h3>ATL Trip Sample</h3>
-            <p>A real-feel trip hub with travel details, food options, activities, countdowns, and helpful links.</p>
-            <span>View ATL sample →</span>
+          <a class="sample-card-link" href="samples/beach-weekend/index.html" target="_blank" rel="noopener">
+            <div class="sample-icon">🌊</div>
+            <h3>Beach Weekend Sample</h3>
+            <p>A vacation-style tiny site with the weekend plan, travel details, activity ideas, reminders, and everything in one place.</p>
+            <span>View beach sample →</span>
           </a>
-          <a class="sample-card-link" href="/samples/trip/" target="_blank" rel="noopener">
-            <div class="sample-icon">✈️</div>
-            <h3>Weekend Trip Sample</h3>
-            <p>A group getaway site with itinerary sections, reminders, activity ideas, and a countdown.</p>
-            <span>View trip sample →</span>
-          </a>
-          <a class="sample-card-link" href="/samples/celebration/" target="_blank" rel="noopener">
+
+          <a class="sample-card-link" href="samples/celebration/index.html" target="_blank" rel="noopener">
             <div class="sample-icon">🎓</div>
             <h3>Celebration Sample</h3>
-            <p>An event info hub with schedule, guest details, FAQ, links, and celebration reminders.</p>
+            <p>An event info hub with schedule, guest details, parking notes, FAQ, helpful links, and celebration reminders.</p>
             <span>View celebration sample →</span>
           </a>
-        </div>
 
-        <div class="panel wide-panel split">
-          <div class="example-visual">
-            <div class="example-badge">Example vibe</div>
-            <div class="example-title">A trip site with the whole weekend in one place.</div>
-          </div>
-          <div class="feature-grid">
-            <div class="feature-card">
-              <div class="icon-bubble">✈️</div>
-              <h3>Trip hubs</h3>
-              <p>Flights, lodging, restaurants, daily plans, activity options, maps, reminders, packing notes, and countdowns.</p>
-            </div>
-            <div class="feature-card">
-              <div class="icon-bubble">🎉</div>
-              <h3>Celebrations</h3>
-              <p>Birthday weekends, showers, bachelorette trips, family reunions, graduation gatherings, and milestone moments.</p>
-            </div>
-            <div class="feature-card">
-              <div class="icon-bubble">🎓</div>
-              <h3>Info pages</h3>
-              <p>Graduation details, event logistics, parking, schedules, dress code, FAQs, livestream links, and contact info.</p>
-            </div>
-            <div class="feature-card">
-              <div class="icon-bubble">💌</div>
-              <h3>Just-for-fun sites</h3>
-              <p>Gift pages, memory pages, inside-joke sites, love-note sites, countdown pages, and personal surprises.</p>
-            </div>
-          </div>
+          <a class="sample-card-link" href="samples/trip/index.html" target="_blank" rel="noopener">
+            <div class="sample-icon">✈️</div>
+            <h3>Trip Sample</h3>
+            <p>A group getaway site with itinerary sections, countdown, food ideas, activity options, links, and reminders.</p>
+            <span>View trip sample →</span>
+          </a>
         </div>
       </div>
     </section>
@@ -882,30 +369,15 @@
     <section id="includes">
       <div class="site-shell">
         <div class="section-heading center">
-          <h2>Your mini-site can include...</h2>
-          <p class="section-copy">Every site is built around your actual need, theme, timeline, and audience.</p>
+          <h2>What can go on a tiny site?</h2>
+          <p class="section-copy">Each site is custom, but here are the kinds of details people usually want in one easy-to-share place.</p>
         </div>
+
         <div class="feature-grid">
-          <div class="feature-card">
-            <div class="icon-bubble">📌</div>
-            <h3>Important details</h3>
-            <p>Dates, times, locations, addresses, parking info, FAQs, dress code, reminders, and helpful links.</p>
-          </div>
-          <div class="feature-card">
-            <div class="icon-bubble">🗺️</div>
-            <h3>Plans + options</h3>
-            <p>Schedules, maps, restaurants, activity ideas, vote-style choices, notes, and shared decision-making sections.</p>
-          </div>
-          <div class="feature-card">
-            <div class="icon-bubble">📸</div>
-            <h3>Photos + personality</h3>
-            <p>Photos, custom colors, themed graphics, playlists, quotes, inside jokes, mood boards, and personal touches.</p>
-          </div>
-          <div class="feature-card">
-            <div class="icon-bubble">✨</div>
-            <h3>Interactive extras</h3>
-            <p>Countdown timers, buttons, collapsible FAQs, simple forms, maps, translation buttons, carousels, and clickable menus.</p>
-          </div>
+          <div class="feature-card"><div class="icon-bubble">📍</div><h3>Event details</h3><p>Dates, times, addresses, parking, dress code, reminders, maps, FAQs, and links.</p></div>
+          <div class="feature-card"><div class="icon-bubble">✈️</div><h3>Trip plans</h3><p>Flights, lodging, restaurants, activity options, packing notes, countdowns, and daily plans.</p></div>
+          <div class="feature-card"><div class="icon-bubble">🎉</div><h3>Celebrations</h3><p>Birthday weekends, showers, graduations, reunions, bachelorette trips, and milestone events.</p></div>
+          <div class="feature-card"><div class="icon-bubble">💌</div><h3>Personal touches</h3><p>Photos, colors, themes, quotes, playlists, registry links, inside jokes, and surprise pages.</p></div>
         </div>
       </div>
     </section>
@@ -913,56 +385,17 @@
     <section id="pricing">
       <div class="site-shell">
         <div class="section-heading center">
-          <div class="eyebrow"><span class="dot"></span> Limited launch pricing</div>
-          <h2>Simple pricing while I build this out.</h2>
-          <p class="section-copy">These rates are available for a limited time. Once the school year starts and my availability gets tighter, prices will go up.</p>
+          <h2>Launch pricing</h2>
+          <p class="section-copy">I’m offering limited launch pricing while I build out Tiny Site Studios. Prices will increase once the school year starts and my schedule gets busier.</p>
         </div>
 
         <div class="pricing-grid">
-          <article class="price-card">
-            <h3>Starter Site</h3>
-            <div class="price">$75</div>
-            <div class="price-note">Best for simple, polished mini-sites.</div>
-            <ul>
-              <li><span class="check">✓</span><span>Custom one-page mini-site</span></li>
-              <li><span class="check">✓</span><span>Mobile-friendly design</span></li>
-              <li><span class="check">✓</span><span>Up to 5 small updates or revisions</span></li>
-              <li><span class="check">✓</span><span>Basic sections, links, buttons, images, and details</span></li>
-              <li><span class="check">✓</span><span>Delivered ready to publish or share</span></li>
-            </ul>
-            <a href="https://forms.gle/LHubEz2hcxd3kshz9" target="_blank" rel="noopener" class="btn btn-secondary">Choose Starter</a>
-          </article>
-
-          <article class="price-card">
-            <h3>Standard Site</h3>
-            <div class="price">$100</div>
-            <div class="price-note">Best for more back-and-forth.</div>
-            <ul>
-              <li><span class="check">✓</span><span>Everything in Starter</span></li>
-              <li><span class="check">✓</span><span>Up to 10 small updates or revisions</span></li>
-              <li><span class="check">✓</span><span>More content sections</span></li>
-              <li><span class="check">✓</span><span>More design polish</span></li>
-              <li><span class="check">✓</span><span>Optional extras like FAQs, countdowns, maps, schedules, or image sections</span></li>
-            </ul>
-            <a href="https://forms.gle/LHubEz2hcxd3kshz9" target="_blank" rel="noopener" class="btn btn-secondary">Choose Standard</a>
-          </article>
-
-          <article class="price-card featured">
-            <h3>VIP Month</h3>
-            <div class="price">$150</div>
-            <div class="price-note">Best for plans that keep changing.</div>
-            <ul>
-              <li><span class="check">✓</span><span>Custom one-page mini-site</span></li>
-              <li><span class="check">✓</span><span>Unlimited small updates for 30 days</span></li>
-              <li><span class="check">✓</span><span>Great for events, trips, launches, and changing details</span></li>
-              <li><span class="check">✓</span><span>Updates to links, photos, schedules, sections, and wording</span></li>
-              <li><span class="check">✓</span><span>Priority-friendly support during your 30-day window</span></li>
-            </ul>
-            <a href="https://forms.gle/LHubEz2hcxd3kshz9" target="_blank" rel="noopener" class="btn btn-primary">Choose VIP Month</a>
-          </article>
+          <div class="price-card"><div class="price-label">Starter Site</div><div class="price">$75</div><p>Best for a simple, polished one-page site.</p><ul><li>Custom one-page website</li><li>Mobile-friendly design</li><li>Up to 5 small updates/revisions</li><li>Basic sections, links, images, and details</li></ul></div>
+          <div class="price-card featured"><div class="price-label">Standard Site</div><div class="price">$100</div><p>Best if you know you’ll want more back-and-forth.</p><ul><li>Everything in Starter</li><li>Up to 10 small updates/revisions</li><li>More content sections</li><li>Optional FAQ, countdown, map links, or schedule sections</li></ul></div>
+          <div class="price-card"><div class="price-label">VIP Month</div><div class="price">$150</div><p>Best for projects that need frequent updates.</p><ul><li>Custom one-page website</li><li>Unlimited small updates for 30 days</li><li>Great for changing schedules, links, photos, and event details</li><li>Perfect for trips, events, or launch windows</li></ul></div>
         </div>
 
-        <div class="scope-note"><strong>Quick scope note:</strong> Unlimited updates include reasonable small edits to existing content, layout, links, images, and details. Full redesigns, new pages, major content rewrites, or entirely new site concepts may require a separate quote.</div>
+        <div class="fine-print">Unlimited updates include reasonable small edits to existing content, layout, links, images, and details. Full redesigns, new pages, major content rewrites, or entirely new site concepts may require a separate quote.</div>
       </div>
     </section>
 
@@ -970,95 +403,33 @@
       <div class="site-shell">
         <div class="section-heading center">
           <h2>How it works</h2>
-          <p class="section-copy">Simple, clear, and low-stress.</p>
+          <p class="section-copy">You bring the idea. I organize the details and turn it into something polished, useful, and easy to share.</p>
         </div>
-        <div class="steps-grid">
-          <div class="step-card">
-            <div class="step-number">1</div>
-            <h3>Tell me the idea</h3>
-            <p>Send the purpose, vibe, colors, must-have details, links, photos, and anything people need to know.</p>
-          </div>
-          <div class="step-card">
-            <div class="step-number">2</div>
-            <h3>I build the draft</h3>
-            <p>I create a custom one-page site based on your content, package, and style direction.</p>
-          </div>
-          <div class="step-card">
-            <div class="step-number">3</div>
-            <h3>You review it</h3>
-            <p>You send revision notes, and I make updates based on the package you selected.</p>
-          </div>
-          <div class="step-card">
-            <div class="step-number">4</div>
-            <h3>You share it</h3>
-            <p>Once it’s ready, you get a shareable link or the files you need to publish it.</p>
-          </div>
+
+        <div class="steps">
+          <div class="step"><div class="step-number">1</div><h3>Browse samples</h3><p>Look through the examples to get a feel for what your tiny site could include.</p></div>
+          <div class="step"><div class="step-number">2</div><h3>Fill out the form</h3><p>Tell me the type of site, your deadline, the vibe, and any must-have details.</p></div>
+          <div class="step"><div class="step-number">3</div><h3>I build your draft</h3><p>I create the first version based on your information, theme, and selected package.</p></div>
+          <div class="step"><div class="step-number">4</div><h3>You share it</h3><p>After revisions, you get a shareable link for your people, guests, group, or surprise recipient.</p></div>
         </div>
       </div>
     </section>
 
-    <section id="fit">
-      <div class="site-shell">
-        <div class="section-heading center">
-          <h2>What this is, and what it is not.</h2>
-          <p class="section-copy">This keeps the offer affordable, focused, and actually fun.</p>
-        </div>
-        <div class="fit-grid">
-          <div class="fit-card">
-            <h3>Great fit</h3>
-            <ul>
-              <li><span class="check">✓</span><span>Trip itinerary sites</span></li>
-              <li><span class="check">✓</span><span>Birthday, shower, graduation, or reunion pages</span></li>
-              <li><span class="check">✓</span><span>Wedding weekend or bachelorette trip details</span></li>
-              <li><span class="check">✓</span><span>Group event info hubs</span></li>
-              <li><span class="check">✓</span><span>Gift sites, memory pages, countdowns, and just-for-fun projects</span></li>
-            </ul>
-          </div>
-          <div class="fit-card">
-            <h3>Not the right fit</h3>
-            <ul>
-              <li><span class="x">×</span><span>Business websites</span></li>
-              <li><span class="x">×</span><span>Professional portfolios or resumes</span></li>
-              <li><span class="x">×</span><span>E-commerce, payments, booking systems, or customer portals</span></li>
-              <li><span class="x">×</span><span>Multi-page company sites or advanced SEO strategy</span></li>
-              <li><span class="x">×</span><span>Complex forms, databases, memberships, or long-term tech support</span></li>
-            </ul>
-          </div>
-        </div>
+    <section>
+      <div class="site-shell fit-grid">
+        <div class="fit-card"><h3>Great fit for</h3><ul><li>Trips and vacation weekends</li><li>Birthdays and milestone celebrations</li><li>Graduations and family gatherings</li><li>Showers, bachelorette trips, and wedding weekend details</li><li>Reunions, group events, and surprise pages</li></ul></div>
+        <div class="fit-card"><h3>Not built for</h3><ul><li>Business websites</li><li>E-commerce or online payments</li><li>Booking systems or client portals</li><li>Complex databases or logins</li><li>Full multi-page websites or advanced SEO strategy</li></ul></div>
       </div>
     </section>
 
-    <section id="faq">
+    <section>
       <div class="site-shell">
-        <div class="section-heading center">
-          <h2>Questions people usually ask</h2>
-        </div>
-        <div class="faq-grid">
-          <div class="faq-item">
-            <h3>How long does it take?</h3>
-            <p>Most simple sites can be created once all content is submitted. Timeline depends on the complexity of the request and my current availability.</p>
-          </div>
-          <div class="faq-item">
-            <h3>What counts as an update?</h3>
-            <p>Small updates include changes to wording, links, images, sections, colors, layout tweaks, or details. Major redesigns or new concepts are outside the included updates.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Do I need to know anything about websites?</h3>
-            <p>Nope. You send the information, images, links, and general vibe. I handle the build.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Can you help me publish it?</h3>
-            <p>Yes. I can provide the site files or help you get it published using a simple hosting option like GitHub Pages.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Can you make it match a theme?</h3>
-            <p>Yes. Themes are the fun part. You can send colors, inspiration images, mood words, examples, or just tell me the vibe.</p>
-          </div>
-          <div class="faq-item">
-            <h3>Can you update it later?</h3>
-            <p>Yes. Updates are included based on your package. After that, additional updates can be purchased separately.</p>
-          </div>
-        </div>
+        <div class="section-heading center"><h2>FAQ</h2></div>
+        <details open><summary>What counts as a small update?</summary><p>Small updates include edits to wording, links, images, colors, layout tweaks, sections, dates, times, addresses, and other existing site details.</p></details>
+        <details><summary>Do I need to know anything about websites?</summary><p>Nope. You send the information, images, links, and general vibe. I handle the build.</p></details>
+        <details><summary>Can you help me publish it?</summary><p>Yes. I can provide the site files or help you get it published using a simple hosting option.</p></details>
+        <details><summary>Can you make it match a theme?</summary><p>Yes. Themes are the fun part. You can send colors, inspiration images, mood words, screenshots, or just tell me the vibe.</p></details>
+        <details><summary>Can you update it later?</summary><p>Yes. Updates are included based on your package. After that, additional updates can be purchased separately.</p></details>
       </div>
     </section>
 
@@ -1066,12 +437,12 @@
       <div class="site-shell">
         <div class="cta-panel">
           <div>
-            <h2>Ready to make your plan easier to share?</h2>
-            <p class="section-copy">Fill out the quick interest form with the idea, the vibe, and the details. I’ll review it and follow up with next steps, timeline, and payment details.</p>
+            <h2>Ready for your own tiny site?</h2>
+            <p class="section-copy">Fill out the quick request form with the idea, the vibe, and the details. I’ll review it and follow up with next steps, timeline, and payment details.</p>
           </div>
           <div class="cta-actions">
-            <a class="btn btn-primary" href="https://forms.gle/LHubEz2hcxd3kshz9" target="_blank" rel="noopener">Start My Site Request</a>
-            <a class="btn btn-secondary" href="mailto:littlesiteco@gmail.com?subject=Question%20about%20Cute%20Little%20Site%20Co.">Email Me First</a>
+            <a class="btn btn-secondary" href="https://forms.gle/LHubEz2hcxd3kshz9" target="_blank" rel="noopener">Start My Site Request</a>
+            <a class="btn btn-secondary" href="mailto:littlesiteco@gmail.com?subject=Question%20about%20Tiny%20Site%20Studios">Email Me First</a>
           </div>
         </div>
       </div>
@@ -1080,8 +451,8 @@
 
   <footer>
     <div class="site-shell footer-inner">
-      <div>© <span id="year"></span> Cute Little Site Co.</div>
-      <div>cutelittlesite.co · Custom mini-sites for trips, celebrations, events, and big little plans.</div>
+      <div>© <span id="year"></span> Tiny Site Studios</div>
+      <div>tinysitestudios.com · Tiny sites for life’s biggest moments.</div>
     </div>
   </footer>
 
