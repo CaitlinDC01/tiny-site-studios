@@ -1287,6 +1287,72 @@ p {
   text-transform: uppercase;
 }
 
+.portfolio-live-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.portfolio-live .portfolio-art {
+  isolation: isolate;
+  color: #fffdf8;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 22px 55px rgba(43, 35, 39, 0.16);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.portfolio-live .portfolio-art::before {
+  inset: 0;
+  z-index: -1;
+  width: auto;
+  height: auto;
+  background: linear-gradient(180deg, rgba(22, 31, 27, 0.08), rgba(22, 31, 27, 0.58));
+  border: 0;
+  border-radius: inherit;
+  opacity: 1;
+}
+
+.portfolio-live .portfolio-art::after {
+  z-index: -1;
+  width: 360px;
+  height: 360px;
+  border-color: rgba(255, 253, 248, 0.8);
+}
+
+.portfolio-garden {
+  background-image: url("demos/garden/assets/hero.jpg");
+}
+
+.portfolio-coastal {
+  background-image: url("demos/coastal/assets/hero.jpg");
+}
+
+.portfolio-live .portfolio-monogram {
+  font-size: clamp(82px, 9vw, 132px);
+  text-shadow: 0 3px 30px rgba(0, 0, 0, 0.25);
+}
+
+.portfolio-live-link:hover .portfolio-art {
+  transform: translateY(-7px);
+  box-shadow: 0 30px 70px rgba(43, 35, 39, 0.24);
+}
+
+.portfolio-live-link:hover .portfolio-demo {
+  background: rgba(255, 253, 248, 0.18);
+}
+
+.portfolio-caption .portfolio-live-description {
+  max-width: 430px;
+  margin-top: 9px;
+  color: rgba(40, 37, 38, 0.68);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.5;
+  text-transform: none;
+}
+
 .partnership {
   display: grid;
   grid-template-columns: 1fr 1fr;
