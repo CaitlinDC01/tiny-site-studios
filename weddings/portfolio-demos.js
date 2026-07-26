@@ -37,10 +37,27 @@
         </div>
       </a>
     </article>
+    <article class="portfolio-card portfolio-live">
+      <a class="portfolio-live-link" href="demos/wedding-party/">
+        <div class="portfolio-art portfolio-party">
+          <span class="portfolio-index">03</span>
+          <span class="portfolio-monogram">B&amp;M</span>
+          <span class="portfolio-demo">Open the Party Hub ↗</span>
+        </div>
+        <div class="portfolio-caption">
+          <div>
+            <h3>Bea &amp; Milo</h3>
+            <p>Wedding Party Hub</p>
+            <p class="portfolio-live-description">A private-feeling mobile companion with role-specific details, schedules, attire, and wedding-day quick access.</p>
+          </div>
+          <span>New Orleans, Louisiana</span>
+        </div>
+      </a>
+    </article>
   `;
 
   grid.insertAdjacentHTML("afterbegin", demos);
   [...grid.querySelectorAll(".portfolio-card:not(.portfolio-live) .portfolio-index")].forEach((index, position) => {
-    index.textContent = String(position + 3).padStart(2, "0");
+    index.textContent = String(position + 4).padStart(2, "0");
   });
 })();
