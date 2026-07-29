@@ -328,6 +328,117 @@ p {
   height: 620px;
 }
 
+.phone-preview {
+  position: absolute;
+  z-index: 5;
+  right: 10px;
+  bottom: 18px;
+  width: 158px;
+  height: 320px;
+  padding: 8px;
+  border: 5px solid #29262a;
+  border-radius: 30px;
+  background: #4c474d;
+  box-shadow: 0 28px 55px rgba(48, 38, 42, 0.28);
+  transform: rotate(4deg);
+}
+
+.phone-speaker {
+  position: absolute;
+  z-index: 2;
+  top: 13px;
+  left: 50%;
+  width: 45px;
+  height: 5px;
+  border-radius: 9px;
+  background: #29262a;
+  transform: translateX(-50%);
+}
+
+.phone-screen {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 13px 14px;
+  border-radius: 20px;
+  color: #f7efe8;
+  background:
+    radial-gradient(circle at 100% 0, rgba(197, 142, 145, 0.55), transparent 8rem),
+    linear-gradient(160deg, #4b3847, #201c22 72%);
+  text-align: center;
+}
+
+.phone-kicker {
+  font-family: var(--font-script), cursive;
+  font-size: 24px;
+}
+
+.phone-screen strong {
+  margin: 22px 0 9px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 450;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+.phone-date,
+.phone-nav,
+.phone-plan small,
+.phone-plan span {
+  font-size: 5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.phone-plan {
+  width: 100%;
+  margin: 28px 0 auto;
+  padding: 13px 7px;
+  border: 1px solid rgba(247, 239, 232, 0.32);
+  border-radius: 60px 60px 12px 12px;
+}
+
+.phone-plan > * {
+  display: block;
+}
+
+.phone-plan b {
+  margin: 5px 0;
+  color: #d5a2a8;
+  font-family: var(--font-script), cursive;
+  font-size: 23px;
+  font-weight: 400;
+}
+
+.hero-foliage {
+  position: absolute;
+  z-index: 1;
+  width: 105px;
+  height: 230px;
+  opacity: 0.35;
+  background:
+    radial-gradient(ellipse at 25% 20%, #57414f 0 16%, transparent 17%),
+    radial-gradient(ellipse at 72% 34%, #796070 0 17%, transparent 18%),
+    radial-gradient(ellipse at 28% 53%, #3f4a3f 0 15%, transparent 16%),
+    radial-gradient(ellipse at 78% 70%, #80616d 0 16%, transparent 17%),
+    linear-gradient(78deg, transparent 48%, #6d554e 49% 51%, transparent 52%);
+}
+
+.hero-foliage-one {
+  top: 30px;
+  left: 10px;
+  transform: rotate(-36deg);
+}
+
+.hero-foliage-two {
+  right: 122px;
+  bottom: -18px;
+  transform: rotate(142deg);
+}
+
 .hero-orbit,
 .contact-orbit {
   position: absolute;
@@ -1333,6 +1444,25 @@ p {
   background-position: 62% center;
 }
 
+.portfolio-city {
+  background-image:
+    linear-gradient(140deg, rgba(16, 16, 16, 0.08), rgba(23, 76, 255, 0.28)),
+    url("https://images.pexels.com/photos/28760484/pexels-photo-28760484.jpeg?auto=compress&cs=tinysrgb&w=1400");
+  filter: grayscale(0.45);
+}
+
+.portfolio-garden-party {
+  background-image:
+    linear-gradient(140deg, rgba(255, 249, 233, 0.04), rgba(245, 220, 120, 0.22)),
+    url("https://images.pexels.com/photos/28588967/pexels-photo-28588967.jpeg?auto=compress&cs=tinysrgb&w=1400");
+}
+
+.portfolio-fall {
+  background-image:
+    linear-gradient(140deg, rgba(67, 40, 59, 0.06), rgba(36, 25, 23, 0.52)),
+    url("https://images.pexels.com/photos/17022991/pexels-photo-17022991.jpeg?auto=compress&cs=tinysrgb&w=1400");
+}
+
 .portfolio-live .portfolio-monogram {
   font-size: clamp(82px, 9vw, 132px);
   text-shadow: 0 3px 30px rgba(0, 0, 0, 0.25);
@@ -1842,11 +1972,7 @@ footer > p {
   }
 
   .detail-one {
-    right: -4px;
-    bottom: 9px;
-    width: 176px;
-    min-height: 96px;
-    padding: 18px;
+    display: none;
   }
 
   .detail-two {
@@ -1854,6 +1980,13 @@ footer > p {
     left: -3px;
     width: 112px;
     height: 112px;
+  }
+
+  .phone-preview {
+    right: 4px;
+    bottom: 8px;
+    transform: rotate(4deg) scale(0.82);
+    transform-origin: right bottom;
   }
 
   .tiny-monogram {
