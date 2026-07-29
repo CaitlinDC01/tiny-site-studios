@@ -328,6 +328,67 @@ p {
   height: 620px;
 }
 
+.real-invitation-laptop {
+  position: absolute;
+  z-index: 3;
+  inset: -12px -76px -18px -54px;
+  display: block;
+  background-image: url("../assets/weddings-social-preview-v3.png");
+  background-position: 91% 50%;
+  background-repeat: no-repeat;
+  background-size: auto 900px;
+  filter: drop-shadow(0 32px 34px rgba(74, 56, 60, 0.18));
+  -webkit-mask-image: radial-gradient(ellipse 72% 76% at 57% 50%, #000 64%, transparent 100%);
+  mask-image: radial-gradient(ellipse 72% 76% at 57% 50%, #000 64%, transparent 100%);
+  transition: transform 300ms ease;
+}
+
+.real-invitation-laptop:hover {
+  transform: translateY(-8px) rotate(-0.5deg);
+}
+
+.invitation-art-note {
+  position: absolute;
+  z-index: 5;
+  right: 18px;
+  bottom: 3px;
+  max-width: 210px;
+  margin: 0;
+  padding: 13px 16px;
+  border: 1px solid rgba(109, 85, 78, 0.18);
+  border-radius: 18px 18px 48px 18px;
+  color: var(--cocoa);
+  background: rgba(255, 253, 249, 0.9);
+  box-shadow: 0 18px 36px rgba(70, 55, 58, 0.12);
+  font-size: 9px;
+  font-weight: 650;
+  letter-spacing: 0.09em;
+  line-height: 1.45;
+  text-transform: uppercase;
+  backdrop-filter: blur(10px);
+}
+
+.invitation-art-note span {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--rose-deep);
+  font-family: var(--font-script), "Snell Roundhand", cursive;
+  font-size: 27px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
 .phone-preview {
   position: absolute;
   z-index: 5;
@@ -1842,6 +1903,12 @@ footer > p {
     height: 570px;
   }
 
+  .real-invitation-laptop {
+    inset: -5px -58px -10px -30px;
+    background-position: 91% 50%;
+    background-size: auto 800px;
+  }
+
   .laptop {
     top: 76px;
     right: -38px;
@@ -1941,8 +2008,27 @@ footer > p {
 
   .hero-art {
     width: 100%;
-    height: 485px;
+    height: 430px;
     margin-top: 35px;
+  }
+
+  .real-invitation-laptop {
+    inset: -18px -44px -5px -32px;
+    background-position: 91% 50%;
+    background-size: auto 650px;
+    filter: drop-shadow(0 22px 25px rgba(74, 56, 60, 0.14));
+  }
+
+  .invitation-art-note {
+    right: 0;
+    bottom: 4px;
+    max-width: 175px;
+    padding: 11px 13px;
+    font-size: 8px;
+  }
+
+  .invitation-art-note span {
+    font-size: 23px;
   }
 
   .hero-note {
