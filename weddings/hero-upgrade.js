@@ -12,8 +12,8 @@
     <div class="hero-orbit orbit-one" aria-hidden="true"></div>
     <div class="hero-orbit orbit-two" aria-hidden="true"></div>
     <a class="real-invitation-laptop" href="demos/wedding-party/" aria-label="Explore Bea and Milo’s wedding experience">
+      <img src="assets/bea-milo-device-hero.png" alt="Floating laptop showing Bea and Milo’s moody wedding invitation with the matching wedding party app on a phone">
       <span class="sr-only">Bea and Milo’s real invitation shown on a floating laptop.</span>
     </a>
-    <p class="invitation-art-note"><span>Bea &amp; Milo</span> A real Tiny Site Studios invitation experience</p>
   `;
 })();
