@@ -1046,6 +1046,702 @@ p {
   text-transform: uppercase;
 }
 
+/* Experience card miniatures
+   Each card is a tiny, abstract product demo rather than a generic monogram. */
+.experience-preview {
+  --art-paper: rgba(255, 253, 249, 0.94);
+  --art-paper-soft: rgba(255, 253, 249, 0.7);
+  --art-shadow: rgba(53, 43, 46, 0.16);
+  --art-line: currentColor;
+  isolation: isolate;
+}
+
+.experience-preview::before {
+  width: 218px;
+  height: 218px;
+  border-style: dashed;
+  opacity: 0.16;
+  transform: rotate(-12deg);
+}
+
+.experience-preview::after {
+  width: 180px;
+  height: 180px;
+  opacity: 0.2;
+  transform: translate(36px, 12px);
+}
+
+.preview-monogram {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 170px;
+  height: 116px;
+  font-size: 0;
+  filter: drop-shadow(0 15px 16px var(--art-shadow));
+  transition:
+    transform 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 360ms ease;
+}
+
+.preview-monogram::before,
+.preview-monogram::after,
+.preview-rule::before,
+.preview-rule::after {
+  position: absolute;
+  content: "";
+}
+
+.preview-rule {
+  position: absolute;
+  z-index: 3;
+  right: calc(50% - 85px);
+  bottom: 55px;
+  width: 34px;
+  height: 34px;
+  margin: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--art-paper);
+  box-shadow: 0 7px 12px var(--art-shadow);
+}
+
+.preview-caption {
+  position: absolute;
+  z-index: 4;
+  bottom: 22px;
+  left: 24px;
+  max-width: calc(100% - 48px);
+}
+
+.experience-card:hover .preview-monogram {
+  filter: drop-shadow(0 20px 18px rgba(53, 43, 46, 0.2));
+  transform: translateY(-5px);
+}
+
+/* 01 — Save the Date: a shareable announcement and date tile. */
+.experience-group:nth-of-type(1) .experience-card:nth-child(1) .preview-monogram {
+  width: 148px;
+  height: 104px;
+  border: 1px solid rgba(110, 79, 76, 0.35);
+  border-radius: 7px;
+  background:
+    linear-gradient(90deg, transparent 14%, rgba(255, 255, 255, 0.4) 14% 15%, transparent 15% 85%, rgba(255, 255, 255, 0.4) 85% 86%, transparent 86%),
+    radial-gradient(circle at 50% 46%, transparent 0 27px, rgba(110, 79, 76, 0.24) 28px 29px, transparent 30px),
+    var(--art-paper);
+  transform: rotate(-4deg);
+}
+
+.experience-group:nth-of-type(1) .experience-card:nth-child(1) .preview-monogram::before {
+  top: 17px;
+  left: 26px;
+  width: 94px;
+  height: 8px;
+  border-block: 1px solid rgba(110, 79, 76, 0.3);
+  box-shadow:
+    0 23px 0 -3px currentColor,
+    0 37px 0 -3px currentColor;
+  opacity: 0.65;
+}
+
+.experience-group:nth-of-type(1) .experience-card:nth-child(1) .preview-monogram::after {
+  right: -18px;
+  bottom: -13px;
+  width: 55px;
+  height: 55px;
+  border: 5px solid var(--art-paper);
+  border-radius: 9px;
+  background:
+    linear-gradient(currentColor 0 0) 13px 10px / 29px 2px no-repeat,
+    linear-gradient(currentColor 0 0) 13px 18px / 29px 1px no-repeat,
+    linear-gradient(currentColor 0 0) 14px 29px / 27px 15px no-repeat,
+    var(--art-paper);
+  box-shadow: 0 7px 12px var(--art-shadow);
+}
+
+.experience-group:nth-of-type(1) .experience-card:nth-child(1) .preview-rule {
+  left: calc(50% - 91px);
+  right: auto;
+  bottom: 62px;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(110, 79, 76, 0.24);
+}
+
+.experience-group:nth-of-type(1) .experience-card:nth-child(1) .preview-rule::before {
+  inset: 8px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+}
+
+/* 02 — Wedding Website: an open laptop with a complete story home. */
+.experience-group:nth-of-type(1) .experience-card:nth-child(2) .preview-monogram {
+  width: 176px;
+  height: 110px;
+  border: 7px solid #4e516c;
+  border-bottom-width: 9px;
+  border-radius: 9px 9px 4px 4px;
+  background:
+    linear-gradient(#4e516c 0 0) 13px 14px / 38px 4px no-repeat,
+    linear-gradient(#9a7890 0 0) 13px 28px / 62px 25px no-repeat,
+    linear-gradient(rgba(78, 81, 108, 0.35) 0 0) 84px 28px / 61px 4px no-repeat,
+    linear-gradient(rgba(78, 81, 108, 0.2) 0 0) 84px 38px / 48px 3px no-repeat,
+    linear-gradient(rgba(78, 81, 108, 0.2) 0 0) 84px 47px / 54px 3px no-repeat,
+    linear-gradient(#d5c2cd 0 0) 13px 66px / 132px 22px no-repeat,
+    var(--art-paper);
+}
+
+.experience-group:nth-of-type(1) .experience-card:nth-child(2) .preview-monogram::before {
+  top: -5px;
+  left: 50%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.experience-group:nth-of-type(1) .experience-card:nth-child(2) .preview-monogram::after {
+  right: -20px;
+  bottom: -15px;
+  left: -20px;
+  height: 9px;
+  border-radius: 2px 2px 10px 10px;
+  background: linear-gradient(180deg, #b3b4c2, #77798f);
+  box-shadow: 0 5px 9px var(--art-shadow);
+}
+
+.experience-group:nth-of-type(1) .experience-card:nth-child(2) .preview-rule {
+  right: calc(50% - 99px);
+  bottom: 63px;
+  width: 43px;
+  height: 43px;
+  border: 4px solid var(--art-paper);
+  background:
+    linear-gradient(#4e516c 0 0) 9px 11px / 18px 3px no-repeat,
+    linear-gradient(#9a7890 0 0) 9px 18px / 12px 13px no-repeat,
+    var(--art-paper);
+}
+
+/* 03 — Digital Invitation: a paced invitation presented on a phone. */
+.experience-group:nth-of-type(1) .experience-card:nth-child(3) .preview-monogram {
+  width: 76px;
+  height: 132px;
+  border: 5px solid #566153;
+  border-radius: 17px;
+  background:
+    radial-gradient(circle at 50% 50%, transparent 0 25px, rgba(88, 101, 84, 0.2) 26px 27px, transparent 28px),
+    linear-gradient(#73806f 0 0) 19px 23px / 28px 3px no-repeat,
+    linear-gradient(#566153 0 0) 14px 72px / 38px 2px no-repeat,
+    linear-gradient(rgba(88, 101, 84, 0.38) 0 0) 20px 83px / 26px 2px no-repeat,
+    var(--art-paper);
+}
+
+.experience-group:nth-of-type(1) .experience-card:nth-child(3) .preview-monogram::before {
+  top: 4px;
+  left: 25px;
+  width: 16px;
+  height: 4px;
+  border-radius: 4px;
+  background: #566153;
+}
+
+.experience-group:nth-of-type(1) .experience-card:nth-child(3) .preview-monogram::after {
+  right: -54px;
+  bottom: 9px;
+  width: 62px;
+  height: 49px;
+  border: 1px solid rgba(88, 101, 84, 0.34);
+  border-radius: 5px;
+  background:
+    linear-gradient(34deg, transparent 48%, rgba(88, 101, 84, 0.28) 49% 51%, transparent 52%),
+    linear-gradient(-34deg, transparent 48%, rgba(88, 101, 84, 0.28) 49% 51%, transparent 52%),
+    var(--art-paper);
+  box-shadow: 0 8px 12px var(--art-shadow);
+  transform: rotate(5deg);
+}
+
+.experience-group:nth-of-type(1) .experience-card:nth-child(3) .preview-rule {
+  right: calc(50% - 91px);
+  bottom: 88px;
+  width: 25px;
+  height: 25px;
+  background: #8d9b87;
+}
+
+.experience-group:nth-of-type(1) .experience-card:nth-child(3) .preview-rule::before {
+  inset: 7px;
+  border: 1px solid var(--art-paper);
+  border-radius: 50%;
+}
+
+/* 04 — Bridal Shower: a gathering card with a wrapped registry gift. */
+.experience-group:nth-of-type(1) .experience-card:nth-child(4) .preview-monogram {
+  width: 135px;
+  height: 108px;
+  border: 1px solid rgba(114, 88, 77, 0.3);
+  border-radius: 68px 68px 12px 12px;
+  background:
+    linear-gradient(currentColor 0 0) 39px 31px / 57px 4px no-repeat,
+    linear-gradient(rgba(114, 88, 77, 0.36) 0 0) 29px 44px / 77px 3px no-repeat,
+    linear-gradient(rgba(114, 88, 77, 0.22) 0 0) 44px 57px / 47px 3px no-repeat,
+    var(--art-paper);
+}
+
+.experience-group:nth-of-type(1) .experience-card:nth-child(4) .preview-monogram::before {
+  right: -28px;
+  bottom: -9px;
+  width: 58px;
+  height: 48px;
+  border-radius: 5px;
+  background:
+    linear-gradient(currentColor 0 0) 26px 0 / 6px 48px no-repeat,
+    linear-gradient(currentColor 0 0) 0 16px / 58px 5px no-repeat,
+    #e3c4bb;
+  box-shadow: 0 8px 12px var(--art-shadow);
+}
+
+.experience-group:nth-of-type(1) .experience-card:nth-child(4) .preview-monogram::after {
+  right: -12px;
+  bottom: 34px;
+  width: 18px;
+  height: 14px;
+  border: 4px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50% 50% 0 50%;
+  transform: rotate(18deg);
+}
+
+.experience-group:nth-of-type(1) .experience-card:nth-child(4) .preview-rule {
+  left: calc(50% - 91px);
+  right: auto;
+  bottom: 60px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(114, 88, 77, 0.24);
+}
+
+/* 05 — Celebration Weekend: overlapping plans and a lively route. */
+.experience-group:nth-of-type(1) .experience-card:nth-child(5) .preview-monogram {
+  width: 152px;
+  height: 104px;
+  border-radius: 10px;
+  background:
+    radial-gradient(circle, currentColor 0 3px, transparent 4px) 22px 29px / 28px 28px,
+    linear-gradient(rgba(109, 85, 78, 0.35) 0 0) 48px 27px / 78px 3px no-repeat,
+    linear-gradient(rgba(109, 85, 78, 0.22) 0 0) 48px 39px / 58px 3px no-repeat,
+    linear-gradient(rgba(109, 85, 78, 0.35) 0 0) 48px 58px / 69px 3px no-repeat,
+    linear-gradient(rgba(109, 85, 78, 0.22) 0 0) 48px 70px / 46px 3px no-repeat,
+    var(--art-paper);
+  box-shadow:
+    -13px 9px 0 -4px #dfc1c2,
+    13px -9px 0 -4px rgba(255, 253, 249, 0.58);
+  transform: rotate(2deg);
+}
+
+.experience-group:nth-of-type(1) .experience-card:nth-child(5) .preview-monogram::before {
+  top: -16px;
+  right: 19px;
+  width: 38px;
+  height: 24px;
+  border: 1px solid currentColor;
+  border-radius: 20px 20px 4px 4px;
+  opacity: 0.55;
+}
+
+.experience-group:nth-of-type(1) .experience-card:nth-child(5) .preview-monogram::after {
+  top: -7px;
+  right: 27px;
+  width: 22px;
+  height: 7px;
+  border-block: 2px solid currentColor;
+}
+
+.experience-group:nth-of-type(1) .experience-card:nth-child(5) .preview-rule {
+  right: calc(50% - 98px);
+  bottom: 60px;
+  background: #bf898c;
+}
+
+/* 06 — Wedding Party Hub: a private group dashboard on mobile. */
+.experience-group:nth-of-type(2) .experience-card:nth-child(1) .preview-monogram {
+  width: 82px;
+  height: 132px;
+  border: 5px solid #6d554e;
+  border-radius: 17px;
+  background:
+    radial-gradient(circle, #c58f91 0 6px, transparent 7px) 12px 27px / 25px 25px,
+    radial-gradient(circle, #8f9d87 0 6px, transparent 7px) 37px 27px / 25px 25px,
+    linear-gradient(rgba(109, 85, 78, 0.3) 0 0) 17px 65px / 38px 3px no-repeat,
+    linear-gradient(rgba(109, 85, 78, 0.2) 0 0) 17px 76px / 48px 3px no-repeat,
+    linear-gradient(rgba(109, 85, 78, 0.2) 0 0) 17px 87px / 42px 3px no-repeat,
+    var(--art-paper);
+}
+
+.experience-group:nth-of-type(2) .experience-card:nth-child(1) .preview-monogram::before {
+  top: 4px;
+  left: 27px;
+  width: 18px;
+  height: 4px;
+  border-radius: 3px;
+  background: #6d554e;
+}
+
+.experience-group:nth-of-type(2) .experience-card:nth-child(1) .preview-monogram::after {
+  right: -52px;
+  bottom: 15px;
+  width: 63px;
+  height: 43px;
+  border-radius: 8px;
+  background:
+    radial-gradient(circle, currentColor 0 3px, transparent 4px) 9px 10px / 17px 17px,
+    linear-gradient(rgba(109, 85, 78, 0.32) 0 0) 30px 12px / 24px 3px no-repeat,
+    linear-gradient(rgba(109, 85, 78, 0.2) 0 0) 30px 21px / 18px 2px no-repeat,
+    var(--art-paper);
+  box-shadow: 0 8px 12px var(--art-shadow);
+}
+
+.experience-group:nth-of-type(2) .experience-card:nth-child(1) .preview-rule {
+  right: calc(50% - 92px);
+  bottom: 91px;
+  width: 25px;
+  height: 25px;
+  background: #c58f91;
+}
+
+/* 07 — Weekend Guide: a pocket itinerary with a clear timeline. */
+.experience-group:nth-of-type(2) .experience-card:nth-child(2) .preview-monogram {
+  width: 144px;
+  height: 116px;
+  border: 1px solid rgba(78, 81, 108, 0.28);
+  border-radius: 11px;
+  background:
+    linear-gradient(#4e516c 0 0) 24px 22px / 2px 68px no-repeat,
+    radial-gradient(circle, #9a7890 0 4px, var(--art-paper) 5px 7px, transparent 8px) 17px 20px / 18px 33px,
+    linear-gradient(#4e516c 0 0) 41px 25px / 63px 4px no-repeat,
+    linear-gradient(rgba(78, 81, 108, 0.25) 0 0) 41px 35px / 77px 3px no-repeat,
+    linear-gradient(#4e516c 0 0) 41px 58px / 54px 4px no-repeat,
+    linear-gradient(rgba(78, 81, 108, 0.25) 0 0) 41px 68px / 69px 3px no-repeat,
+    linear-gradient(#4e516c 0 0) 41px 91px / 44px 4px no-repeat,
+    var(--art-paper);
+}
+
+.experience-group:nth-of-type(2) .experience-card:nth-child(2) .preview-monogram::before {
+  top: -8px;
+  right: 18px;
+  width: 48px;
+  height: 16px;
+  border-radius: 8px;
+  background: #9a7890;
+}
+
+.experience-group:nth-of-type(2) .experience-card:nth-child(2) .preview-monogram::after {
+  top: -3px;
+  right: 31px;
+  width: 22px;
+  height: 2px;
+  background: var(--art-paper);
+  box-shadow: 0 5px 0 var(--art-paper);
+}
+
+.experience-group:nth-of-type(2) .experience-card:nth-child(2) .preview-rule {
+  right: calc(50% - 93px);
+  bottom: 61px;
+  width: 28px;
+  height: 28px;
+  background: #d1c0cb;
+}
+
+/* 08 — Destination Guide: a folded map, route, and arrival pin. */
+.experience-group:nth-of-type(2) .experience-card:nth-child(3) .preview-monogram {
+  width: 166px;
+  height: 106px;
+  border-radius: 7px;
+  background:
+    linear-gradient(73deg, transparent 49%, rgba(88, 101, 84, 0.23) 50% 51%, transparent 52%) 0 0 / 55px 106px,
+    linear-gradient(107deg, transparent 49%, rgba(88, 101, 84, 0.23) 50% 51%, transparent 52%) 55px 0 / 55px 106px,
+    repeating-linear-gradient(145deg, transparent 0 19px, rgba(88, 101, 84, 0.13) 20px 21px),
+    var(--art-paper);
+  clip-path: polygon(0 8%, 33% 0, 66% 8%, 100% 0, 100% 92%, 66% 100%, 33% 92%, 0 100%);
+}
+
+.experience-group:nth-of-type(2) .experience-card:nth-child(3) .preview-monogram::before {
+  top: 18px;
+  left: 47px;
+  width: 65px;
+  height: 46px;
+  border: 2px dashed currentColor;
+  border-color: currentColor transparent transparent currentColor;
+  border-radius: 60% 0 0;
+  transform: rotate(-12deg);
+}
+
+.experience-group:nth-of-type(2) .experience-card:nth-child(3) .preview-monogram::after {
+  top: 29px;
+  right: 25px;
+  width: 22px;
+  height: 29px;
+  border-radius: 50% 50% 50% 0;
+  background: #73806f;
+  transform: rotate(-45deg);
+}
+
+.experience-group:nth-of-type(2) .experience-card:nth-child(3) .preview-rule {
+  right: calc(50% - 81px);
+  bottom: 90px;
+  width: 10px;
+  height: 10px;
+  background: var(--art-paper);
+  box-shadow: none;
+}
+
+/* 09 — Reception Companion: a menu, place setting, and table details. */
+.experience-group:nth-of-type(2) .experience-card:nth-child(4) .preview-monogram {
+  width: 105px;
+  height: 127px;
+  border: 1px solid rgba(114, 88, 77, 0.3);
+  border-radius: 53px 53px 8px 8px;
+  background:
+    linear-gradient(currentColor 0 0) 29px 32px / 47px 4px no-repeat,
+    linear-gradient(rgba(114, 88, 77, 0.34) 0 0) 24px 48px / 57px 3px no-repeat,
+    linear-gradient(rgba(114, 88, 77, 0.22) 0 0) 32px 60px / 41px 3px no-repeat,
+    linear-gradient(rgba(114, 88, 77, 0.34) 0 0) 24px 78px / 57px 3px no-repeat,
+    linear-gradient(rgba(114, 88, 77, 0.22) 0 0) 32px 90px / 41px 3px no-repeat,
+    var(--art-paper);
+}
+
+.experience-group:nth-of-type(2) .experience-card:nth-child(4) .preview-monogram::before {
+  top: 35px;
+  right: -48px;
+  width: 56px;
+  height: 56px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 9px rgba(255, 253, 249, 0.72),
+    0 8px 12px var(--art-shadow);
+  background: rgba(231, 216, 204, 0.9);
+}
+
+.experience-group:nth-of-type(2) .experience-card:nth-child(4) .preview-monogram::after {
+  top: 27px;
+  right: -58px;
+  width: 2px;
+  height: 72px;
+  border-inline: 2px solid currentColor;
+  padding-inline: 3px;
+  opacity: 0.65;
+}
+
+.experience-group:nth-of-type(2) .experience-card:nth-child(4) .preview-rule {
+  left: calc(50% - 91px);
+  right: auto;
+  bottom: 67px;
+  width: 25px;
+  height: 25px;
+  background: #d4b9aa;
+}
+
+/* 10 — QR Guest Experience: a phone scanning a branded code. */
+.experience-group:nth-of-type(2) .experience-card:nth-child(5) .preview-monogram {
+  width: 78px;
+  height: 132px;
+  border: 5px solid #6d554e;
+  border-radius: 17px;
+  background:
+    linear-gradient(currentColor 0 0) 15px 22px / 38px 3px no-repeat,
+    linear-gradient(rgba(109, 85, 78, 0.25) 0 0) 15px 31px / 46px 2px no-repeat,
+    linear-gradient(rgba(109, 85, 78, 0.18) 0 0) 15px 102px / 38px 3px no-repeat,
+    var(--art-paper);
+}
+
+.experience-group:nth-of-type(2) .experience-card:nth-child(5) .preview-monogram::before {
+  top: 43px;
+  left: 17px;
+  width: 36px;
+  height: 36px;
+  border: 5px solid var(--art-paper);
+  outline: 1px solid rgba(109, 85, 78, 0.24);
+  background:
+    repeating-conic-gradient(currentColor 0 25%, transparent 0 50%) 0 0 / 10px 10px;
+}
+
+.experience-group:nth-of-type(2) .experience-card:nth-child(5) .preview-monogram::after {
+  top: 4px;
+  left: 25px;
+  width: 18px;
+  height: 4px;
+  border-radius: 3px;
+  background: #6d554e;
+}
+
+.experience-group:nth-of-type(2) .experience-card:nth-child(5) .preview-rule {
+  right: calc(50% - 92px);
+  bottom: 90px;
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--art-paper);
+  border-radius: 8px;
+  background:
+    linear-gradient(currentColor 0 0) 7px 7px / 12px 12px no-repeat,
+    linear-gradient(currentColor 0 0) 25px 7px / 9px 9px no-repeat,
+    linear-gradient(currentColor 0 0) 7px 25px / 8px 8px no-repeat,
+    linear-gradient(currentColor 0 0) 23px 23px / 12px 12px no-repeat,
+    var(--art-paper);
+}
+
+/* 11 — Memory Wall: a growing gallery of guest photos and notes. */
+.experience-group:nth-of-type(3) .experience-card:nth-child(1) .preview-monogram {
+  width: 160px;
+  height: 116px;
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, #c58f91 0 45%, #e7c6b8 46% 100%) 0 0 / 74px 52px no-repeat,
+    linear-gradient(45deg, #8f9d87 0 48%, #d4ddcf 49% 100%) 86px 0 / 74px 52px no-repeat,
+    linear-gradient(145deg, #9a7890 0 45%, #ddd5e2 46% 100%) 0 64px / 48px 52px no-repeat,
+    linear-gradient(35deg, #e1b8b9 0 48%, #f2ddda 49% 100%) 60px 64px / 100px 52px no-repeat;
+}
+
+.experience-group:nth-of-type(3) .experience-card:nth-child(1) .preview-monogram::before {
+  top: 14px;
+  left: 17px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 253, 249, 0.84);
+  box-shadow:
+    90px 0 0 rgba(255, 253, 249, 0.84),
+    0 65px 0 rgba(255, 253, 249, 0.84),
+    63px 65px 0 rgba(255, 253, 249, 0.84);
+}
+
+.experience-group:nth-of-type(3) .experience-card:nth-child(1) .preview-monogram::after {
+  right: -12px;
+  bottom: -10px;
+  width: 43px;
+  height: 31px;
+  border-radius: 4px 4px 4px 12px;
+  background:
+    linear-gradient(currentColor 0 0) 9px 9px / 25px 2px no-repeat,
+    linear-gradient(currentColor 0 0) 9px 16px / 18px 2px no-repeat,
+    var(--art-paper);
+  box-shadow: 0 7px 12px var(--art-shadow);
+}
+
+.experience-group:nth-of-type(3) .experience-card:nth-child(1) .preview-rule {
+  left: calc(50% - 97px);
+  right: auto;
+  bottom: 59px;
+  width: 25px;
+  height: 25px;
+  background: #d7adae;
+}
+
+/* 12 — Thank You Site: a heartfelt note opening from an envelope. */
+.experience-group:nth-of-type(3) .experience-card:nth-child(2) .preview-monogram {
+  width: 154px;
+  height: 94px;
+  margin-top: 19px;
+  border: 1px solid rgba(78, 81, 108, 0.25);
+  border-radius: 6px;
+  background:
+    linear-gradient(34deg, transparent 48%, rgba(78, 81, 108, 0.24) 49% 51%, transparent 52%),
+    linear-gradient(-34deg, transparent 48%, rgba(78, 81, 108, 0.24) 49% 51%, transparent 52%),
+    var(--art-paper);
+}
+
+.experience-group:nth-of-type(3) .experience-card:nth-child(2) .preview-monogram::before {
+  right: 22px;
+  bottom: 25px;
+  left: 22px;
+  height: 104px;
+  border: 1px solid rgba(78, 81, 108, 0.22);
+  border-radius: 5px;
+  background:
+    radial-gradient(circle at 50% 29%, #9a7890 0 7px, transparent 8px),
+    linear-gradient(#4e516c 0 0) 24px 54px / 62px 4px no-repeat,
+    linear-gradient(rgba(78, 81, 108, 0.25) 0 0) 18px 66px / 74px 3px no-repeat,
+    linear-gradient(rgba(78, 81, 108, 0.2) 0 0) 26px 77px / 58px 3px no-repeat,
+    var(--art-paper);
+  box-shadow: 0 9px 13px var(--art-shadow);
+}
+
+.experience-group:nth-of-type(3) .experience-card:nth-child(2) .preview-monogram::after {
+  top: 15px;
+  left: 66px;
+  width: 16px;
+  height: 14px;
+  border-radius: 8px 8px 2px 2px;
+  background: #9a7890;
+  clip-path: polygon(50% 100%, 0 42%, 0 22%, 17% 0, 38% 0, 50% 18%, 62% 0, 83% 0, 100% 22%, 100% 42%);
+}
+
+.experience-group:nth-of-type(3) .experience-card:nth-child(2) .preview-rule {
+  right: calc(50% - 92px);
+  bottom: 62px;
+  width: 25px;
+  height: 25px;
+  background: #cbb4c2;
+}
+
+/* 13 — Anniversary Site: a keepsake timeline designed to grow by year. */
+.experience-group:nth-of-type(3) .experience-card:nth-child(3) .preview-monogram {
+  width: 142px;
+  height: 118px;
+  border: 1px solid rgba(88, 101, 84, 0.28);
+  border-radius: 71px 71px 8px 8px;
+  background:
+    radial-gradient(circle at 50% 48%, transparent 0 26px, rgba(88, 101, 84, 0.22) 27px 28px, transparent 29px),
+    radial-gradient(circle at 50% 48%, transparent 0 40px, rgba(88, 101, 84, 0.14) 41px 42px, transparent 43px),
+    linear-gradient(currentColor 0 0) 45px 49px / 52px 4px no-repeat,
+    linear-gradient(rgba(88, 101, 84, 0.3) 0 0) 53px 61px / 36px 3px no-repeat,
+    var(--art-paper);
+}
+
+.experience-group:nth-of-type(3) .experience-card:nth-child(3) .preview-monogram::before {
+  top: -7px;
+  left: 50%;
+  width: 1px;
+  height: 126px;
+  background: rgba(88, 101, 84, 0.22);
+  box-shadow:
+    -47px 55px 0 rgba(88, 101, 84, 0.22),
+    47px 55px 0 rgba(88, 101, 84, 0.22);
+}
+
+.experience-group:nth-of-type(3) .experience-card:nth-child(3) .preview-monogram::after {
+  right: -24px;
+  bottom: 9px;
+  width: 48px;
+  height: 48px;
+  border: 5px solid var(--art-paper);
+  border-radius: 50%;
+  background:
+    linear-gradient(currentColor 0 0) 10px 15px / 18px 3px no-repeat,
+    linear-gradient(rgba(88, 101, 84, 0.35) 0 0) 10px 24px / 18px 2px no-repeat,
+    #aeb9a8;
+  box-shadow: 0 8px 12px var(--art-shadow);
+}
+
+.experience-group:nth-of-type(3) .experience-card:nth-child(3) .preview-rule {
+  left: calc(50% - 93px);
+  right: auto;
+  bottom: 66px;
+  width: 25px;
+  height: 25px;
+  background: #aeb9a8;
+}
+
+.experience-group:nth-of-type(1) .experience-card:nth-child(1):hover .preview-monogram,
+.experience-group:nth-of-type(1) .experience-card:nth-child(5):hover .preview-monogram {
+  transform: translateY(-5px) rotate(-1deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preview-monogram {
+    transition: none;
+  }
+}
+
 .experience-content {
   padding: 28px 28px 30px;
 }
