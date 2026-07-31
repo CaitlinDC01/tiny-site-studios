@@ -1,4 +1,11 @@
 (() => {
+  const portfolio = document.querySelector("#work");
+  const whyTiny = document.querySelector("#why");
+
+  if (portfolio && whyTiny) {
+    whyTiny.insertAdjacentElement("afterend", portfolio);
+  }
+
   const grid = document.querySelector(".portfolio-grid");
   if (!grid) return;
 
