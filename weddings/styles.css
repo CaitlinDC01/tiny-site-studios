@@ -960,6 +960,15 @@ p {
   transform: translateY(-7px);
 }
 
+.experience-preview[role="link"] {
+  cursor: pointer;
+}
+
+.experience-preview[role="link"]:focus-visible {
+  outline: 3px solid var(--rose-deep);
+  outline-offset: -5px;
+}
+
 .experience-preview {
   position: relative;
   display: flex;
