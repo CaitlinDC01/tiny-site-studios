@@ -29,7 +29,7 @@
     </div>
     <header class="experience-nav">
       <a class="experience-brand" href="#top">${identity[0]}</a>
-      <nav aria-label="Page navigation">${navLinks}<a class="nav-action" href="https://forms.gle/LHubEz2hcxd3kshz9" target="_blank" rel="noopener">Request yours</a></nav>
+      <nav aria-label="Page navigation">${navLinks}<a class="nav-action" href="mailto:caitlincloyd@gmail.com?subject=Wedding%20site%20request&amp;body=Hi%20Caitlin%2C%0A%0AI%27d%20love%20to%20talk%20about%20a%20Tiny%20Site%20Studios%20wedding%20experience.%0A%0AOur%20names%3A%0AWedding%20date%3A%0ALocation%3A%0AWhat%20we%27re%20interested%20in%3A%0A%0AThank%20you!">Request yours</a></nav>
     </header>
     <main class="experience-page" id="top">${content}</main>
     <footer class="experience-footer">
