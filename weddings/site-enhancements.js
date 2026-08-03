@@ -106,13 +106,13 @@
     card.insertAdjacentHTML("afterbegin", `<div class="process-art process-${processArt[index]}" aria-hidden="true"><i></i><i></i><i></i><i></i></div>`);
   });
 
-  const requestEmail = "mailto:caitlincloyd@gmail.com?subject=Wedding%20site%20request&body=Hi%20Caitlin%2C%0A%0AI%27d%20love%20to%20talk%20about%20a%20Tiny%20Site%20Studios%20wedding%20experience.%0A%0AOur%20names%3A%0AWedding%20date%3A%0ALocation%3A%0AWhat%20we%27re%20interested%20in%3A%0A%0AThank%20you!";
+  const requestEmail = "mailto:caitlin@tinysitestudios.com?subject=Wedding%20site%20request&body=Hi%20Caitlin%2C%0A%0AI%27d%20love%20to%20talk%20about%20a%20Tiny%20Site%20Studios%20wedding%20experience.%0A%0AOur%20names%3A%0AWedding%20date%3A%0ALocation%3A%0AWhat%20we%27re%20interested%20in%3A%0A%0AThank%20you!";
   const contactButton = document.querySelector(".contact .button");
   if (contactButton) {
     contactButton.href = requestEmail;
     contactButton.removeAttribute("target");
     contactButton.removeAttribute("rel");
     contactButton.textContent = "Email Caitlin about your wedding";
-    contactButton.insertAdjacentHTML("afterend", `<p class="contact-email-note">Opens a pre-filled email to <strong>caitlincloyd@gmail.com</strong></p>`);
+    contactButton.insertAdjacentHTML("afterend", `<p class="contact-email-note">Opens a pre-filled email to <strong>caitlin@tinysitestudios.com</strong></p>`);
   }
 })();
