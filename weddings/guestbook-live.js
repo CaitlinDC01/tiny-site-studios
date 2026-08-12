@@ -20,6 +20,17 @@
     '<a href="#guestbook-live">Guestbook Live</a>'
   );
 
+  document.querySelectorAll('a[href="#work"]').forEach((link) => {
+    const label = link.textContent.trim();
+    if (label === "Work") link.textContent = "Sample Sites";
+    if (label.startsWith("View the stories") || label.startsWith("View All Wedding Experiences")) {
+      link.innerHTML = 'View Sample Sites <span aria-hidden="true">↘</span>';
+    }
+  });
+
+  const portfolioEyebrow = document.querySelector("#work .portfolio-heading .eyebrow");
+  if (portfolioEyebrow) portfolioEyebrow.textContent = "Wedding Site Samples";
+
   const suite = document.createElement("div");
   suite.className = "guestbook-live-suite";
   suite.innerHTML = `
