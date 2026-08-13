@@ -10,7 +10,7 @@
     "Destination Guide": "demos/coastal/",
     "Reception Companion": "demos/reception-companion/",
     "QR Guest Experience": "demos/qr-guest-experience/",
-    "Memory Wall": "demos/memory-wall/",
+    "Guestbook Live": "#guestbook-live",
     "Thank You Site": "demos/thank-you/",
     "Anniversary Site": "demos/anniversary/"
   };
@@ -23,12 +23,13 @@
     if (!route || !link || !preview) return;
 
     link.href = route;
-    link.innerHTML = 'Explore demo <span aria-hidden="true">↗</span>';
-    link.setAttribute("aria-label", `Explore the ${title} demo`);
+    const isGuestbookLive = title === "Guestbook Live";
+    link.innerHTML = isGuestbookLive ? 'Explore Guestbook Live <span aria-hidden="true">↓</span>' : 'Explore demo <span aria-hidden="true">↗</span>';
+    link.setAttribute("aria-label", isGuestbookLive ? "Explore Guestbook Live" : `Explore the ${title} demo`);
 
     preview.tabIndex = 0;
     preview.setAttribute("role", "link");
-    preview.setAttribute("aria-label", `Explore the ${title} demo`);
+    preview.setAttribute("aria-label", isGuestbookLive ? "Explore Guestbook Live" : `Explore the ${title} demo`);
     preview.addEventListener("click", () => {
       window.location.href = route;
     });
