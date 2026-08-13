@@ -53,10 +53,10 @@
         <div class="pv-mini-phone"><div class="pv-mini-screen"><small>Table 12</small><b>Tonight</b><span>Meet the table</span><span>View the menu</span><span>Request a song</span></div></div>
         <div class="pv-scan-line"></div>
       </div>`,
-    "Memory Wall": `
+    "Guestbook Live": `
       <div class="pv-scene pv-memories" aria-hidden="true">
         <div class="pv-memory-grid"><figure class="wide"><i></i><figcaption>the first dance</figcaption></figure><figure><i></i><figcaption>best night</figcaption></figure><blockquote>“The brass band surprise!”<cite>— Aunt Jo</cite></blockquote><figure><i></i><figcaption>last song</figcaption></figure><figure class="wide"><i></i><figcaption>our favorite people</figcaption></figure></div>
-        <span class="pv-add-memory">＋ Add a memory</span>
+        <span class="pv-add-memory">＋ Drop a Memory</span>
       </div>`,
     "Thank You Site": `
       <div class="pv-scene pv-thanks" aria-hidden="true">

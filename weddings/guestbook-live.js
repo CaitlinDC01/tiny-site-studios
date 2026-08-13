@@ -91,9 +91,9 @@
         <div class="gl-screen gl-screen-audio"><img src="assets/guestbook-live-audio.png" alt="Guestbook Live voice-message recording screen"></div>
       </article>
       <article class="gl-story" data-gl-reveal>
-        <div class="gl-story-copy"><p class="gl-story-label">Video</p><h2>See the night from their side.</h2><p>Guests can leave short video messages directly from their phones.</p><a class="gl-drop-link" href="${demoUrl}" target="_blank" rel="noopener">+ Drop a Memory</a></div>
+        <div class="gl-story-copy"><p class="gl-story-label">Video</p><h2>See the night from their side.</h2><p>Guests can record a short video in Guestbook Live or choose one already saved on their phone.</p><a class="gl-drop-link" href="${demoUrl}" target="_blank" rel="noopener">+ Drop a Memory</a></div>
         <div class="gl-video-composition">
-          <div class="gl-screen gl-screen-video"><img src="assets/guestbook-live-cards.png" alt="A guest video post inside Guestbook Live"></div>
+          <div class="gl-screen gl-screen-video"><img src="assets/guestbook-live-video-upload.png" alt="Guestbook Live contribution menu with record video and choose video options"></div>
           <span class="gl-video-badge"><i>▶</i> 0:19</span>
         </div>
       </article>
@@ -122,7 +122,7 @@
     <section class="gl-purchase" aria-labelledby="gl-price-title">
       <div class="gl-price-copy" data-gl-reveal><p class="gl-kicker">One beautifully simple package</p><h2 id="gl-price-title">Guestbook Live</h2><p class="gl-price"><span>$</span>119</p><p class="gl-price-line">One event. One QR code. A whole lot of memories.</p><a class="button button-primary" href="${inquiryUrl}" target="_blank" rel="noopener">Add Guestbook Live to My Wedding</a><p class="gl-custom"><strong>Want it coordinated with your wedding?</strong> Ask about custom styling, custom photo frames, and full-service setup.</p></div>
       <ul class="gl-inclusions" data-gl-reveal>
-        <li>Guest photos</li><li>Up to 5 photos per post</li><li>Video messages up to 60 seconds</li><li>Voice messages up to 3 minutes</li><li>Written notes</li><li>Branded photo-frame options</li><li>Moderated live guestbook</li><li>Private couple dashboard</li><li>Up to 10 GB of storage</li><li>Contributions through 90 days after the wedding</li><li>12 months of access</li>
+        <li>Guest photos</li><li>Up to 5 photos per post</li><li>Record or upload video up to 60 seconds</li><li>Voice messages up to 3 minutes</li><li>Written notes</li><li>Branded photo-frame options</li><li>Moderated live guestbook</li><li>Private couple dashboard</li><li>Up to 10 GB of storage</li><li>Contributions through 90 days after the wedding</li><li>12 months of access</li>
       </ul>
     </section>
 
