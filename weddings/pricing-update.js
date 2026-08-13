@@ -2,7 +2,7 @@
   const section = document.querySelector(".packages");
   if (!section) return;
 
-  const inquiryForm = "https://forms.gle/LHubEz2hcxd3kshz9";
+  const inquiryForm = "/contact/";
 
   const inquiryLink = (name, label = `Inquire about ${name}`) =>
     `<a class="investment-cta" href="${inquiryForm}" target="_blank" rel="noopener" data-package="${name}" aria-label="${label} — opens the wedding project inquiry form">${label}<span aria-hidden="true">↗</span></a>`;
