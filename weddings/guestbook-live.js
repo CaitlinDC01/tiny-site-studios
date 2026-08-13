@@ -1,6 +1,6 @@
 (() => {
   const demoUrl = "https://wall.tinysitestudios.com/bea-milo";
-  const inquiryUrl = "https://forms.gle/LHubEz2hcxd3kshz9";
+  const inquiryUrl = "/contact/";
 
   const heroIntro = document.querySelector(".hero-intro");
   if (heroIntro) {
