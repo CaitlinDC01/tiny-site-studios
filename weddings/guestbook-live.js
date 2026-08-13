@@ -110,7 +110,8 @@
         <article><span>02</span><div><h3>Everything together</h3><p>Photos, videos, voice messages, and notes in one guestbook.</p></div></article>
         <article><span>03</span><div><h3>You stay in control</h3><p>Approve memories before they appear publicly.</p></div></article>
         <article><span>04</span><div><h3>Made for your wedding</h3><p>Names, styling, colors, and photo frames can coordinate with the event.</p></div></article>
-        <article><span>05</span><div><h3>Private couple dashboard</h3><p>Review, manage, and download memories afterward.</p></div></article>
+        <article><span>05</span><div><h3>Live reception slideshow</h3><p>Let approved memories rotate on a TV or projector while new ones arrive.</p></div></article>
+        <article><span>06</span><div><h3>Everything comes home</h3><p>Download all original files and a written transcript together in one archive.</p></div></article>
       </div>
     </section>
 
@@ -122,7 +123,7 @@
     <section class="gl-purchase" aria-labelledby="gl-price-title">
       <div class="gl-price-copy" data-gl-reveal><p class="gl-kicker">One beautifully simple package</p><h2 id="gl-price-title">Guestbook Live</h2><p class="gl-price"><span>$</span>119</p><p class="gl-price-line">One event. One QR code. A whole lot of memories.</p><a class="button button-primary" href="${inquiryUrl}" target="_blank" rel="noopener">Add Guestbook Live to My Wedding</a><p class="gl-custom"><strong>Want it coordinated with your wedding?</strong> Ask about custom styling, custom photo frames, and full-service setup.</p></div>
       <ul class="gl-inclusions" data-gl-reveal>
-        <li>Guest photos</li><li>Up to 5 photos per post</li><li>Record or upload video up to 60 seconds</li><li>Voice messages up to 3 minutes</li><li>Written notes</li><li>Branded photo-frame options</li><li>Moderated live guestbook</li><li>Private couple dashboard</li><li>Up to 10 GB of storage</li><li>Contributions through 90 days after the wedding</li><li>12 months of access</li>
+        <li>Guest photos</li><li>Up to 5 photos per post</li><li>Record or upload video up to 60 seconds</li><li>Voice messages up to 3 minutes</li><li>Written notes</li><li>Branded photo-frame options</li><li>Moderated live guestbook</li><li>Private couple dashboard</li><li>Live reception slideshow</li><li>Custom printable QR participation kit</li><li>One-click original-file archive</li><li>Up to 10 GB of storage</li><li>Contributions through 90 days after the wedding</li><li>12 months of access</li>
       </ul>
     </section>
 
@@ -146,6 +147,8 @@
   const portfolio = document.querySelector("#work");
   const fallback = document.querySelector("#experiences");
   (portfolio || fallback)?.insertAdjacentElement("afterend", suite);
+
+  document.querySelector(".faq-list")?.insertAdjacentHTML("beforeend", '<details><summary><span>06</span>What does Guestbook Live include?<i aria-hidden="true">+</i></summary><p>Guests can share photos, short videos, voice messages, and notes without an app or account. You receive a private moderation dashboard, live reception slideshow, custom printable QR participation kit, and one-click archive of the original files and written messages.</p></details>');
 
   if (window.location.hash === "#guestbook-live") {
     suite.querySelectorAll("#guestbook-live [data-gl-reveal]").forEach((item) => item.classList.add("is-visible"));
