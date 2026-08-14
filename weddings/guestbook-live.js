@@ -84,7 +84,7 @@
     <section class="gl-stories" aria-label="Ways to share with Guestbook Live">
       <article class="gl-story" data-gl-reveal>
         <div class="gl-story-copy"><p class="gl-story-label">Photos</p><h2>Catch the moments you missed.</h2><p>Guests can take a photo or share up to five from their camera roll.</p><a class="gl-drop-link" href="${demoUrl}" target="_blank" rel="noopener">+ Drop a Memory</a></div>
-        <div class="gl-screen gl-screen-photo"><img src="assets/guestbook-live-cards.png" alt="Photo and multi-photo posts in Guestbook Live"></div>
+        <div class="gl-screen gl-screen-photo"><img src="assets/guestbook-live-messages-photos.png" alt="Bea and Milo Guestbook Live messages, photos, and videos"></div>
       </article>
       <article class="gl-story gl-story-reverse" data-gl-reveal>
         <div class="gl-story-copy"><p class="gl-story-label">Voice</p><h2>Some memories sound better than they look.</h2><p>Capture a toast they didn’t give, Grandma laughing, your best friend’s advice, or a message you’ll want to hear years later.</p><a class="gl-drop-link" href="${demoUrl}" target="_blank" rel="noopener">+ Drop a Memory</a></div>
