@@ -1639,3 +1639,180 @@
   .pv-scene,
   .partner-logo-card { transition: none; }
 }
+
+/* The service cards now preview the real demo pages instead of illustrative stand-ins. */
+.experience-preview.has-live-demo {
+  height: 340px;
+  padding: 0;
+  background: #e9e2de;
+  isolation: isolate;
+}
+
+.experience-preview.has-live-demo::before,
+.experience-preview.has-live-demo::after { display: none; }
+
+.demo-peek {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #f7f2ed;
+  -webkit-mask-image: linear-gradient(#000 0 84%, rgba(0, 0, 0, .93) 91%, transparent 100%);
+  mask-image: linear-gradient(#000 0 84%, rgba(0, 0, 0, .93) 91%, transparent 100%);
+}
+
+.demo-peek iframe {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1180px;
+  height: 820px;
+  border: 0;
+  pointer-events: none;
+  transform: translateX(-50%) scale(.36);
+  transform-origin: top center;
+  filter: saturate(.94) contrast(.98);
+}
+
+.demo-peek-label,
+.demo-peek-open {
+  position: absolute;
+  z-index: 3;
+  top: 18px;
+  padding: 8px 11px;
+  border: 1px solid rgba(255, 255, 255, .56);
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(37, 31, 35, .72);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  font-size: 8px;
+  font-weight: 750;
+  letter-spacing: .12em;
+  line-height: 1;
+  text-transform: uppercase;
+  box-shadow: 0 8px 25px rgba(38, 29, 35, .13);
+}
+
+.demo-peek-label { left: 18px; }
+.demo-peek-open { right: 18px; }
+
+.experience-preview.has-live-demo::selection { background: transparent; }
+.experience-card:hover .demo-peek iframe { filter: saturate(1) contrast(1); }
+
+/* A softer, editorial frame lets the Bea + Milo devices blend into the hero. */
+.hero-art { isolation: isolate; }
+
+.real-invitation-laptop {
+  inset: 3px -145px 0 -70px;
+  overflow: visible;
+}
+
+.real-invitation-laptop::before {
+  position: absolute;
+  z-index: -1;
+  inset: 10% 5% 7% 4%;
+  border-radius: 48% 52% 42% 58% / 55% 43% 57% 45%;
+  content: "";
+  background:
+    radial-gradient(circle at 28% 28%, rgba(239, 203, 190, .88), transparent 28%),
+    radial-gradient(circle at 73% 30%, rgba(208, 187, 196, .72), transparent 35%),
+    radial-gradient(circle at 53% 76%, rgba(184, 177, 199, .5), transparent 41%);
+  filter: blur(13px);
+}
+
+.real-invitation-laptop img {
+  border-radius: 0;
+  -webkit-mask-image: radial-gradient(ellipse 82% 72% at 51% 51%, #000 56%, rgba(0, 0, 0, .96) 66%, rgba(0, 0, 0, .38) 79%, transparent 91%);
+  mask-image: radial-gradient(ellipse 82% 72% at 51% 51%, #000 56%, rgba(0, 0, 0, .96) 66%, rgba(0, 0, 0, .38) 79%, transparent 91%);
+  filter: drop-shadow(0 32px 34px rgba(74, 56, 60, .15));
+}
+
+.hero-art-caption {
+  position: absolute;
+  z-index: 5;
+  right: 5%;
+  bottom: 7%;
+  display: grid;
+  gap: 4px;
+  padding: 13px 17px;
+  border: 1px solid rgba(255, 255, 255, .66);
+  border-radius: 16px;
+  color: #332a31;
+  background: rgba(255, 253, 249, .78);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 40px rgba(67, 47, 58, .12);
+}
+
+.hero-art-caption small {
+  color: var(--rose-deep);
+  font-size: 8px;
+  font-weight: 750;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.hero-art-caption b { font-family: Georgia, serif; font-size: 16px; font-weight: 500; }
+
+.hero-botanical {
+  position: absolute;
+  z-index: 4;
+  width: 155px;
+  height: 230px;
+  pointer-events: none;
+}
+
+.hero-botanical::before {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  width: 1px;
+  height: 215px;
+  content: "";
+  background: rgba(105, 93, 83, .32);
+  transform: rotate(18deg);
+  transform-origin: bottom;
+}
+
+.hero-botanical i {
+  position: absolute;
+  width: 55px;
+  height: 26px;
+  border: 1px solid rgba(91, 105, 85, .24);
+  border-radius: 100% 0 100% 0;
+  background: linear-gradient(135deg, rgba(218, 223, 207, .76), rgba(241, 225, 221, .68));
+}
+
+.hero-botanical i:nth-child(1) { top: 20px; left: 67px; transform: rotate(27deg); }
+.hero-botanical i:nth-child(2) { top: 66px; left: 22px; transform: rotate(208deg); }
+.hero-botanical i:nth-child(3) { top: 101px; left: 72px; transform: rotate(36deg); }
+.hero-botanical i:nth-child(4) { top: 145px; left: 29px; transform: rotate(214deg); }
+.hero-botanical i:nth-child(5) { top: 175px; left: 84px; transform: rotate(42deg); }
+.hero-botanical-one { top: 14px; left: -28px; transform: rotate(-30deg); }
+.hero-botanical-two { right: -24px; bottom: 3px; transform: rotate(145deg) scale(.92); }
+
+@media (max-width: 1100px) {
+  .experience-preview.has-live-demo { height: 320px; }
+  .demo-peek iframe { transform: translateX(-50%) scale(.34); }
+  .real-invitation-laptop { inset: 14px -106px 15px -48px; }
+}
+
+@media (max-width: 820px) {
+  .experience-preview.has-live-demo { height: 330px; }
+  .demo-peek iframe { width: 1080px; transform: translateX(-50%) scale(.36); }
+  .real-invitation-laptop { inset: -18px -76px -5px -76px; }
+  .hero-botanical { transform: scale(.78) rotate(-30deg); }
+  .hero-botanical-two { transform: rotate(145deg) scale(.72); }
+}
+
+@media (max-width: 420px) {
+  .experience-preview.has-live-demo { height: 295px; }
+  .demo-peek iframe { width: 980px; transform: translateX(-50%) scale(.34); }
+  .demo-peek-label { top: 13px; left: 13px; }
+  .demo-peek-open { top: 13px; right: 13px; }
+  .hero-art-caption { right: 9%; bottom: 5%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .real-invitation-laptop { transition: none; }
+}

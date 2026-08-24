@@ -11,9 +11,11 @@
   art.innerHTML = `
     <div class="hero-orbit orbit-one" aria-hidden="true"></div>
     <div class="hero-orbit orbit-two" aria-hidden="true"></div>
+    <div class="hero-botanical hero-botanical-one" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="hero-botanical hero-botanical-two" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
     <a class="real-invitation-laptop" href="demos/wedding-party/" aria-label="Explore Bea and Milo’s wedding experience">
       <img src="assets/bea-milo-device-hero.png" alt="Floating laptop showing Bea and Milo’s moody wedding invitation with the matching wedding party app on a phone">
-      <span class="sr-only">Bea and Milo’s real invitation shown on a floating laptop.</span>
+      <span class="hero-art-caption"><small>Featured wedding experience</small><b>Bea &amp; Milo <span aria-hidden="true">↗</span></b></span>
     </a>
   `;
 })();
