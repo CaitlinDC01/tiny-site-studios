@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Real Estate Client Hub | Interactive Demo</title>
+  <meta name="description" content="Explore a fictional real estate client portal from both the agent and client perspective.">
+  <meta property="og:title" content="Real Estate Client Hub | Interactive Demo">
+  <meta property="og:description" content="See how one private hub keeps real estate clients clear, confident, and connected.">
+  <meta property="og:image" content="https://tinysitestudios.com/real-estate-demo/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#14221c">
+  <link rel="icon" href="/favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="brand" data-view="agent" aria-label="Return to agent demo"><span class="mark">AM</span><span><strong>Avery Morgan</strong><small>Hearth &amp; Harbor Realty</small></span></button>
+    <nav class="mode" aria-label="Choose a demo view"><button class="active" data-view="agent">Agent dashboard</button><button data-view="client">Client view</button></nav>
+    <span class="sample"><i></i>Interactive sample</span>
+  </header>
+  <div class="ribbon"><span>This is a fictional demo—no login or real client information.</span><button id="flip-view">See the client experience →</button></div>
+
+  <main>
+    <section id="agent-view" class="admin-view">
+      <aside class="sidebar">
+        <div class="side-title"><div><small>CLIENTS</small><strong>3 active journeys</strong></div><button aria-label="Add a client">+</button></div>
+        <div class="client-list">
+          <button class="active"><span class="avatar">JR</span><span><strong>Jordan Rivera</strong><small>1428 Hawthorne Lane</small></span><em>Buyer</em></button>
+          <button><span class="avatar">MB</span><span><strong>Morgan Brooks</strong><small>Preparing to list</small></span><em>Seller</em></button>
+          <button><span class="avatar">TC</span><span><strong>Taylor Chen</strong><small>Downtown rental search</small></span><em>Lease</em></button>
+        </div>
+        <div class="privacy"><span>◆</span><div><strong>Private by design</strong><p>Each client sees only their own timeline, files, and updates.</p></div></div>
+      </aside>
+
+      <div class="workspace">
+        <div class="workspace-head">
+          <div><p class="kicker">CLIENT WORKSPACE</p><h1>Jordan Rivera</h1><p>1428 Hawthorne Lane · Buyer</p></div>
+          <div class="actions"><span id="saved">Changes saved ✓</span><button class="quiet" data-view="client">Preview client page</button><button class="primary" id="save">Save changes</button></div>
+        </div>
+        <div class="admin-grid">
+          <section class="card journey">
+            <div class="card-head"><div><p class="kicker">CURRENT JOURNEY</p><h2 id="stage-title">Under contract</h2></div><span id="stage-count">5 of 7</span></div>
+            <div class="progress"><i id="progress-bar"></i></div>
+            <div class="stage-list">
+              <button class="done" data-stage="0"><span>✓</span>Consult</button><button class="done" data-stage="1"><span>✓</span>Pre-approved</button><button class="done" data-stage="2"><span>✓</span>Home search</button><button class="done" data-stage="3"><span>✓</span>Offer</button><button class="current" data-stage="4"><span>5</span>Under contract</button><button data-stage="5"><span>6</span>Inspection</button><button data-stage="6"><span>7</span>Closing</button>
+            </div>
+          </section>
+          <section class="card editor">
+            <div class="card-head"><div><p class="kicker">CLIENT PAGE</p><h2>What should Jordan see?</h2></div><span class="private-pill">PRIVATE</span></div>
+            <div class="form-grid">
+              <label>Client name<input value="Jordan Rivera"></label><label>Journey type<select><option>Buyer</option><option>Seller</option><option>Lease</option></select></label>
+              <label class="wide">Property or search status<input value="1428 Hawthorne Lane"></label><label>Up next<input value="Home inspection"></label><label>Date and time<input value="Tuesday, Sept 8 · 10:00 AM"></label>
+              <label class="wide">Client needs to<textarea>Review the inspector's summary and send any questions by Wednesday afternoon.</textarea></label><label class="wide">What you’re handling<textarea>Coordinating access, attending the inspection, and preparing the repair-request strategy.</textarea></label>
+            </div>
+          </section>
+        </div>
+        <div class="mini-grid">
+          <section class="card"><div class="card-head"><div><p class="kicker">IMPORTANT DATES</p><h2>Upcoming milestones</h2></div><button class="add">+ Add</button></div><div class="date-row"><b>SEP 08</b><span><strong>Home inspection</strong><small>10:00 AM · 1428 Hawthorne Lane</small></span></div><div class="date-row"><b>SEP 18</b><span><strong>Appraisal window</strong><small>Time to be confirmed</small></span></div></section>
+          <section class="card"><div class="card-head"><div><p class="kicker">CLIENT INBOX</p><h2>Recent activity</h2></div><span>2 new</span></div><div class="inbox"><span>PDF</span><div><strong>Pre-approval letter.pdf</strong><small>Uploaded by Jordan · 2 hours ago</small></div></div><div class="inbox"><span>?</span><div><strong>Should I attend the entire inspection?</strong><small>Needs a reply</small></div></div></section>
+        </div>
+      </div>
+    </section>
+
+    <section id="client-view" class="client-view" hidden>
+      <div class="client-intro"><div><p class="kicker">YOUR HOME-BUYING JOURNEY</p><h1>Hi, Jordan.</h1><p>Everything you need for your move, organized in one calm place.</p></div><div class="agent-card"><span class="agent-avatar">AM</span><div><small>YOUR AGENT</small><strong>Avery Morgan</strong><a href="mailto:avery@example.com">Send a message</a></div></div></div>
+      <div class="client-grid">
+        <div class="client-main">
+          <section class="next-card"><div><p>UP NEXT</p><h2>Home inspection</h2><strong>Tuesday, Sept 8 · 10:00 AM</strong><span>1428 Hawthorne Lane</span></div><div class="house">⌂</div></section>
+          <section class="card"><div class="card-head"><div><p class="kicker">YOUR JOURNEY</p><h2 id="client-stage-title">Under contract</h2></div><span id="client-stage-count">5 of 7</span></div><div class="client-progress" id="client-progress"><div class="done"><span>✓</span><small>Consult</small></div><div class="done"><span>✓</span><small>Pre-approved</small></div><div class="done"><span>✓</span><small>Home search</small></div><div class="done"><span>✓</span><small>Offer</small></div><div class="current"><span>5</span><small>Under contract</small></div><div><span>6</span><small>Inspection</small></div><div><span>7</span><small>Closing</small></div></div></section>
+          <section class="card explainer"><p class="kicker">WHAT THIS MEANS</p><h2><span id="plain-stage">Under contract</span>, in plain English</h2><p>Your offer has been accepted. Now we’re checking the home carefully, confirming the details, and making sure you feel confident before the next deadline.</p></section>
+          <div class="focus-grid"><section><small>YOUR FOCUS</small><h3>Review the inspection</h3><p>Read the summary and send Avery any questions by Wednesday afternoon.</p></section><section><small>BEHIND THE SCENES</small><h3>What Avery is handling</h3><p>Coordinating access, attending the inspection, and preparing your repair strategy.</p></section></div>
+          <section class="card"><div class="card-head"><div><p class="kicker">DOCUMENTS</p><h2>Your transaction files</h2></div><span>3 uploaded</span></div><div class="doc"><span>PDF</span><div><strong>Signed purchase agreement</strong><small>Contract · 1.8 MB</small></div><b>Open</b></div><div class="doc"><span>PDF</span><div><strong>Pre-approval letter</strong><small>Financing · 420 KB</small></div><b>Open</b></div><button class="upload" id="upload">↑ Upload a requested document</button></section>
+        </div>
+        <aside class="client-rail">
+          <section class="note"><small>FROM AVERY</small><p>“You’re doing great. I’ll be at the inspection and will walk you through every finding.”</p></section>
+          <section class="card"><p class="kicker">IMPORTANT DATES</p><div class="date-row"><b>SEP 08</b><span><strong>Home inspection</strong><small>10:00 AM</small></span></div><div class="date-row"><b>SEP 18</b><span><strong>Appraisal window</strong><small>Time to be confirmed</small></span></div></section>
+          <section class="card"><p class="kicker">ASK AVERY</p><p class="sent" id="sent" hidden>Question sent. Avery will see it in the agent inbox.</p><label class="question">Add a question<textarea id="question" placeholder="Type it here…"></textarea></label><button class="primary full" id="send">Send question</button></section>
+          <section class="card contacts"><p class="kicker">YOUR TEAM</p><span>LOAN OFFICER</span><strong>Maya Patel · Harbor Lending</strong><small>(555) 014-2038</small><span>INSPECTOR</span><strong>Chris Bennett · Clearview Inspections</strong><small>(555) 014-8142</small></section>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer><span class="mark">TSS</span><div><strong>A sample client experience by Tiny Site Studios.</strong><small>Fictional names, addresses, and contact information are used throughout this demo.</small></div><a href="#">Back to top ↑</a></footer>
+  <script src="script.js"></script>
+</body>
+</html>
