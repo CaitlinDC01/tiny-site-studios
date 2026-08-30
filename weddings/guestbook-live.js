@@ -1,5 +1,5 @@
 (() => {
-  const productUrl = "/guestbook-live/";
+  const productUrl = "https://guestbook.tinysitestudios.com/";
   const demoUrl = "https://wall.tinysitestudios.com/bea-milo";
 
   const heroIntro = document.querySelector(".hero-intro");
