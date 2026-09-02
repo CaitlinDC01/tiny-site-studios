@@ -1,0 +1,164 @@
+:root {
+  --navy: #32143f;
+  --navy-2: #211028;
+  --deep: #211028;
+  --coral: #ff716b;
+  --coral-dark: #d94f55;
+  --gold: #168c8a;
+  --cream: #fff9f1;
+  --paper: #fffdf8;
+  --mist: #deefec;
+  --ink: #281c2c;
+  --muted: #6e5d70;
+  --line: rgba(50, 20, 63, .18);
+  --shadow: 8px 9px 0 rgba(50, 20, 63, .1);
+  --radius: 16px;
+}
+
+body {
+  background:
+    radial-gradient(circle at 16px 16px, rgba(22, 140, 138, .07) 1.2px, transparent 1.3px) 0 0 / 32px 32px,
+    var(--cream);
+}
+
+body::before {
+  background: linear-gradient(90deg, #32143f 0 42%, #168c8a 42% 72%, #ff716b 72%) !important;
+}
+
+.eyebrow {
+  color: #0d6767;
+}
+
+.button {
+  border-radius: 9px;
+  box-shadow: 4px 4px 0 #168c8a;
+}
+
+.button:hover {
+  box-shadow: 2px 2px 0 #32143f;
+  transform: translate(2px, 2px);
+}
+
+nav {
+  border-bottom: 2px solid #32143f;
+  background: rgba(255, 249, 241, .94);
+}
+
+.brand {
+  gap: 18px;
+}
+
+.brand-mark {
+  width: 45px;
+  height: 45px;
+  border: 2px solid #32143f;
+  border-radius: 9px;
+  color: #32143f;
+  background: #fffdf8;
+  box-shadow: 6px -6px 0 #ff716b, 12px -12px 0 #168c8a;
+  font-style: italic;
+}
+
+.brand-mark::after {
+  right: -16px;
+  top: 29px;
+  color: #ff716b;
+  font-size: .9rem;
+}
+
+.wordmark span {
+  color: #0d6767;
+}
+
+.navlinks a:hover,
+.text-link,
+footer a {
+  color: #0d6767;
+}
+
+.intro h1 em,
+.hero h1 em {
+  color: #168c8a;
+  font-family: "Fraunces", serif;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.form-shell,
+.service-card,
+.work-card,
+.difference-card,
+.plan {
+  border: 1.5px solid #32143f;
+  border-radius: 14px;
+  box-shadow: 8px 9px 0 rgba(50, 20, 63, .11);
+}
+
+.form-shell {
+  background: #fffdf8;
+}
+
+.trust span,
+.choice {
+  border: 1.5px solid #32143f;
+  border-radius: 7px;
+  background: #fffdf8;
+}
+
+.promise,
+.plan,
+.cta-box {
+  background: #32143f;
+}
+
+.services,
+.difference {
+  background: #fffdf8;
+}
+
+.builder {
+  background: #ffe2dd;
+}
+
+.work {
+  background: #deefec;
+}
+
+.service-visual,
+.work-visual.system-scene {
+  background: linear-gradient(145deg, #deefec, #ffe2dd);
+}
+
+.chat-card,
+.chat-mini,
+.work-visual.chat-scene {
+  background: linear-gradient(145deg, #32143f, #0d6767);
+}
+
+.portfolio-window,
+.portfolio-mini,
+.resume-sheet,
+.chat-card,
+.slide {
+  border-radius: 10px;
+}
+
+.choice.active {
+  background: #0d6767;
+  box-shadow: 4px 4px 0 #ff716b;
+}
+
+.difference-card {
+  border-top: 5px solid #168c8a;
+}
+
+.cta-box {
+  border: 2px solid #32143f;
+  border-radius: 16px;
+  box-shadow: 11px 11px 0 #ff716b;
+}
+
+footer {
+  border-top: 2px solid #32143f;
+  background: #fffdf8;
+}
