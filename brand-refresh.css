@@ -401,12 +401,12 @@ nav .shell {
 
 .kita-docket-preview {
   aspect-ratio: 2496 / 1222;
-  background-image: url("assets/kitas-docket-app.png");
+  background-image: url("assets/kitas-docket-app.jpg?v=20260903l");
 }
 
 .life-deck-preview {
   aspect-ratio: 1200 / 630;
-  background-image: url("assets/life-deck-social-preview.png");
+  background-image: url("assets/life-deck-social-preview.jpg?v=20260903l");
 }
 
 .curated-grid .offer-media {
