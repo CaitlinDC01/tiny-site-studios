@@ -391,6 +391,14 @@ nav .shell {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.offer-card > .offer-card-shot {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
+}
+
 .curated-grid .offer-media {
   height: auto;
   padding: 0;
