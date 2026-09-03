@@ -1,1 +1,14 @@
-m«ëˆ§½©buªàºg§¶f§‰÷¬·›™©â}ë-RÆ y¶¬{®vçºh¢ø¥zŠ.µø¥y¶ëy©­æ¤zw(uçhºÚn¶êbÚ%Šw¬¡ù^aéƒu×œ¡×yÊz)éºØazZ]ŠÊek+aŠÉ²Æ z(§¦ëb›­~)^uçÚº[_¢»-v)è¢ëiºÚ.¶›­~)^uçÚº[_¢»-v‹­
+{
+  "name": "Girlsâ€™ Cruise 2026",
+  "short_name": "Cruise 2026",
+  "description": "The October girlsâ€™ cruise home base.",
+  "start_url": "/cruise26/",
+  "scope": "/cruise26/",
+  "display": "standalone",
+  "background_color": "#fff8ed",
+  "theme_color": "#fff8ed",
+  "icons": [
+    { "src": "assets/pwa-icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/pwa-icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
