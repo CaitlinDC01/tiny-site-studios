@@ -316,6 +316,17 @@ nav .shell {
   border-radius: 10px;
 }
 
+.guestbook-note {
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.guestbook-note:hover,
+.guestbook-note:focus-visible {
+  box-shadow: 0 20px 44px rgba(0, 0, 0, .3);
+  transform: rotate(-1deg) translateY(-4px);
+}
+
 .guestbook-price-callout {
   border-radius: 13px;
   background: var(--blush);
