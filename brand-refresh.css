@@ -387,6 +387,33 @@ nav .shell {
   background: #c6e3df;
 }
 
+.curated-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.offer-media img.show-full,
+.offer-card.wide .offer-media img.show-full {
+  padding: 14px;
+  object-fit: contain;
+  object-position: center;
+  background: #f7f1e8;
+}
+
+.offer-media.teacher-media {
+  background: #15343a;
+}
+
+.offer-media.teacher-media img.show-full {
+  padding: 0;
+  background: #15343a;
+}
+
+@media (max-width: 680px) {
+  .curated-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .resume-visual {
   background: linear-gradient(145deg, var(--aqua), var(--blush));
 }
