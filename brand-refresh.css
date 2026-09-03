@@ -392,17 +392,16 @@ nav .shell {
 }
 
 .curated-grid .offer-media {
-  position: relative;
-  height: 0;
-  padding-top: 52.5%;
+  height: auto;
+  padding: 0;
   aspect-ratio: auto;
 }
 
 .curated-grid .offer-media > img {
-  position: absolute;
-  inset: 0;
+  position: static;
+  display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 .offer-media img.show-full,
