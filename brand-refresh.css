@@ -391,12 +391,22 @@ nav .shell {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.offer-card > .offer-card-shot {
+.offer-card-preview {
   display: block;
   width: 100%;
-  height: auto;
-  max-height: none;
-  object-fit: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.kita-docket-preview {
+  aspect-ratio: 2496 / 1222;
+  background-image: url("assets/kitas-docket-app.png");
+}
+
+.life-deck-preview {
+  aspect-ratio: 1200 / 630;
+  background-image: url("assets/life-deck-social-preview.png");
 }
 
 .curated-grid .offer-media {
