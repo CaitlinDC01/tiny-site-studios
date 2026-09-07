@@ -20,12 +20,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Italiana&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260907-sidebar">
+  <link rel="stylesheet" href="styles.css?v=20260907-welcome-scroll">
 </head>
-<body>
+<body class="landing-mode">
   <header class="demo-bar" aria-label="Interactive demo controls">
     <div><span class="demo-pulse"></span><strong>Interactive Demo</strong><span>Your changes stay in this browser only.</span></div>
     <div>
+      <button data-route="landing">← Studio home</button>
       <button id="undo-change" disabled>↶ Undo</button>
       <button id="demo-guide">▶ Guided tour</button>
       <button id="demo-data">Demo data⌄</button>
@@ -34,8 +35,8 @@
     </div>
   </header>
   <div class="app-shell">
-    <aside class="sidebar">
-      <button class="brand" data-route="dashboard" aria-label="Seating Studio home"><span class="brand-mark">SS</span><span class="brand-copy"><strong>Seating Studio</strong><small>by Tiny Site Studios</small></span></button>
+    <aside class="sidebar" aria-label="Planner sidebar"><div class="sidebar-scroll" tabindex="0" role="region" aria-label="Scrollable planner menu">
+      <button class="brand" data-route="landing" aria-label="Seating Studio welcome page"><span class="brand-mark">SS</span><span class="brand-copy"><strong>Seating Studio</strong><small>by Tiny Site Studios</small></span></button>
       <nav aria-label="Planning workspace">
         <button class="nav-item active" data-route="dashboard"><span class="nav-icon" aria-hidden="true">⌂</span><span class="nav-label">Dashboard</span></button>
         <button class="nav-item" data-route="seating"><span class="nav-icon" aria-hidden="true">⌘</span><span class="nav-label">Arrange Seating</span></button>
@@ -47,12 +48,13 @@
         <button class="reset-card" id="sidebar-reset"><span>↺</span><strong>Reset demo</strong><small>Start again anytime</small></button>
         <div class="team-card"><span class="eyebrow">Wedding team</span><dl><div><dt>Couple</dt><dd>Bea + Milo</dd></div><div><dt>Planner</dt><dd>Lily in June</dd></div><div><dt>Digital Experience</dt><dd>Tiny Site Studios</dd></div></dl></div>
       </div>
-    </aside>
+    </div></aside>
     <main id="app" tabindex="-1"></main>
   </div>
   <div id="overlay-root"></div>
   <div id="demo-layer"></div>
   <div id="toast-root" aria-live="polite"></div>
-  <script src="script.js?v=20260907-sidebar"></script>
+  <noscript><p>Seating Studio needs JavaScript to open the interactive demo. <a href="https://tinysitestudios.com/contact/">Contact Tiny Site Studios</a></p></noscript>
+  <script src="script.js?v=20260907-welcome-scroll"></script>
 </body>
 </html>

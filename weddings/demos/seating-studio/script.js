@@ -72,7 +72,7 @@ let undoStack=[];
 let tourStep=0;
 const tables=[{id:'magnolia',number:1,name:'Magnolia',capacity:8,note:'Near the couple'},{id:'gardenia',number:2,name:'Gardenia',capacity:8,note:'Garden side'},{id:'camellia',number:3,name:'Camellia',capacity:8,note:'Near the bar'},{id:'peony',number:4,name:'Peony',capacity:8,note:'Near the speakers'},{id:'dahlia',number:5,name:'Dahlia',capacity:8,note:'Near the dance floor'},{id:'rose',number:6,name:'Rose',capacity:8,note:'Terrace side'}];
 let boardView='guests';
-let currentRoute='dashboard',showAvailable=false,guestFilter='All Guests',guestSearch='',boardSearch='',draggedGuestId=null;
+let currentRoute='landing',showAvailable=false,guestFilter='All Guests',guestSearch='',boardSearch='',draggedGuestId=null;
 const seatedGuests=()=>guests.filter(g=>g.table&&g.status!=='Unable to Attend'&&g.status!=='Declined');
 const unassignedGuests=()=>guests.filter(g=>!g.table&&g.status!=='Unable to Attend'&&g.status!=='Declined');
 const tableGuests=id=>seatedGuests().filter(g=>g.table===id);
@@ -89,8 +89,20 @@ function updateDemoControls(){const badge=document.querySelector('#check-count')
 function undoLastChange(){const change=undoStack.pop();if(!change)return;guests=JSON.parse(change.state);persistGuests();renderCurrent();toast(`Undid: ${change.label}`);updateDemoControls()}
 function familiarFaceScore(tableId){const list=tableGuests(tableId);if(!list.length)return 0;const covered=list.filter(guest=>list.some(other=>other.id!==guest.id&&(other.group===guest.group||(guest.household!=='Single Guest'&&other.household===guest.household))));return Math.round(covered.length/list.length*100)}
 function connectionAverage(){const seated=seatedGuests();if(!seated.length)return 0;const covered=seated.filter(guest=>{const list=tableGuests(guest.table);return list.some(other=>other.id!==guest.id&&(other.group===guest.group||(guest.household!=='Single Guest'&&other.household===guest.household)))});return Math.round(covered.length/seated.length*100)}
-const setAdminMode=()=>document.body.classList.remove('public-mode');
+const setAdminMode=()=>{document.body.classList.remove('public-mode');document.body.classList.remove('landing-mode')};
 function adminHeader(title,subtitle,actions=''){return `<header class="page-header"><div><p class="eyebrow">Bea + Milo · October 24, 2026</p><h1>${title}</h1>${subtitle?`<p>${subtitle}</p>`:''}</div><div class="page-actions">${actions}<span class="avatar">BM</span></div></header>`}
+
+function landing(){
+ document.body.classList.remove('public-mode');
+ document.body.classList.add('landing-mode');
+ app.innerHTML=`<div class="studio-opening">
+  <header class="opening-header"><a class="opening-brand" href="https://tinysitestudios.com/" aria-label="Tiny Site Studios home"><span class="opening-mark" aria-hidden="true">SS</span><span>Seating Studio<small>by Tiny Site Studios</small></span></a><a class="opening-inquiry" href="https://tinysitestudios.com/contact/" target="_blank" rel="noopener">Make it yours <span aria-hidden="true">↗</span></a></header>
+  <section class="opening-hero" aria-labelledby="opening-title">
+   <div class="opening-copy"><p class="opening-eyebrow"><span></span> A thoughtful welcome starts here</p><h1 id="opening-title">Good company.<br><em>Beautifully<br> seated.</em></h1><p class="opening-description">Bring your people together with a seating plan that feels as considered as the celebration itself.</p><div class="opening-actions"><button class="opening-primary" data-route="dashboard">Explore the planner <span aria-hidden="true">→</span></button><button class="opening-secondary" data-route="finder">See the guest experience <span aria-hidden="true">↗</span></button></div><p class="opening-reassurance">An interactive sample wedding. No sign-up needed.<br>Your changes stay in this browser, ready for you to pick up again.</p><div class="opening-details"><span><b>01</b> Arrange your people</span><span><b>02</b> Find a thoughtful fit</span><span><b>03</b> Welcome every guest</span></div></div>
+   <div class="opening-scene" role="img" aria-label="A garden wedding setting for Bea and Milo"><div class="opening-scene-top"><span>A Seating Studio story</span><span>Est. together</span></div><div class="opening-couple"><span>The sample celebration</span><h2>Bea <i>&amp;</i> Milo</h2><p>October 24, 2026</p><div class="opening-rule"></div><em>A place for everyone.<br>A moment to remember.</em></div><span class="opening-scene-bottom">Designed around your people.</span></div>
+  </section><footer class="opening-footer"><span>Small details. A warmer welcome.</span><span>A Tiny Site Studios experience</span></footer>
+ </div>`;
+}
 
 function dashboard(){
  setAdminMode();const seated=seatedGuests().length,unassigned=unassignedGuests().length,percent=Math.round(seated/(seated+unassigned)*100);
@@ -172,7 +184,7 @@ function renderTour(){demoLayer.innerHTML='';if(!tourStep)return;const steps={1:
 function showComfortMap(){const cards=tables.map(table=>{const list=tableGuests(table.id),isolated=list.filter(guest=>!list.some(other=>other.id!==guest.id&&(other.group===guest.group||(guest.household!=='Single Guest'&&other.household===guest.household))));return `<article><div><span>Table ${table.number}</span><b>${table.name}</b></div><strong>${familiarFaceScore(table.id)}%</strong><div class="comfort-bar"><i style="width:${familiarFaceScore(table.id)}%"></i></div><p>${isolated.length?`${isolated.map(g=>g.name).join(', ')} ${isolated.length===1?'is':'are'} the only guest from ${isolated.length===1?'their':'each'} circle.`:'Everyone shares a table with someone from their group or household.'}</p></article>`}).join('');overlayRoot.innerHTML=`<div class="modal-scrim" data-close-overlay><article class="comfort-modal"><button class="modal-close" data-close-overlay>${icon('close')}</button><span class="eyebrow">Comfort Map</span><h2>Seated with their group</h2><p>Capacity tells you whether guests fit. Comfort Map highlights guests seated away from their group or household.</p><div class="comfort-total"><strong>${connectionAverage()}%</strong><span>of seated guests share a table with someone from their circle or household.</span></div><div class="comfort-grid">${cards}</div><small>Based on the groups and households you provide. Shared group membership does not always mean guests know each other.</small></article></div>`}
 async function copyDemoLink(){const url=location.origin+location.pathname;try{await navigator.clipboard.writeText(url);toast('Demo link copied—ready to share.')}catch{toast('Copy the link from your browser to share this demo.')}}
 function closeOverlay(){overlayRoot.innerHTML='';document.querySelector('.app-shell')?.removeAttribute('inert');document.querySelector('.demo-bar')?.removeAttribute('inert');if(overlayReturnFocus?.isConnected)overlayReturnFocus.focus();overlayReturnFocus=null}function toast(message,duration=3000){toastRoot.innerHTML=`<div class="toast">✓ <span>${esc(message)}</span></div>`;setTimeout(()=>{toastRoot.innerHTML=''},duration)}
-function renderCurrent(){({dashboard,seating:seatingBoard,guests:guestList,checks:checkIssues,finder:guestFinder})[currentRoute]();document.querySelectorAll('.nav-item').forEach(item=>{item.classList.toggle('active',item.dataset.route===currentRoute);if(item.dataset.route===currentRoute)item.setAttribute('aria-current','page');else item.removeAttribute('aria-current')});updateDemoControls();app.focus({preventScroll:true})}function navigate(route){currentRoute=route;closeOverlay();renderCurrent();window.scrollTo({top:0,left:0,behavior:'smooth'})}
+function renderCurrent(){document.body.classList.toggle('landing-mode',currentRoute==='landing');({landing,dashboard,seating:seatingBoard,guests:guestList,checks:checkIssues,finder:guestFinder})[currentRoute]();document.querySelectorAll('.nav-item').forEach(item=>{item.classList.toggle('active',item.dataset.route===currentRoute);if(item.dataset.route===currentRoute)item.setAttribute('aria-current','page');else item.removeAttribute('aria-current')});updateDemoControls();app.focus({preventScroll:true})}function navigate(route){currentRoute=route;closeOverlay();renderCurrent();app.scrollTop=0;window.scrollTo({top:0,left:0,behavior:'smooth'})}
 
 document.addEventListener('click',event=>{
   if(event.target.closest('#undo-change')){undoLastChange();return}
@@ -205,4 +217,11 @@ document.addEventListener('keydown',event=>{if(event.key==='Escape')closeOverlay
  if(event.key==='Tab'&&overlayRoot.children.length){const dialog=overlayRoot.querySelector('[role="dialog"]');if(dialog){const controls=[...dialog.querySelectorAll('button:not(:disabled),a[href],input,select,[tabindex="0"]')].filter(el=>!el.hidden);const first=controls[0],last=controls.at(-1);if(!first){event.preventDefault();dialog.focus()}else if(event.shiftKey&&(document.activeElement===first||document.activeElement===dialog)){event.preventDefault();last.focus()}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}}}
  if((event.key==='Enter'||event.key===' ')&&event.target.matches('[data-guest-id]')&&!event.target.matches('button')){event.preventDefault();showGuestDrawer(event.target.dataset.guestId)}});
 renderCurrent();updateDemoControls();
-// The workspace is available immediately; visitors can opt into the guided tour.
+// Size the desktop workspace to the space below the wrapping demo toolbar.
+// Both the menu and the planner then have explicit, independent scroll areas.
+if(typeof ResizeObserver!=='undefined'){
+ const toolbar=document.querySelector('.demo-bar');
+ const syncWorkspaceHeight=()=>document.documentElement.style.setProperty('--demo-bar-height',`${toolbar.getBoundingClientRect().height}px`);
+ new ResizeObserver(syncWorkspaceHeight).observe(toolbar);
+ syncWorkspaceHeight();
+}
