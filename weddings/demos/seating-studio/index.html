@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#3a202b">
+  <title>Seating Studio · A calmer way to seat every guest</title>
+  <link rel="canonical" href="https://tinysitestudios.com/weddings/demos/seating-studio/">
+  <meta name="description" content="Try Seating Studio with Bea + Milo's sample wedding. Arrange tables, catch seating issues, and preview the guest-facing Find My Seat experience.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Seating Studio · Tiny Site Studios">
+  <meta property="og:description" content="A calmer way to seat every guest. Try the interactive Bea + Milo wedding demo.">
+  <meta property="og:url" content="https://tinysitestudios.com/weddings/demos/seating-studio/">
+  <meta property="og:image" content="https://tinysitestudios.com/weddings/demos/seating-studio/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Seating Studio · Tiny Site Studios">
+  <meta name="twitter:description" content="A calmer way to seat every guest. Try the interactive Bea + Milo wedding demo.">
+  <meta name="twitter:image" content="https://tinysitestudios.com/weddings/demos/seating-studio/og.png">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Italiana&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260907-sidebar">
+</head>
+<body>
+  <header class="demo-bar" aria-label="Interactive demo controls">
+    <div><span class="demo-pulse"></span><strong>Interactive Demo</strong><span>Your changes stay in this browser only.</span></div>
+    <div>
+      <button id="undo-change" disabled>↶ Undo</button>
+      <button id="demo-guide">▶ Guided tour</button>
+      <button id="demo-data">Demo data⌄</button>
+      <button id="copy-demo-link">Share demo</button>
+      <a class="inquiry-link" href="https://tinysitestudios.com/contact/" target="_blank" rel="noopener">Create my wedding experience <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <button class="brand" data-route="dashboard" aria-label="Seating Studio home"><span class="brand-mark">SS</span><span class="brand-copy"><strong>Seating Studio</strong><small>by Tiny Site Studios</small></span></button>
+      <nav aria-label="Planning workspace">
+        <button class="nav-item active" data-route="dashboard"><span class="nav-icon" aria-hidden="true">⌂</span><span class="nav-label">Dashboard</span></button>
+        <button class="nav-item" data-route="seating"><span class="nav-icon" aria-hidden="true">⌘</span><span class="nav-label">Arrange Seating</span></button>
+        <button class="nav-item" data-route="guests"><span class="nav-icon" aria-hidden="true">♙</span><span class="nav-label">Guest List</span></button>
+        <button class="nav-item" data-route="checks"><span class="nav-icon" aria-hidden="true">✓</span><span class="nav-label">Check My Chart</span> <b id="check-count">4</b></button>
+        <button class="nav-item" data-route="finder"><span class="nav-icon" aria-hidden="true">⌕</span><span class="nav-label">Guest Seat Finder</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <button class="reset-card" id="sidebar-reset"><span>↺</span><strong>Reset demo</strong><small>Start again anytime</small></button>
+        <div class="team-card"><span class="eyebrow">Wedding team</span><dl><div><dt>Couple</dt><dd>Bea + Milo</dd></div><div><dt>Planner</dt><dd>Lily in June</dd></div><div><dt>Digital Experience</dt><dd>Tiny Site Studios</dd></div></dl></div>
+      </div>
+    </aside>
+    <main id="app" tabindex="-1"></main>
+  </div>
+  <div id="overlay-root"></div>
+  <div id="demo-layer"></div>
+  <div id="toast-root" aria-live="polite"></div>
+  <script src="script.js?v=20260907-sidebar"></script>
+</body>
+</html>
