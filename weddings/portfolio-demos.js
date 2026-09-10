@@ -45,7 +45,7 @@
       </a>
     </article>
     <article class="portfolio-card portfolio-live">
-      <a class="portfolio-live-link" href="demos/wedding-party/">
+      <a class="portfolio-live-link" href="demos/bea-milo/">
         <div class="portfolio-art portfolio-party">
           <span class="portfolio-index">03</span>
           <span class="portfolio-monogram">B&amp;M</span>

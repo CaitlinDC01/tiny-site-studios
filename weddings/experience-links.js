@@ -5,7 +5,7 @@
     "Digital Invitation": "demos/digital-invitation/",
     "Bridal Shower": "demos/bridal-shower/",
     "Celebration Weekend": "demos/celebration-weekend/",
-    "Wedding Party Hub": "demos/wedding-party/",
+    "Wedding Party Hub": "demos/bea-milo/",
     "Weekend Guide": "demos/weekend-guide/",
     "Destination Guide": "demos/coastal/",
     "Reception Companion": "demos/reception-companion/",

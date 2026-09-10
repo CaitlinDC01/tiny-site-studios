@@ -1,11 +1,11 @@
 (() => {
   const demos = {
     "Save the Date": "demos/save-the-date/",
-    "Wedding Website": "demos/wedding-party/",
+    "Wedding Website": "demos/bea-milo/",
     "Digital Invitation": "demos/digital-invitation/",
     "Bridal Shower": "demos/bridal-shower/",
     "Celebration Weekend": "demos/celebration-weekend/",
-    "Wedding Party Hub": "demos/wedding-party/party.html",
+    "Wedding Party Hub": "demos/bea-milo/party.html",
     "Weekend Guide": "demos/weekend-guide/",
     "Destination Guide": "demos/coastal/",
     "Reception Companion": "demos/reception-companion/",
