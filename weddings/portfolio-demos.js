@@ -49,13 +49,13 @@
         <div class="portfolio-art portfolio-party">
           <span class="portfolio-index">03</span>
           <span class="portfolio-monogram">B&amp;M</span>
-          <span class="portfolio-demo">Open the Party Hub ↗</span>
+          <span class="portfolio-demo">Explore the Full Wedding ↗</span>
         </div>
         <div class="portfolio-caption">
           <div>
             <h3>Bea &amp; Milo</h3>
-            <p>Wedding Party Hub</p>
-            <p class="portfolio-live-description">A private-feeling mobile companion with role-specific details, schedules, attire, and wedding-day quick access.</p>
+            <p>Flagship Wedding Website</p>
+            <p class="portfolio-live-description">The full wedding experience: RSVP, seating, song requests, weekend details, a wedding-party guide, and Guestbook Live.</p>
           </div>
           <span>New Orleans, Louisiana</span>
         </div>
