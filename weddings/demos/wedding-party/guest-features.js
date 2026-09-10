@@ -2,10 +2,6 @@
   const data = window.BEA_GUEST_DATA;
   const escape = (value) => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]/g, '');
-  const menu = document.querySelector('.all-menu');
-  menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {menu.open = false;}));
-  menu.addEventListener('keydown', event => {if (event.key === 'Escape') {menu.open = false;menu.querySelector('summary').focus();}});
-  document.addEventListener('click', event => {if (!menu.contains(event.target)) menu.open = false;});
   document.querySelector('#dinner-menu').innerHTML = data.menu.map(group => `<article><h3>${escape(group.title)}</h3>${group.items.map(item => `<div class="menu-item"><strong>${escape(item.name)}</strong>${item.description ? `<p>${escape(item.description)}</p>` : ''}</div>`).join('')}</article>`).join('');
   const result = document.querySelector('#seat-result');
   const showSeat = guest => {
@@ -51,6 +47,4 @@
   const showMission = () => {const mission = data.challenges[missionIndex];document.querySelector('#mission-type').textContent = `${mission.format} · ${missionIndex+1} / ${data.challenges.length}`;document.querySelector('#mission-prompt').textContent = mission.prompt;document.querySelector('#mission-hint').textContent = mission.hint;};
   document.querySelector('#mission-prompt').setAttribute('aria-live', 'polite');
   document.querySelector('#next-mission').addEventListener('click', () => {missionIndex = (missionIndex+1) % data.challenges.length;showMission();});showMission();
-  // Native button groups keep every option reachable with ordinary keyboard navigation.
-  document.querySelectorAll('[role="tablist"]').forEach(group => {group.setAttribute('role','group');group.querySelectorAll('button').forEach(button => {button.setAttribute('aria-pressed',button.getAttribute('aria-selected') || 'false');button.removeAttribute('aria-selected');button.addEventListener('click',() => {group.querySelectorAll('button').forEach(other => {other.setAttribute('aria-pressed',String(other === button));other.removeAttribute('aria-selected');});});});});
 })();

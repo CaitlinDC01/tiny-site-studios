@@ -102,4 +102,11 @@
       showToast("Sample song vote saved");
     });
   });
+  const menu = document.querySelector('.all-menu');
+  menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {menu.open = false;}));
+  menu.addEventListener('keydown', event => {if (event.key === 'Escape') {menu.open = false;menu.querySelector('summary').focus();}});
+  document.addEventListener('click', event => {if (!menu.contains(event.target)) menu.open = false;});
+
+  // Native button groups keep every option reachable with ordinary keyboard navigation.
+  document.querySelectorAll('[role="tablist"]').forEach(group => {group.setAttribute('role','group');group.querySelectorAll('button').forEach(button => {button.setAttribute('aria-pressed',button.getAttribute('aria-selected') || 'false');button.removeAttribute('aria-selected');button.addEventListener('click',() => {group.querySelectorAll('button').forEach(other => {other.setAttribute('aria-pressed',String(other === button));other.removeAttribute('aria-selected');});});});});
 })();

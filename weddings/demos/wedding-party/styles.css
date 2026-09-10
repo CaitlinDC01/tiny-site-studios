@@ -1609,3 +1609,9 @@ summary { cursor: pointer; }
  .hero-photo figcaption { display: none; } .hero h1 { margin-bottom: 15px; } .wedding-lead { font-size: 32px; }
  .hero-dashboard { grid-template-columns: 1fr; padding: 30px 24px; gap: 30px; } .hero-dashboard .countdown span { padding: 16px 8px; }
 }
+
+/* Separate party guide and guest-facing venue essentials. */
+.party-page .party-guide-intro h1 { font-size: clamp(48px,7vw,90px); max-width: 950px; }
+.party-page .party-guide-intro .page-shell { padding-top: 75px; }
+#quick-view.page-shell .quick-actions { justify-content: flex-start; }
+#quick-view.page-shell .quick-actions a,#quick-view.page-shell .quick-actions button { color: var(--aubergine); border-color: var(--line); text-transform: none; }
