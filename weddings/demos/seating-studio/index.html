@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Italiana&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260907-sample-only">
+  <link rel="stylesheet" href="styles.css?v=20260913-room-pdf">
 <link rel="canonical" href="https://tinysitestudios.com/weddings/demos/seating-studio/">
 </head>
 <body class="landing-mode">
@@ -39,10 +39,10 @@
       <button class="brand" data-route="landing" aria-label="Seating Studio welcome page"><span class="brand-mark">SS</span><span class="brand-copy"><strong>Seating Studio</strong><small>by Tiny Site Studios</small></span></button>
       <nav aria-label="Planning workspace">
         <button class="nav-item active" data-route="dashboard"><span class="nav-icon" aria-hidden="true">⌂</span><span class="nav-label">Dashboard</span></button>
-        <button class="nav-item" data-route="seating"><span class="nav-icon" aria-hidden="true">⌘</span><span class="nav-label">Arrange Seating</span></button>
+        <button class="nav-item" data-route="seating" aria-label="Arrange Seating"><span class="nav-icon" aria-hidden="true">⌘</span><span class="nav-label">Arrange Seating</span></button>
         <button class="nav-item" data-route="guests"><span class="nav-icon" aria-hidden="true">♙</span><span class="nav-label">Guest List</span></button>
         <button class="nav-item" data-route="checks"><span class="nav-icon" aria-hidden="true">✓</span><span class="nav-label">Check My Chart</span> <b id="check-count">4</b></button>
-        <button class="nav-item" data-route="finder"><span class="nav-icon" aria-hidden="true">⌕</span><span class="nav-label">Guest Seat Finder</span></button>
+        <button class="nav-item" data-route="finder" aria-label="Guest Seat Finder"><span class="nav-icon" aria-hidden="true">⌕</span><span class="nav-label">Guest Seat Finder</span></button>
       </nav>
       <div class="sidebar-bottom">
         <button class="reset-card" id="sidebar-reset"><span>↺</span><strong>Reset demo</strong><small>Start again anytime</small></button>
@@ -55,6 +55,8 @@
   <div id="demo-layer"></div>
   <div id="toast-root" aria-live="polite"></div>
   <noscript><p>Seating Studio needs JavaScript to open the interactive demo. <a href="https://tinysitestudios.com/contact/">Contact Tiny Site Studios</a></p></noscript>
-  <script src="script.js?v=20260907-sample-only"></script>
+  <script src="vendor/jspdf.umd.min.js?v=20260913-room-pdf"></script>
+  <script src="room-layout.js?v=20260913-room-pdf"></script>
+  <script src="script.js?v=20260913-room-pdf"></script>
 </body>
 </html>
