@@ -1,5 +1,4 @@
 import { createHmac } from "node:crypto";
-import { GetObjectCommand, ListObjectsV2Command, PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { z } from "zod";
 
 export const runtime = "nodejs";
@@ -9,15 +8,22 @@ const escape=(value:string)=>value.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;
 const headers=(origin:string|null)=>({...origin===ALLOWED_ORIGIN?{"Access-Control-Allow-Origin":ALLOWED_ORIGIN}:{},"Access-Control-Allow-Methods":"GET, POST, OPTIONS","Access-Control-Allow-Headers":"Content-Type","Cache-Control":"no-store",Vary:"Origin"});
 const json=(body:unknown,status=200,origin:string|null=null)=>Response.json(body,{status,headers:headers(origin)});
 
-function store(){
- const accountId=process.env.R2_ACCOUNT_ID,accessKeyId=process.env.R2_ACCESS_KEY_ID,secretAccessKey=process.env.R2_SECRET_ACCESS_KEY,bucket=process.env.R2_BUCKET;
- if(!accountId||!accessKeyId||!secretAccessKey||!bucket)throw new Error("R2 is not configured.");
- const client=new S3Client({region:"auto",endpoint:`https://${accountId}.r2.cloudflarestorage.com`,credentials:{accessKeyId,secretAccessKey}});
- return {
-  async read(key:string){try{const value=await client.send(new GetObjectCommand({Bucket:bucket,Key:key}));return JSON.parse(await value.Body!.transformToString())}catch(error){if((error as {$metadata?:{httpStatusCode?:number}}).$metadata?.httpStatusCode===404)return null;throw error}},
-  async write(key:string,value:unknown){await client.send(new PutObjectCommand({Bucket:bucket,Key:key,Body:JSON.stringify(value),ContentType:"application/json",CacheControl:"private, no-store"}))},
-  async list(prefix:string){const value=await client.send(new ListObjectsV2Command({Bucket:bucket,Prefix:prefix,MaxKeys:100}));return (value.Contents||[]).flatMap(item=>item.Key?[item.Key]:[])},
- };
+const requestBuckets=new Map<string,{count:number;resetAt:number}>();
+const sign=(value:string,secret:string)=>createHmac("sha256",secret).update(value).digest("hex");
+function createAccessToken(email:string,secret:string){
+ const issuedDay=Math.floor(Date.now()/86400000).toString(16).padStart(8,"0");
+ const body=`${issuedDay}${sign(email,secret).slice(0,24)}`;
+ return `${body}${sign(`seating-studio-access:${body}`,secret).slice(0,32)}`;
+}
+function validAccessToken(token:string,secret:string){
+ if(!/^[a-f0-9]{64}$/.test(token))return false;
+ const body=token.slice(0,32),signature=token.slice(32),issuedDay=Number.parseInt(body.slice(0,8),16),today=Math.floor(Date.now()/86400000);
+ return Number.isFinite(issuedDay)&&issuedDay<=today&&today-issuedDay<=7&&signature===sign(`seating-studio-access:${body}`,secret).slice(0,32);
+}
+function rateLimited(key:string){
+ const now=Date.now(),current=requestBuckets.get(key);
+ if(!current||current.resetAt<=now){requestBuckets.set(key,{count:1,resetAt:now+3600000});return false}
+ current.count+=1;return current.count>10;
 }
 
 function sender(){const configured=process.env.RESEND_EMAIL_DOMAIN?.trim();if(!configured)throw new Error("Email domain is not configured.");const address=configured.includes("@")?configured:`memories@${configured}`;return `Tiny Site Studios <${address}>`}
@@ -51,17 +57,16 @@ Tiny Site Studios · caitlin@tinysitestudios.com`;
 }
 
 export async function OPTIONS(request:Request){const origin=request.headers.get("origin");return new Response(null,{status:origin===ALLOWED_ORIGIN?204:403,headers:headers(origin)})}
-export async function GET(request:Request){const origin=request.headers.get("origin");if(origin!==ALLOWED_ORIGIN)return json({error:"Not allowed."},403,origin);const token=new URL(request.url).searchParams.get("access")||"";if(!/^[a-f0-9]{64}$/.test(token))return json({ok:false},401,origin);try{const receipt=await store().read(`seating-studio-access/${token}.json`) as {expiresAt?:string}|null;return receipt?.expiresAt&&new Date(receipt.expiresAt)>new Date()?json({ok:true},200,origin):json({ok:false},401,origin)}catch{return json({ok:false},401,origin)}}
+export async function GET(request:Request){const origin=request.headers.get("origin");if(origin!==ALLOWED_ORIGIN)return json({error:"Not allowed."},403,origin);const token=new URL(request.url).searchParams.get("access")||"",secret=process.env.RATE_LIMIT_SECRET;if(!secret)return json({ok:false},503,origin);return validAccessToken(token,secret)?json({ok:true},200,origin):json({ok:false},401,origin)}
 
 export async function POST(request:Request){
  const origin=request.headers.get("origin");if(origin!==ALLOWED_ORIGIN)return json({error:"Please open the Seating Studio demo and try again."},403,origin);if(Number(request.headers.get("content-length")||0)>4096)return json({error:"Request too large."},413,origin);
  let input:unknown;try{const body=await request.text();if(body.length>4096)return json({error:"Request too large."},413,origin);input=JSON.parse(body)}catch{return json({error:"Please enter your first name and email."},400,origin)}
  const parsed=schema.safeParse(input);if(!parsed.success||parsed.data.website)return json({error:"Please check your name and email and try again."},400,origin);
  const secret=process.env.RATE_LIMIT_SECRET;if(!secret)return json({error:"Demo signup is temporarily unavailable. Please try again shortly."},503,origin);
- const hash=(value:string)=>createHmac("sha256",secret).update(value).digest("hex"),now=new Date(),email=parsed.data.email.toLowerCase(),day=now.toISOString().slice(0,10),token=hash(`seating-studio-v1:${day}:${email}`),ip=request.headers.get("x-vercel-forwarded-for")||request.headers.get("x-forwarded-for")||"local",prefix=`seating-studio-signups/${day}/${hash(ip.split(",")[0].trim())}/${now.getUTCHours()}/`,signupKey=`${prefix}${hash(email)}.json`,createdAt=now.toISOString();
+ const now=new Date(),email=parsed.data.email.toLowerCase(),token=createAccessToken(email,secret),ip=(request.headers.get("x-vercel-forwarded-for")||request.headers.get("x-forwarded-for")||"local").split(",")[0].trim(),createdAt=now.toISOString();
+ if(rateLimited(`${ip}:${now.toISOString().slice(0,13)}`))return json({error:"Too many demo signups. Please try again in an hour."},429,origin);
  try{
-  const media=store(),existing=await media.list(prefix);if(existing.length>=10&&!existing.includes(signupKey))return json({error:"Too many demo signups. Please try again in an hour."},429,origin);
-  const record={firstName:parsed.data.firstName,email,createdAt,source:"seating_studio_demo",marketingConsent:false,expiresAt:new Date(now.getTime()+7*86400000).toISOString()};await media.write(signupKey,record);await media.write(`seating-studio-access/${token}.json`,record);
   const content=emailContent(parsed.data.firstName,token),from=sender();
   try{const recipient=process.env.GBL_INQUIRY_EMAIL?.trim()||"caitlin@tinysitestudios.com";await sendEmail({from,to:recipient,reply_to:email,subject:`[Seating Studio Demo] ${parsed.data.firstName}`,html:`<div style="font:16px/1.6 Arial,sans-serif;max-width:620px;margin:auto;color:#3a202b"><p style="color:#805a6a;font-size:12px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase">Tiny Site Studios lead alert</p><h1 style="font-family:Georgia,serif;font-weight:400">New Seating Studio demo signup</h1><p><strong>${escape(parsed.data.firstName)}</strong> tried the Seating Studio demo.</p><p>Email: <a href="mailto:${escape(email)}">${escape(email)}</a><br>Submitted: ${escape(createdAt)}</p><p><a href="${escape(content.demoUrl)}" style="color:#623749;font-weight:700">Open their demo link →</a></p><p style="color:#806d75;font-size:13px">Their confirmation was sent separately. They were not added to a marketing list.</p></div>`,tags:[{name:"category",value:"seating-studio-alert"}]},`seating-studio-alert-${token}`)}catch(error){console.error("[seating-studio] alert unavailable",error)}
   try{await sendEmail({from,to:email,reply_to:"caitlin@tinysitestudios.com",subject:"Your Seating Studio demo is ready 💌",html:content.html,text:content.text,tags:[{name:"category",value:"seating-studio-demo"}]},`seating-studio-confirmation-${token}`)}catch(error){console.error("[seating-studio] confirmation unavailable",error);return json({ok:true,emailSent:false,access:token},200,origin)}
