@@ -2,7 +2,61 @@ const app = document.querySelector('#app');
 const overlayRoot = document.querySelector('#overlay-root');
 const toastRoot = document.querySelector('#toast-root');
 const demoLayer = document.querySelector('#demo-layer');
+const signupGate = document.querySelector('#signup-gate');
+const signupForm = document.querySelector('#signup-form');
+const signupStatus = document.querySelector('#signup-status');
+const SIGNUP_API = 'https://guestbook-live.com/api/seating-studio-signups';
+const ACCESS_KEY = 'tss-seating-studio-access-v1';
 let overlayReturnFocus=null;
+
+function gateStudio(locked){
+ document.body.classList.toggle('signup-locked',locked);
+ document.querySelector('.demo-bar')?.toggleAttribute('inert',locked);
+ document.querySelector('.app-shell')?.toggleAttribute('inert',locked);
+}
+function setSignupStatus(message,tone=''){
+ if(!signupStatus)return;
+ signupStatus.textContent=message;
+ signupStatus.className=`signup-status ${tone}`.trim();
+}
+function signupBusy(busy){
+ const button=signupForm?.querySelector('button[type="submit"]');
+ if(!button)return;
+ button.disabled=busy;
+ button.innerHTML=busy?'Preparing your demo…':'Email my demo links <span aria-hidden="true">→</span>';
+}
+function unlockStudio(token,firstName=''){
+ if(token)try{localStorage.setItem(ACCESS_KEY,token)}catch{}
+ gateStudio(false);
+ signupGate?.classList.add('is-complete');
+ setTimeout(()=>{if(signupGate)signupGate.hidden=true},360);
+ const requestedView=new URLSearchParams(location.search).get('view');
+ if(requestedView==='finder')navigate('finder');
+ else if(firstName)toast(`Welcome, ${firstName}. Your demo links are on the way!`,5000);
+}
+async function verifyStudioAccess(token){
+ if(!/^[a-f0-9]{64}$/.test(token||''))return false;
+ try{
+  const response=await fetch(`${SIGNUP_API}?access=${encodeURIComponent(token)}`,{headers:{Accept:'application/json'}});
+  if(!response.ok)return false;
+  const result=await response.json();
+  return result.ok===true;
+ }catch{return false}
+}
+async function initSignupGate(){
+ gateStudio(true);
+ const params=new URLSearchParams(location.search);
+ let token=params.get('access')||'';
+ if(!token)try{token=localStorage.getItem(ACCESS_KEY)||''}catch{}
+ if(!token){signupForm?.querySelector('input[name="firstName"]')?.focus();return}
+ setSignupStatus('Opening your saved demo…');
+ signupBusy(true);
+ if(await verifyStudioAccess(token)){unlockStudio(token);return}
+ try{localStorage.removeItem(ACCESS_KEY)}catch{}
+ signupBusy(false);
+ setSignupStatus('Your saved link has expired. Enter your email for a fresh one.','error');
+ signupForm?.querySelector('input[name="firstName"]')?.focus();
+}
 if(typeof MutationObserver!=='undefined')new MutationObserver(()=>{
  if(!overlayRoot.children.length)return;
  if(!overlayReturnFocus)overlayReturnFocus=document.activeElement;
@@ -243,12 +297,32 @@ document.addEventListener('click',event=>{
 });
 document.addEventListener('input',event=>{if(event.target.id==='guest-search'){guestSearch=event.target.value;guestList();document.querySelector('#guest-search')?.focus()}if(event.target.id==='board-search'){boardSearch=event.target.value;seatingBoard();const input=document.querySelector('#board-search');input?.focus();input?.setSelectionRange(boardSearch.length,boardSearch.length)}});
 document.addEventListener('change',event=>{if(event.target.id==='available-toggle'){showAvailable=event.target.checked;seatingBoard()}});
-document.addEventListener('submit',event=>{if(event.target.id==='finder-form'){event.preventDefault();searchFinder(document.querySelector('#finder-input').value)}});
+document.addEventListener('submit',async event=>{
+ if(event.target.id==='signup-form'){
+  event.preventDefault();
+  const form=new FormData(event.target);
+  const firstName=String(form.get('firstName')||'').trim();
+  const email=String(form.get('email')||'').trim();
+  if(!firstName||!email){setSignupStatus('Please enter your first name and email.','error');return}
+  signupBusy(true);setSignupStatus('Preparing your demo and email…');
+  try{
+   const response=await fetch(SIGNUP_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({firstName,email,website:String(form.get('website')||'')})});
+   const result=await response.json().catch(()=>({}));
+   if(!response.ok||!result.access)throw new Error(result.error||'We couldn’t open the demo just yet. Please try again.');
+   const note=result.emailSent===false?'You’re in! Your confirmation email may take a moment.':'Check your inbox—your demo links are ready.';
+   setSignupStatus(note,'success');
+   setTimeout(()=>unlockStudio(result.access,firstName),900);
+  }catch(error){signupBusy(false);setSignupStatus(error.message||'Please try again.','error')}
+  return;
+ }
+ if(event.target.id==='finder-form'){event.preventDefault();searchFinder(document.querySelector('#finder-input').value)}
+});
 document.addEventListener('keydown',event=>{if(event.key==='Escape')closeOverlay();
  if(event.key==='Tab'&&overlayRoot.children.length){const dialog=overlayRoot.querySelector('[role="dialog"]');if(dialog){const controls=[...dialog.querySelectorAll('button:not(:disabled),a[href],input,select,[tabindex="0"]')].filter(el=>!el.hidden);const first=controls[0],last=controls.at(-1);if(!first){event.preventDefault();dialog.focus()}else if(event.shiftKey&&(document.activeElement===first||document.activeElement===dialog)){event.preventDefault();last.focus()}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}}}
  if((event.key==='Enter'||event.key===' ')&&event.target.matches('[data-guest-id]')&&!event.target.matches('button')){event.preventDefault();showGuestDrawer(event.target.dataset.guestId)}});
 if(typeof SeatingRoom!=='undefined')roomStudio=SeatingRoom.create({app,tables,guests:()=>guests,tableGuests,tableById,unassignedGuests,isAttending,esc,snapshot:guestSnapshot,saveChange,toast,render:renderCurrent});
 renderCurrent();updateDemoControls();
+initSignupGate();
 // Size the desktop workspace to the space below the wrapping demo toolbar.
 // Both the menu and the planner then have explicit, independent scroll areas.
 if(typeof ResizeObserver!=='undefined'){
