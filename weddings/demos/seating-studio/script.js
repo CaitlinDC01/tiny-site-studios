@@ -5,7 +5,7 @@ const demoLayer = document.querySelector('#demo-layer');
 const signupGate = document.querySelector('#signup-gate');
 const signupForm = document.querySelector('#signup-form');
 const signupStatus = document.querySelector('#signup-status');
-const SIGNUP_API = 'https://guestbook-live.com/api/seating-studio-signups';
+const SIGNUP_API = 'https://seating-studio-email.vercel.app/api/seating-studio-signups';
 const ACCESS_KEY = 'tss-seating-studio-access-v1';
 let overlayReturnFocus=null;
 
