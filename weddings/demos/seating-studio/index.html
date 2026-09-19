@@ -19,10 +19,32 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Italiana&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260913-room-pdf">
+  <link rel="stylesheet" href="styles.css?v=20260919-signup-gate">
 <link rel="canonical" href="https://tinysitestudios.com/weddings/demos/seating-studio/">
 </head>
 <body class="landing-mode">
+  <div class="signup-gate" id="signup-gate" role="dialog" aria-modal="true" aria-labelledby="signup-title">
+    <section class="signup-card">
+      <div class="signup-scene" aria-hidden="true">
+        <span class="signup-brand">TINY SITE STUDIOS</span>
+        <div><small>THE INTERACTIVE DEMO</small><strong>Seating<br>Studio</strong><p>A calmer way to seat every guest.</p></div>
+        <span class="signup-scene-note">Good company. Beautifully seated.</span>
+      </div>
+      <div class="signup-copy">
+        <span class="signup-eyebrow">Your private demo entry</span>
+        <h1 id="signup-title">Come on in.</h1>
+        <p>Enter your name and email to open Bea + Milo’s sample seating planner. We’ll send your demo links to your inbox so you can easily come back.</p>
+        <form id="signup-form">
+          <label>First name<input name="firstName" autocomplete="given-name" maxlength="80" required placeholder="Your first name"></label>
+          <label>Email address<input name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@example.com"></label>
+          <label class="signup-honeypot" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
+          <button type="submit">Email my demo links <span aria-hidden="true">→</span></button>
+          <p class="signup-privacy"><span aria-hidden="true">✓</span> Your email is only used to send this confirmation and your demo links. You will not be added to a marketing list.</p>
+          <p class="signup-status" id="signup-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </div>
   <header class="demo-bar" aria-label="Interactive demo controls">
     <div><span class="demo-pulse"></span><strong>Interactive Demo</strong><span>Sample wedding · Try it with example guests.</span></div>
     <div>
@@ -57,6 +79,6 @@
   <noscript><p>Seating Studio needs JavaScript to open the interactive demo. <a href="https://tinysitestudios.com/contact/">Contact Tiny Site Studios</a></p></noscript>
   <script src="vendor/jspdf.umd.min.js?v=20260913-room-pdf"></script>
   <script src="room-layout.js?v=20260913-room-pdf"></script>
-  <script src="script.js?v=20260913-room-pdf"></script>
+  <script src="script.js?v=20260919-signup-gate"></script>
 </body>
 </html>
