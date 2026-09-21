@@ -174,4 +174,14 @@
     if (memoryConfirmation) memoryConfirmation.hidden = true;
     memoryForm?.querySelector("input")?.focus();
   });
+
+  const rsvpForm = document.querySelector("#coastal-rsvp-form");
+  rsvpForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!rsvpForm.checkValidity()) {
+      rsvpForm.reportValidity();
+      return;
+    }
+    rsvpForm.querySelector("output").textContent = "Your demo RSVP is ready—thank you! Nothing was sent or saved.";
+  });
 })();

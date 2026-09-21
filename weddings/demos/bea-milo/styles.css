@@ -1644,3 +1644,16 @@ summary { cursor: pointer; }
 .memory-experience .demo-note { color: #584450; }
 @media(max-width: 800px) { .memory-heading,.memory-duo { grid-template-columns: 1fr; gap: 25px; } .memory-heading > p { max-width: none; } .memory-experience .page-shell { padding-top: 60px; padding-bottom: 60px; } }
 @media(max-width: 400px) { .guestbook-feature-copy,.memory-experience .mission-card { padding: 23px; } .mission-prompt-card { padding: 20px; } }
+
+.wedding-party-preview { background: #efe9e2; }
+.wedding-party-preview .section-heading { align-items: end; }
+.wedding-party-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+.wedding-party-grid article { overflow: hidden; color: var(--paper); background: var(--aubergine); border-radius: 150px 150px 18px 18px; }
+.wedding-party-grid img { display: block; width: 100%; aspect-ratio: .82; object-fit: cover; object-position: center top; }
+.wedding-party-grid article > div { padding: 24px 22px 30px; }
+.wedding-party-grid span { color: var(--champagne); font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.wedding-party-grid h3 { margin: 8px 0 7px; font: 400 28px/1 "Fraunces",serif; }
+.wedding-party-grid p { margin: 0; color: #e3d9df; font-size: 13px; }
+.party-guide-link { display: inline-flex; margin-top: 28px; color: var(--aubergine); font-weight: 700; text-underline-offset: 5px; }
+@media(max-width:900px){.wedding-party-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.wedding-party-grid{grid-template-columns:1fr}.wedding-party-grid img{aspect-ratio:1.05}.wedding-party-grid article{border-radius:180px 180px 18px 18px}}

@@ -1987,3 +1987,82 @@ footer .brand-mark {
     transition: none;
   }
 }
+
+.couple-story {
+  display: grid;
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+  gap: clamp(40px, 8vw, 110px);
+  align-items: center;
+  background: var(--sand);
+}
+
+.couple-story-photo {
+  min-height: 650px;
+  overflow: hidden;
+  border-radius: 220px 220px 24px 24px;
+}
+
+.couple-story-photo img,
+.wedding-gallery img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.couple-story h2,
+.coastal-rsvp h2 {
+  margin: 0 0 25px;
+  color: var(--ocean);
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(46px, 6vw, 86px);
+  font-weight: 400;
+  letter-spacing: -.045em;
+  line-height: .98;
+}
+
+.couple-story > div:last-child > p:not(.eyebrow) {
+  max-width: 610px;
+  font-size: 17px;
+}
+
+.wedding-party { background: var(--white); }
+.party-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.party-grid article { min-height: 310px; padding: 28px; color: var(--white); background: var(--ocean); border-radius: 130px 130px 22px 22px; text-align: center; }
+.party-grid article:nth-child(2) { background: var(--coral); }
+.party-grid article:nth-child(3) { background: #168e91; }
+.party-grid article:nth-child(4) { background: #d59955; }
+.party-grid span { display: grid; width: 110px; height: 145px; margin: 5px auto 25px; place-items: center; border: 1px solid rgba(255,255,255,.65); border-radius: 70px; font: 38px "DM Serif Display", serif; }
+.party-grid h3 { margin: 0; font: 28px "DM Serif Display", serif; }
+.party-grid p { margin: 6px 0 0; font-size: 12px; }
+
+.wedding-gallery { background: #f2eadc; }
+.gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 290px; gap: 10px; }
+.gallery-grid figure { margin: 0; overflow: hidden; border-radius: 18px; }
+.gallery-grid figure:nth-child(1), .gallery-grid figure:nth-child(4) { grid-row: span 2; }
+.gallery-grid .wide { grid-column: span 2; }
+
+.coastal-rsvp { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(40px, 8vw, 110px); color: var(--white); background: var(--ocean); }
+.coastal-rsvp .eyebrow { color: #ffb69e; }
+.coastal-rsvp h2 { color: var(--white); }
+.coastal-rsvp form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 35px; color: var(--ink); background: var(--white); border-radius: 24px; }
+.coastal-rsvp label { display: grid; gap: 7px; font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.coastal-rsvp label:nth-of-type(5), .coastal-rsvp label:nth-of-type(6), .coastal-rsvp button, .coastal-rsvp output { grid-column: 1 / -1; }
+.coastal-rsvp input, .coastal-rsvp select, .coastal-rsvp textarea { width: 100%; padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: white; }
+.coastal-rsvp output { min-height: 22px; color: var(--ocean); font-weight: 700; }
+
+@media (max-width: 900px) {
+  .couple-story, .coastal-rsvp { grid-template-columns: 1fr; }
+  .party-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 250px; }
+  .gallery-grid .wide { grid-column: span 2; }
+}
+
+@media (max-width: 600px) {
+  .couple-story-photo { min-height: 520px; }
+  .party-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-auto-rows: 220px; }
+  .gallery-grid figure:nth-child(1), .gallery-grid figure:nth-child(4) { grid-row: span 1; }
+  .coastal-rsvp form { grid-template-columns: 1fr; padding: 24px; }
+  .coastal-rsvp label, .coastal-rsvp label:nth-of-type(5), .coastal-rsvp label:nth-of-type(6), .coastal-rsvp button, .coastal-rsvp output { grid-column: 1; }
+}

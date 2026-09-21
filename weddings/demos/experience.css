@@ -226,6 +226,87 @@ button {
   max-width: 900px;
 }
 
+body[data-demo="save-the-date"] .experience-hero {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 230, 210, 0.92), transparent 32rem),
+    radial-gradient(circle at 82% 68%, rgba(158, 112, 122, 0.32), transparent 29rem),
+    linear-gradient(135deg, #f8eee8, #ead4d7 52%, #f5e7dc);
+  background-size: 130% 130%;
+  animation: save-date-glow 10s ease-in-out infinite alternate;
+}
+
+body[data-demo="save-the-date"] .hero-inner > * {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: save-date-reveal 900ms cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+body[data-demo="save-the-date"] .hero-inner > :nth-child(2) { animation-delay: 180ms; }
+body[data-demo="save-the-date"] .hero-inner > :nth-child(3) { animation-delay: 360ms; }
+body[data-demo="save-the-date"] .hero-inner > :nth-child(4) { animation-delay: 520ms; }
+body[data-demo="save-the-date"] .hero-inner > :nth-child(5) { animation-delay: 680ms; }
+body[data-demo="save-the-date"] .hero-inner > :nth-child(6) { animation-delay: 820ms; }
+
+.save-date-countdown {
+  position: relative;
+  z-index: 4;
+  width: min(720px, calc(100% - 28px));
+  margin: -74px auto 0;
+  padding: 22px;
+  border: 1px solid rgba(255,255,255,.62);
+  border-radius: 24px;
+  background: rgba(255,253,249,.82);
+  box-shadow: 0 24px 70px rgba(58,42,48,.16);
+  backdrop-filter: blur(18px);
+  text-align: center;
+}
+
+.save-date-countdown > p {
+  margin: 0 0 14px;
+  color: var(--deep);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.countdown-grid span {
+  display: grid;
+  gap: 4px;
+  padding: 12px 6px;
+  border-radius: 15px;
+  background: color-mix(in srgb, var(--wash) 65%, white);
+}
+
+.countdown-grid strong {
+  color: var(--deep);
+  font-family: var(--script);
+  font-size: clamp(30px, 6vw, 52px);
+  font-weight: 400;
+  line-height: .85;
+}
+
+.countdown-grid small {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+@keyframes save-date-glow {
+  to { background-position: 100% 70%; }
+}
+
+@keyframes save-date-reveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .kicker {
   margin: 0 0 18px;
   color: var(--deep);

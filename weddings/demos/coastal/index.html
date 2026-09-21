@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,follow">
   <meta name="theme-color" content="#17485e">
   <meta name="description" content="A sample coastal destination wedding guide for Sofia and Cameron's celebration in Isla Mujeres.">
   <title>Sofia &amp; Cameron | Isla Mujeres Wedding Weekend</title>
@@ -39,7 +40,8 @@
       <a href="#travel">Travel</a>
       <a href="#stay">Stay</a>
       <a href="#explore">Explore</a>
-      <a href="#quick-info">Quick info</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#rsvp">RSVP</a>
     </nav>
     <button class="mode-button" type="button" data-open-mode>Weekend mode <span>↗</span></button>
   </header>
@@ -82,6 +84,16 @@
         <p>This guide has everything you’ll need, from the ferry to the farewell brunch. Save it to your phone and come ready for sun, music, and a little adventure.</p>
         <p class="signature">See you in paradise, S + C</p>
       </div>
+    </section>
+
+    <section class="couple-story section-shell" id="story">
+      <div class="couple-story-photo"><img src="assets/gallery-3.jpg" alt="Sofia and Cameron walking together beside the sea"></div>
+      <div><p class="eyebrow coral">Our story</p><h2>One missed ferry. One very lucky delay.</h2><p>We met while both pretending not to be stressed about a canceled crossing. Coffee became dinner, dinner became a weekend, and the island became the place we promised to return to when forever was official.</p><p>Now we are bringing our favorite people back to the water where our story first found its rhythm.</p><p class="signature">With love, Sofia &amp; Cameron</p></div>
+    </section>
+
+    <section class="wedding-party section-shell" id="wedding-party">
+      <div class="section-heading split-heading"><div><p class="eyebrow">Our people</p><h2>The crew beside us.</h2></div><p>The friends and family helping us keep the weekend joyful, calm, and on time.</p></div>
+      <div class="party-grid"><article><span>AM</span><h3>Alina Martinez</h3><p>Sofia’s sister · maid of honor</p></article><article><span>JR</span><h3>Jordan Reed</h3><p>Cameron’s brother · best man</p></article><article><span>NP</span><h3>Nina Patel</h3><p>College friend · ceremony reader</p></article><article><span>DL</span><h3>Diego Lopez</h3><p>Travel hero · first toast</p></article></div>
     </section>
 
     <section class="before section-shell" id="before-you-go">
@@ -301,30 +313,9 @@
       </div>
     </section>
 
-    <section class="memories section-shell">
-      <div class="memories-copy">
-        <p class="eyebrow">After the last dance</p>
-        <h2>Help us remember it all.</h2>
-        <p>Share the blurry dance-floor photos, ferry selfies, and everything in between. This sample demonstrates how a guest upload prompt could feel.</p>
-        <details class="demo-gallery">
-          <summary>View the demo gallery <span>＋</span></summary>
-          <div><img src="assets/boat.jpg" alt="Sailboat on turquoise water"><img src="assets/tacos.jpg" alt="Tacos shared around a table"><img src="assets/hero.jpg" alt="Isla Mujeres coastline at sunset"></div>
-        </details>
-      </div>
-      <form id="memory-form">
-        <label for="memory-name">Your name</label>
-        <input id="memory-name" name="name" type="text" required placeholder="Guest name">
-        <label for="memory-note">A note for the newlyweds</label>
-        <textarea id="memory-note" name="note" rows="4" required placeholder="Your favorite moment…"></textarea>
-        <label class="upload-demo" for="memory-file"><span>＋</span><strong>Choose photos</strong><small>Demo only · files are not uploaded</small></label>
-        <input id="memory-file" name="photos" type="file" accept="image/*" multiple>
-        <button class="primary-button" type="submit">Share a memory</button>
-      </form>
-      <div id="memory-confirmation" class="memory-confirmation" hidden aria-live="polite">
-        <span>✓</span><h3>Memory saved—for the demo.</h3><p>A real wedding site could send photos and notes directly to the couple’s private gallery.</p>
-        <button class="text-link" type="button" id="reset-memory">Try again</button>
-      </div>
-    </section>
+    <section class="wedding-gallery section-shell" id="gallery"><div class="section-heading split-heading"><div><p class="eyebrow coral">Our favorite frames</p><h2>Salt air, happy tears, and us.</h2></div><p>An expanded gallery is included with Wedding Hub, giving engagement and wedding-weekend photos room to become part of the experience.</p></div><div class="gallery-grid"><figure><img src="assets/gallery-1.jpg" alt="Sofia and Cameron sharing a quiet moment by the sea"></figure><figure><img src="assets/gallery-2.jpg" alt="Sofia and Cameron laughing together on the coast"></figure><figure class="wide"><img src="assets/gallery-3.jpg" alt="Sofia and Cameron walking along the shoreline"></figure><figure><img src="assets/gallery-4.jpg" alt="Sofia and Cameron together in the ocean breeze"></figure><figure><img src="assets/gallery-5.jpg" alt="Sofia and Cameron walking hand in hand on the beach"></figure><figure><img src="assets/gallery-6.jpg" alt="Sofia and Cameron embracing beside the sea"></figure></div></section>
+
+    <section class="coastal-rsvp section-shell" id="rsvp"><div><p class="eyebrow coral">Kindly reply by August 1</p><h2>Will we see you on the island?</h2><p>This built-in RSVP collects the guest details needed for a multi-event destination weekend.</p></div><form id="coastal-rsvp-form"><label>Full name<input name="name" required autocomplete="name"></label><label>Will you join us?<select name="attendance"><option>Joyfully accepts</option><option>Regretfully declines</option></select></label><label>Party size<select name="party-size"><option>1 guest</option><option>2 guests</option><option>3 guests</option><option>4 guests</option></select></label><label>Meal preference<select name="meal"><option>Yucatán grilled chicken</option><option>Catch of the day</option><option>Roasted vegetable mole</option></select></label><label>Which events will you attend?<select name="events"><option>Wedding day only</option><option>Welcome dinner + wedding day</option><option>Full wedding weekend</option></select></label><label>Dietary, accessibility, or travel notes<textarea name="notes" rows="3"></textarea></label><button class="primary-button" type="submit">Preview my RSVP</button><output aria-live="polite"></output></form></section>
 
     <section class="faq section-shell">
       <div class="section-heading compact"><p class="eyebrow coral">Good to know</p><h2>Island questions, answered.</h2></div>
@@ -392,5 +383,6 @@
 
   <div class="toast" role="status" aria-live="polite" hidden></div>
   <script src="script.js"></script>
+  <script src="../demo-package.js"></script>
 </body>
 </html>
