@@ -28,7 +28,9 @@
     });
     if (progress) progress.style.width = `${((current + 1) / panels.length) * 100}%`;
     if (error) error.textContent = '';
-    window.scrollTo({top: shell.offsetTop, behavior:'smooth'});
+    const target = panels[current];
+    const y = target.getBoundingClientRect().top + window.scrollY - 24;
+    window.scrollTo({top:y, behavior:'smooth'});
   }
 
   function validateStep() {
@@ -212,6 +214,21 @@
     document.querySelector('[data-email-first]').value = snap.firstName === 'there' ? '' : snap.firstName;
     document.querySelector('[data-email-name]').textContent = snap.firstName === 'there' ? 'your plan' : `${snap.firstName}'s plan`;
     results.dataset.plan = JSON.stringify({plan,snap});
+    try {
+      localStorage.setItem('weddingGamePlanProfileV1', JSON.stringify({
+        guestCount: radio('guestCount'),
+        location: snap.location,
+        budgetStatus: radio('budgetStatus'),
+        planningStyle: radio('planningStyle'),
+        priorityKeys: checked('priorities'),
+        firstName: value('firstName'),
+        partnerName: value('partnerName'),
+        dateStatus: radio('dateStatus'),
+        weddingDate: value('weddingDate'),
+        season: value('season'),
+        year: value('year')
+      }));
+    } catch (e) {}
     shell.style.display = 'none';
     results.classList.add('visible');
     document.title = 'Your Wedding Starting Plan | Tiny Site Weddings';
