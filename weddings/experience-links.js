@@ -1,7 +1,7 @@
 (() => {
   const routes = {
     "Save the Date": "demos/save-the-date/",
-    "Wedding Website": "demos/garden/",
+    "Wedding Website": "demos/garden-party/",
     "Digital Invitation": "demos/digital-invitation/",
     "Bridal Shower": "demos/bridal-shower/",
     "Celebration Weekend": "demos/celebration-weekend/",

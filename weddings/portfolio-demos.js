@@ -11,17 +11,17 @@
 
   const demos = `
     <article class="portfolio-card portfolio-live">
-      <a class="portfolio-live-link" href="demos/garden/">
-        <div class="portfolio-art portfolio-garden">
+      <a class="portfolio-live-link" href="demos/garden-party/">
+        <div class="portfolio-art portfolio-garden-party">
           <span class="portfolio-index">01</span>
-          <span class="portfolio-monogram">A&amp;J</span>
+          <span class="portfolio-monogram">L&amp;R</span>
           <span class="portfolio-demo">Explore Their Wedding ↗</span>
         </div>
         <div class="portfolio-caption">
           <div>
-            <h3>Amelia &amp; Julian</h3>
-            <p>Garden editorial wedding</p>
-            <p class="portfolio-live-description">A romantic, story-rich wedding website inspired by magnolias, candlelight, and spring in Charleston.</p>
+            <h3>Lena &amp; Rose</h3>
+            <p>Essentials garden wedding</p>
+            <p class="portfolio-live-description">A joyful Charleston garden site with beautiful photo storytelling and all the wedding-day essentials.</p>
           </div>
           <span>Charleston, South Carolina</span>
         </div>
@@ -75,23 +75,6 @@
             <p class="portfolio-live-description">A sharp Chicago celebration with an interactive skyline, playlist preview, and gallery-night energy.</p>
           </div>
           <span>Chicago, Illinois</span>
-        </div>
-      </a>
-    </article>
-    <article class="portfolio-card portfolio-live">
-      <a class="portfolio-live-link" href="demos/garden-party/">
-        <div class="portfolio-art portfolio-garden-party">
-          <span class="portfolio-index">05</span>
-          <span class="portfolio-monogram">L&amp;R</span>
-          <span class="portfolio-demo">Join the Garden Party ↗</span>
-        </div>
-        <div class="portfolio-caption">
-          <div>
-            <h3>Lena &amp; Rose</h3>
-            <p>Garden party wedding</p>
-            <p class="portfolio-live-description">A joyful Charleston garden filled with color, a flower oracle, and thoughtful guest tools.</p>
-          </div>
-          <span>Charleston, South Carolina</span>
         </div>
       </a>
     </article>

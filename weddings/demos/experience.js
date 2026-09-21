@@ -61,6 +61,15 @@
         copy: "We can’t wait to celebrate under the wide-open New Mexico sky.",
         actions: '<a class="button" href="#open-note">Open our note</a><button class="button secondary" type="button" data-share>Share</button>'
       })}
+      <section class="save-date-countdown" aria-label="Countdown to Nora and Ellis's wedding">
+        <p>Counting down to Santa Fe</p>
+        <div class="countdown-grid" data-countdown>
+          <span><strong data-days>000</strong><small>Days</small></span>
+          <span><strong data-hours>00</strong><small>Hours</small></span>
+          <span><strong data-minutes>00</strong><small>Minutes</small></span>
+          <span><strong data-seconds>00</strong><small>Seconds</small></span>
+        </div>
+      </section>
       <section class="content-section tint" id="open-note">
         <div class="section-shell">
           <div class="section-heading">
@@ -515,6 +524,20 @@
   if (key === "save-the-date") {
     const wrap = root.querySelector("[data-envelope-wrap]");
     const status = root.querySelector("[data-status]");
+    const weddingTime = new Date("2027-09-18T17:00:00-06:00").getTime();
+    const updateCountdown = () => {
+      const remaining = Math.max(0, weddingTime - Date.now());
+      const days = Math.floor(remaining / 86400000);
+      const hours = Math.floor((remaining / 3600000) % 24);
+      const minutes = Math.floor((remaining / 60000) % 60);
+      const seconds = Math.floor((remaining / 1000) % 60);
+      root.querySelector("[data-days]").textContent = String(days).padStart(3, "0");
+      root.querySelector("[data-hours]").textContent = String(hours).padStart(2, "0");
+      root.querySelector("[data-minutes]").textContent = String(minutes).padStart(2, "0");
+      root.querySelector("[data-seconds]").textContent = String(seconds).padStart(2, "0");
+    };
+    updateCountdown();
+    window.setInterval(updateCountdown, 1000);
     root.querySelector("[data-open-envelope]").addEventListener("click", (event) => {
       wrap.classList.toggle("open");
       event.currentTarget.textContent = wrap.classList.contains("open") ? "Close the envelope" : "Open the envelope";
