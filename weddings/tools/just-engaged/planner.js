@@ -60,7 +60,19 @@
     if (back) show(current - 1);
   });
 
-  form.querySelectorAll('input[name="priorities"]').forEach(input => input.addEventListener('change', () => {\n    const chosen = checked('priorities');\n    const boxes = [...form.querySelectorAll('input[name="priorities"]')];\n    if (chosen.length > 3) { input.checked = false; if (error) error.textContent = 'Choose up to three priorities.'; }\n    const atLimit = checked('priorities').length >= 3;\n    boxes.forEach(box => { if (!box.checked) box.disabled = atLimit; });\n    if (!atLimit && error?.textContent === 'Choose up to three priorities.') error.textContent = '';\n  }));\n\n  const dateModeInputs = form.querySelectorAll('input[name="dateStatus"]');
+  form.querySelectorAll('input[name="priorities"]').forEach(input => input.addEventListener('change', () => {
+    const chosen = checked('priorities');
+    const boxes = [...form.querySelectorAll('input[name="priorities"]')];
+    if (chosen.length > 3) {
+      input.checked = false;
+      if (error) error.textContent = 'Choose up to three priorities.';
+    }
+    const atLimit = checked('priorities').length >= 3;
+    boxes.forEach(box => { if (!box.checked) box.disabled = atLimit; });
+    if (!atLimit && error?.textContent === 'Choose up to three priorities.') error.textContent = '';
+  }));
+
+  const dateModeInputs = form.querySelectorAll('input[name="dateStatus"]');
   const dateFields = document.querySelector('[data-date-fields]');
   const seasonFields = document.querySelector('[data-season-fields]');
   dateModeInputs.forEach(input => input.addEventListener('change', () => {
