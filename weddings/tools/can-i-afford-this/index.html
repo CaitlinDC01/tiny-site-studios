@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Can I Afford This Wedding? | Tiny Site Weddings</title>
+<meta name="description" content="Compare your wedding budget with a broad planning estimate, see the gap, and test practical changes that can move the numbers.">
+<link rel="canonical" href="https://tinysitestudios.com/weddings/tools/can-i-afford-this/">
+<meta property="og:title" content="Can I Afford This Wedding?">
+<meta property="og:description" content="A wedding budget reality check that shows the gap—and the levers that can actually change it.">
+<meta property="og:image" content="https://tinysitestudios.com/assets/weddings-social-preview-v4.png">
+<meta name="theme-color" content="#79687f"><link rel="icon" href="../../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,650&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../rebuild.css?v=2"><link rel="stylesheet" href="../planner.css?v=2"><link rel="stylesheet" href="afford.css?v=1">
+</head>
+<body>
+<div class="planner-shell">
+<header class="site-header">
+<a class="brand-lockup" href="/weddings/"><span>Tiny Site Studios</span><em>Weddings</em></a>
+<nav class="desktop-nav"><a href="/weddings/">Wedding Sites</a><a href="/weddings/tools/">Planning Tools</a><a href="/weddings/features/">Features</a><a href="/weddings/demos/">Demos</a><a href="/weddings/pricing/">Pricing</a></nav>
+<a class="pill pill-dark header-cta" href="/weddings/tools/">All Free Tools</a>
+<details class="mobile-menu"><summary>Menu</summary><nav><a href="/weddings/">Wedding Sites</a><a href="/weddings/tools/">Planning Tools</a><a href="/weddings/features/">Features</a><a href="/weddings/pricing/">Pricing</a></nav></details>
+</header>
+
+<main>
+<section class="afford-hero">
+<div><p class="eyebrow">Free wedding planning tool</p><h1>Can I afford <span>this wedding?</span></h1><p class="lead">Tell us the budget, guest count, market, and type of wedding you’re picturing. We’ll show whether the plan looks comfortable, close, or stretched—and which decisions can move the numbers the most.</p></div>
+<aside class="afford-note"><strong>This is a reality check, not a verdict.</strong><p>The goal is not to tell you what your wedding “should” cost. It is to show which assumptions are driving the budget so you can change the plan before contracts make those choices expensive.</p></aside>
+</section>
+
+<div class="planner-wrap">
+<form class="planner-card" data-afford-form novalidate>
+<aside class="planner-sidebar">
+<p class="eyebrow">Wedding reality check</p>
+<p class="progress-label">Progress</p><div class="progress-track"><div class="progress-bar"></div></div>
+<ol class="step-list"><li class="active"><span>1</span>Budget</li><li><span>2</span>Guests</li><li><span>3</span>Market</li><li><span>4</span>Style</li><li><span>5</span>Priorities</li></ol>
+</aside>
+<div class="planner-main">
+
+<section class="step-panel">
+<p class="step-kicker">Step 1 of 5</p><h2>What is the most you want to spend?</h2><p class="step-intro">Use the number you actually want to protect—not the number you could technically stretch to if everything went wrong.</p>
+<div class="form-grid"><div class="field full money-field"><label for="afford-budget">Working wedding budget</label><input id="afford-budget" name="totalBudget" inputmode="decimal" placeholder="25000" required></div></div>
+<div class="planner-actions"><button class="next-btn" type="button" data-next>Next →</button></div>
+</section>
+
+<section class="step-panel" hidden>
+<p class="step-kicker">Step 2 of 5</p><h2>How many guests are you planning for?</h2><p class="step-intro">Guest count changes more than catering. It affects bar, rentals, stationery, transportation, venue size, and often staffing.</p>
+<div class="choice-grid three" data-required-radio="guestCount">
+<label class="choice-card"><input type="radio" name="guestCount" value="under50"><span><strong>Under 50</strong><small>Micro / intimate</small></span></label>
+<label class="choice-card"><input type="radio" name="guestCount" value="50-100"><span><strong>50–100</strong><small>Small to midsize</small></span></label>
+<label class="choice-card"><input type="radio" name="guestCount" value="100-150"><span><strong>100–150</strong><small>Midsize</small></span></label>
+<label class="choice-card"><input type="radio" name="guestCount" value="150-200"><span><strong>150–200</strong><small>Large</small></span></label>
+<label class="choice-card"><input type="radio" name="guestCount" value="200plus"><span><strong>200+</strong><small>Very large</small></span></label>
+<label class="choice-card"><input type="radio" name="guestCount" value="unsure"><span><strong>Still deciding</strong><small>We’ll use a neutral baseline.</small></span></label>
+</div>
+<div class="planner-actions"><button class="back-btn" type="button" data-back>← Back</button><button class="next-btn" type="button" data-next>Next →</button></div>
+</section>
+
+<section class="step-panel" hidden>
+<p class="step-kicker">Step 3 of 5</p><h2>What kind of pricing market are you shopping in?</h2><p class="step-intro">This keeps the comparison broad enough to be useful without pretending national averages are local quotes.</p>
+<div class="choice-grid" data-required-radio="market">
+<label class="choice-card"><input type="radio" name="market" value="lower"><span><strong>Lower-cost market</strong><small>Smaller town, lower-cost region, or intentionally simple venue model.</small></span></label>
+<label class="choice-card"><input type="radio" name="market" value="typical"><span><strong>Typical metro / suburban market</strong><small>Conventional venue and professional vendors.</small></span></label>
+<label class="choice-card"><input type="radio" name="market" value="high"><span><strong>High-cost major city</strong><small>Premium market or especially expensive metro area.</small></span></label>
+<label class="choice-card"><input type="radio" name="market" value="destination"><span><strong>Destination wedding</strong><small>Travel, multiple events, or destination-specific vendor costs may apply.</small></span></label>
+<label class="choice-card"><input type="radio" name="market" value="unsure"><span><strong>I’m not sure</strong><small>Use a typical-market baseline for now.</small></span></label>
+</div>
+<div class="planner-actions"><button class="back-btn" type="button" data-back>← Back</button><button class="next-btn" type="button" data-next>Next →</button></div>
+</section>
+
+<section class="step-panel" hidden>
+<p class="step-kicker">Step 4 of 5</p><h2>What kind of wedding are you picturing?</h2><p class="step-intro">This is about overall spend intensity, not taste. A simple wedding can still be beautiful; a formal one just tends to include more paid layers.</p>
+<div class="choice-grid" data-required-radio="style">
+<label class="choice-card"><input type="radio" name="style" value="simple"><span><strong>Simple + intentional</strong><small>Fewer extras, simpler venue or meal model, minimal décor layers.</small></span></label>
+<label class="choice-card"><input type="radio" name="style" value="classic"><span><strong>Classic wedding</strong><small>Traditional venue, meal, music, flowers, attire, and core vendors.</small></span></label>
+<label class="choice-card"><input type="radio" name="style" value="formal"><span><strong>Formal / elevated</strong><small>More rentals, décor, premium details, larger vendor teams, or upgraded service.</small></span></label>
+<label class="choice-card"><input type="radio" name="style" value="luxury"><span><strong>Luxury / highly produced</strong><small>Premium venue, extensive florals/design, top-tier vendors, and layered guest experiences.</small></span></label>
+</div>
+<div class="planner-actions"><button class="back-btn" type="button" data-back>← Back</button><button class="next-btn" type="button" data-next>Next →</button></div>
+</section>
+
+<section class="step-panel" hidden>
+<p class="step-kicker">Step 5 of 5</p><h2>What are the three things you least want to compromise?</h2><p class="step-intro">If we need to close a budget gap, these are the categories we’ll tell you to protect instead of cutting everything equally.</p>
+<div class="choice-grid">
+<label class="choice-card"><input type="checkbox" name="priorities" value="photos"><span><strong>Photography / video</strong><small>The memories are non-negotiable.</small></span></label>
+<label class="choice-card"><input type="checkbox" name="priorities" value="food"><span><strong>Food + drinks</strong><small>I want guests well fed and taken care of.</small></span></label>
+<label class="choice-card"><input type="checkbox" name="priorities" value="venue"><span><strong>Venue / setting</strong><small>The place and atmosphere matter most.</small></span></label>
+<label class="choice-card"><input type="checkbox" name="priorities" value="music"><span><strong>Music + party</strong><small>The celebration needs great energy.</small></span></label>
+<label class="choice-card"><input type="checkbox" name="priorities" value="florals"><span><strong>Flowers + décor</strong><small>The visual experience matters a lot.</small></span></label>
+<label class="choice-card"><input type="checkbox" name="priorities" value="attire"><span><strong>Attire + beauty</strong><small>How we look and feel matters.</small></span></label>
+<label class="choice-card"><input type="checkbox" name="priorities" value="guest"><span><strong>Guest experience</strong><small>Comfort, ease, and thoughtful touches matter.</small></span></label>
+<label class="choice-card"><input type="checkbox" name="priorities" value="lowstress"><span><strong>Low-stress planning</strong><small>Paying for professional help is a priority.</small></span></label>
+</div>
+<div class="planner-actions"><button class="back-btn" type="button" data-back>← Back</button><button class="next-btn" type="button" data-next>Run the reality check →</button></div>
+</section>
+
+<p class="planner-error" role="alert" aria-live="polite"></p>
+</div>
+</form>
+</div>
+</main>
+</div>
+
+<section class="afford-results">
+<div class="afford-summary">
+<article class="afford-card primary"><p class="eyebrow">Your reality check</p><h2 data-afford-title></h2><span class="gap-number" data-gap></span><p data-afford-copy></p></article>
+<article class="afford-card secondary"><p class="step-kicker">Your numbers</p><h3><span data-budget-number></span> budget</h3><p>Broad planning estimate: <strong data-estimate-number></strong></p><div class="gauge" data-gauge><span></span></div><div class="gauge-labels"><span>More stretched</span><span>More breathing room</span></div></article>
+</div>
+
+<article class="lever-section"><p class="step-kicker">What actually moves the number</p><h3>Try changing the plan—not just the spreadsheet.</h3><p>Select any changes you would realistically consider. We’ll show how much of the gap they could potentially close.</p><div class="lever-grid" data-levers></div><div class="adjusted-strip" data-adjusted><strong>Try the levers above</strong><span></span></div></article>
+
+<article class="priority-callout"><p class="step-kicker">Protect what matters</p><h3>Do not cut everything equally.</h3><p data-priority-copy></p></article>
+
+<div class="afford-actions"><button class="primary" type="button" data-print-afford>Print / Save PDF</button><button type="button" data-edit-afford>Edit my answers</button><a href="/weddings/tools/">All planning tools</a></div>
+<p class="source-note">This is a broad planning model, not a vendor quote or financial advice. Actual pricing varies by city, venue, vendor, season, date, guest count, taxes, fees, and what your contracts include. Use real local quotes to replace estimates as soon as you begin booking.</p>
+</section>
+
+<footer><a class="brand-lockup" href="/weddings/"><span>Tiny Site Studios</span><em>Weddings</em></a><p>Personalized wedding websites without the homework.</p><nav><a href="/weddings/tools/">Planning Tools</a><a href="/weddings/features/">Features</a><a href="/weddings/pricing/">Pricing</a></nav></footer>
+<script src="afford.js?v=1"></script>
+</body></html>
