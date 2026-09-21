@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Wedding Budget Builder | Tiny Site Weddings</title>
+<meta name="description" content="Build a personalized wedding budget based on guest count, market, priorities, and your actual spending target.">
+<link rel="canonical" href="https://tinysitestudios.com/weddings/tools/budget/">
+<meta property="og:title" content="Wedding Budget Builder">
+<meta property="og:description" content="Figure out where your wedding money should go—without pretending one percentage chart fits everyone.">
+<meta property="og:image" content="https://tinysitestudios.com/assets/weddings-social-preview-v4.png">
+<meta name="theme-color" content="#79687f"><link rel="icon" href="../../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,650&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../rebuild.css?v=2"><link rel="stylesheet" href="../planner.css?v=2"><link rel="stylesheet" href="budget.css?v=1">
+</head>
+<body>
+<div class="planner-shell">
+<header class="site-header">
+<a class="brand-lockup" href="/weddings/"><span>Tiny Site Studios</span><em>Weddings</em></a>
+<nav class="desktop-nav"><a href="/weddings/">Wedding Sites</a><a href="/weddings/tools/">Planning Tools</a><a href="/weddings/features/">Features</a><a href="/weddings/demos/">Demos</a><a href="/weddings/pricing/">Pricing</a></nav>
+<a class="pill pill-dark header-cta" href="/weddings/tools/">All Free Tools</a>
+<details class="mobile-menu"><summary>Menu</summary><nav><a href="/weddings/">Wedding Sites</a><a href="/weddings/tools/">Planning Tools</a><a href="/weddings/features/">Features</a><a href="/weddings/pricing/">Pricing</a></nav></details>
+</header>
+
+<main>
+<section class="budget-hero">
+<div><p class="eyebrow">Free wedding planning tool</p><h1>Where should the money <span>actually go?</span></h1><p class="lead">Start with the budget you already have—or let us give you a realistic planning range. Then we’ll divide it around your guest count and the things you care about most.</p></div>
+<aside class="budget-note"><strong>This is not another generic percentage chart.</strong><p>Wedding costs vary wildly by guest count, location, venue model, and priorities. This tool gives you a starting framework you can replace with real quotes as you book.</p></aside>
+</section>
+
+<div class="planner-wrap">
+<form class="planner-card" data-budget-form novalidate>
+<aside class="planner-sidebar">
+<p class="eyebrow">Build your budget</p>
+<p class="progress-label">Progress</p><div class="progress-track"><div class="progress-bar"></div></div>
+<ol class="step-list"><li class="active"><span>1</span>Budget</li><li><span>2</span>Guests</li><li><span>3</span>Market</li><li><span>4</span>Priorities</li><li><span>5</span>Finish</li></ol>
+</aside>
+<div class="planner-main">
+<section class="step-panel">
+<p class="step-kicker">Step 1 of 5</p><h2>Do you already know what you can spend?</h2><p class="step-intro">Either answer works. If you already have a number, we’ll protect it. If not, we’ll build a broad planning target first.</p>
+<div class="choice-grid" data-required-radio="budgetMode">
+<label class="choice-card"><input type="radio" name="budgetMode" value="known"><span><strong>Yes—I have a total budget</strong><small>Use my number and help me decide where it should go.</small></span></label>
+<label class="choice-card"><input type="radio" name="budgetMode" value="estimate"><span><strong>I have no idea yet</strong><small>Help me figure out a realistic starting range.</small></span></label>
+</div>
+<div class="form-grid" data-known-budget hidden style="margin-top:18px"><div class="field full money-field"><label for="total-budget">Total wedding budget</label><input id="total-budget" name="totalBudget" inputmode="decimal" placeholder="25000"></div></div>
+<div class="planner-actions"><button class="next-btn" type="button" data-next>Next →</button></div>
+</section>
+
+<section class="step-panel" hidden>
+<p class="step-kicker">Step 2 of 5</p><h2>How many people are you roughly planning for?</h2><p class="step-intro">Guest count is one of the biggest budget levers because food, drinks, rentals, stationery, transportation, and venue size all move with it.</p>
+<div class="choice-grid three" data-required-radio="guestCount">
+<label class="choice-card"><input type="radio" name="guestCount" value="under50"><span><strong>Under 50</strong><small>Micro / intimate</small></span></label>
+<label class="choice-card"><input type="radio" name="guestCount" value="50-100"><span><strong>50–100</strong><small>Small to midsize</small></span></label>
+<label class="choice-card"><input type="radio" name="guestCount" value="100-150"><span><strong>100–150</strong><small>Midsize</small></span></label>
+<label class="choice-card"><input type="radio" name="guestCount" value="150-200"><span><strong>150–200</strong><small>Large</small></span></label>
+<label class="choice-card"><input type="radio" name="guestCount" value="200plus"><span><strong>200+</strong><small>Very large</small></span></label>
+<label class="choice-card"><input type="radio" name="guestCount" value="unsure"><span><strong>Still deciding</strong><small>We’ll use a neutral planning assumption.</small></span></label>
+</div>
+<div class="form-grid" style="margin-top:18px"><div class="field full"><label for="location">Wedding city / area <span style="font-weight:400">(optional)</span></label><input id="location" name="location" placeholder="Houston, TX / destination / not sure yet"></div></div>
+<div class="planner-actions"><button class="back-btn" type="button" data-back>← Back</button><button class="next-btn" type="button" data-next>Next →</button></div>
+</section>
+
+<section class="step-panel" hidden>
+<p class="step-kicker">Step 3 of 5</p><h2>What kind of pricing market are you shopping in?</h2><p class="step-intro">This keeps the estimate honest without pretending we have a quote from every venue and vendor in your city.</p>
+<div class="choice-grid" data-required-radio="market">
+<label class="choice-card"><input type="radio" name="market" value="lower"><span><strong>Lower-cost market</strong><small>Smaller town, lower-cost region, community venue, or intentionally simple setup.</small></span></label>
+<label class="choice-card"><input type="radio" name="market" value="typical"><span><strong>Typical metro / suburban market</strong><small>Standard professional vendors and a conventional venue.</small></span></label>
+<label class="choice-card"><input type="radio" name="market" value="high"><span><strong>High-cost major city</strong><small>Luxury market, premium venue area, or especially expensive city.</small></span></label>
+<label class="choice-card"><input type="radio" name="market" value="destination"><span><strong>Destination wedding</strong><small>Travel, multiple events, or destination-specific vendor costs may apply.</small></span></label>
+<label class="choice-card"><input type="radio" name="market" value="unsure"><span><strong>I genuinely don’t know</strong><small>Use a typical-market baseline for now.</small></span></label>
+</div>
+<div class="planner-actions"><button class="back-btn" type="button" data-back>← Back</button><button class="next-btn" type="button" data-next>Next →</button></div>
+</section>
+
+<section class="step-panel" hidden>
+<p class="step-kicker">Step 4 of 5</p><h2>Pick the three things you most want to protect.</h2><p class="step-intro">We’ll shift more of your working budget toward these instead of treating every category as equally important.</p>
+<div class="choice-grid">
+<label class="choice-card"><input type="checkbox" name="priorities" value="photos"><span><strong>Photography / video</strong><small>The memories matter most.</small></span></label>
+<label class="choice-card"><input type="checkbox" name="priorities" value="food"><span><strong>Food + drinks</strong><small>Feed people well and keep the bar flowing.</small></span></label>
+<label class="choice-card"><input type="checkbox" name="priorities" value="venue"><span><strong>Venue / setting</strong><small>The place and atmosphere are central.</small></span></label>
+<label class="choice-card"><input type="checkbox" name="priorities" value="music"><span><strong>Music + party</strong><small>The energy of the celebration matters.</small></span></label>
+<label class="choice-card"><input type="checkbox" name="priorities" value="florals"><span><strong>Flowers + décor</strong><small>The visual experience is a priority.</small></span></label>
+<label class="choice-card"><input type="checkbox" name="priorities" value="attire"><span><strong>Attire + beauty</strong><small>How you look and feel matters.</small></span></label>
+<label class="choice-card"><input type="checkbox" name="priorities" value="guest"><span><strong>Guest experience</strong><small>Comfort, communication, and thoughtful touches.</small></span></label>
+<label class="choice-card"><input type="checkbox" name="priorities" value="lowstress"><span><strong>Low-stress planning</strong><small>Paying for help is itself a priority.</small></span></label>
+</div>
+<div class="planner-actions"><button class="back-btn" type="button" data-back>← Back</button><button class="next-btn" type="button" data-next>Next →</button></div>
+</section>
+
+<section class="step-panel" hidden>
+<p class="step-kicker">Step 5 of 5</p><h2>Ready to see the numbers?</h2><p class="step-intro">We’ll show your working total, a broad benchmark, category allocations, your best savings levers, and the costs couples most often forget.</p>
+<div class="form-grid"><div class="field full"><label for="budget-first-name">Your first name <span style="font-weight:400">(optional)</span></label><input id="budget-first-name" name="firstName" autocomplete="given-name"></div></div>
+<p class="optional-note">Nothing is saved to an account. We only keep a small profile in this browser so the wedding tools can reuse your answers.</p>
+<div class="planner-actions"><button class="back-btn" type="button" data-back>← Back</button><button class="next-btn" type="button" data-next>Build my budget →</button></div>
+</section>
+<p class="planner-error" role="alert" aria-live="polite"></p>
+</div>
+</form>
+</div>
+</main>
+</div>
+
+<section class="budget-results">
+<div class="budget-summary">
+<article class="budget-total-card"><p class="eyebrow">Your game plan</p><h2 data-budget-title>Your working wedding budget</h2><strong class="big-money" data-total>$0</strong><p data-budget-sub></p></article>
+<article class="budget-benchmark-card"><p class="step-kicker">Reality check—not a requirement</p><h3 data-benchmark>$0–$0</h3><p data-benchmark-copy></p><p><strong data-perguest></strong></p></article>
+</div>
+<article class="budget-breakdown"><p class="step-kicker">A starting allocation</p><h3>Where the money could go</h3><p>This is designed to be edited as real quotes come in. Your priority categories receive a little more room automatically.</p><table class="budget-table"><thead><tr><th>Category</th><th>Share</th><th>Working amount</th></tr></thead><tbody data-budget-rows></tbody></table></article>
+<div class="strategy-grid">
+<article class="strategy-card protect"><p class="step-kicker">Protect these</p><h3>Spend here on purpose</h3><ul data-protect></ul></article>
+<article class="strategy-card save"><p class="step-kicker">Easy places to question</p><h3>Save without ruining the wedding</h3><ul data-save></ul></article>
+<article class="strategy-card watch"><p class="step-kicker">Budget sneaks</p><h3>Do not forget these</h3><ul data-watch></ul></article>
+</div>
+<div class="reality-strip" data-reality></div>
+<div class="budget-actions"><button class="primary" type="button" data-print-budget>Print / Save PDF</button><button type="button" data-edit-budget>Edit my answers</button><a href="/weddings/tools/">All planning tools</a></div>
+<article class="next-tool"><p class="step-kicker" style="color:#e9c6c9">Next tool</p><h3>Now decide what is actually worth DIYing.</h3><p>The next Wedding Game Plan tool will compare money saved with time, skill, setup, stress, and the risk of something becoming a wedding-week problem.</p><a class="pill" href="/weddings/tools/">DIY It or Hire It? · Coming next</a></article>
+<p class="source-note">Planning ranges are broad directional estimates informed by current U.S. wedding-cost data and adjusted for guest-count and market type. They are not vendor quotes. National averages are especially poor predictors for a specific wedding, so replace these numbers with local quotes as you plan.</p>
+</section>
+
+<footer><a class="brand-lockup" href="/weddings/"><span>Tiny Site Studios</span><em>Weddings</em></a><p>Personalized wedding websites without the homework.</p><nav><a href="/weddings/tools/">Planning Tools</a><a href="/weddings/features/">Features</a><a href="/weddings/pricing/">Pricing</a></nav></footer>
+<script src="budget.js?v=1"></script>
+</body></html>
