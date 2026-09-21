@@ -10,7 +10,7 @@
     "Destination Guide": "demos/coastal/",
     "Reception Companion": "demos/reception-companion/",
     "QR Guest Experience": "demos/qr-guest-experience/",
-    "Guestbook Live": "https://guestbook.tinysitestudios.com/",
+    "Guestbook Live": "https://guestbook-live.com/",
     "Thank You Site": "demos/thank-you/",
     "Anniversary Site": "demos/anniversary/"
   };
