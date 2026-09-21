@@ -1,6 +1,6 @@
 (() => {
-  const productUrl = "https://guestbook.tinysitestudios.com/";
-  const demoUrl = "https://wall.tinysitestudios.com/bea-milo";
+  const productUrl = "https://guestbook-live.com/";
+  const demoUrl = "https://guestbook-live.com/bea-milo";
 
   const heroIntro = document.querySelector(".hero-intro");
   if (heroIntro) {
