@@ -1,5 +1,5 @@
 (() => {
-  const packageNames = { 'rsvp-only': 'RSVP Only · $29', 'save-the-date-only': 'Save-the-Date Only · $29', 'invitation-only': 'Digital Invitation Only · $39', essentials: 'Essentials · $99', signature: 'Signature · $149', 'wedding-hub': 'Wedding Hub · $199', 'full-experience': 'Full Experience · $249' };
+  const packageNames = { 'wedding-party': 'Wedding Party Site · $39', 'rsvp-only': 'RSVP Only · $29', 'save-the-date-only': 'Save-the-Date Only · $29', 'invitation-only': 'Digital Invitation Only · $39', essentials: 'Essentials · $99', signature: 'Signature · $149', 'wedding-hub': 'Wedding Hub · $199', 'full-experience': 'Full Experience · $249' };
   const selected = new URLSearchParams(location.search).get('package');
   const output = document.querySelector('[data-selected-package]');
   if (output && selected && packageNames[selected]) output.textContent = packageNames[selected];
@@ -10,14 +10,15 @@
     const update = () => {
       const values = [...finder.querySelectorAll('input:checked')].map((input) => input.value);
       let slug = 'essentials';
-      if (values.length === 1 && values.includes('save-the-date')) slug = 'save-the-date-only';
+      if (values.length === 1 && values.includes('party-guide')) slug = 'wedding-party';
+      else if (values.length === 1 && values.includes('save-the-date')) slug = 'save-the-date-only';
       else if (values.length === 1 && values.includes('invitation')) slug = 'invitation-only';
       else if (values.length && values.every((value) => ['rsvp','meals'].includes(value))) slug = 'rsvp-only';
       else {
         if (values.some((value) => ['rsvp','meals','travel','faq','story'].includes(value))) slug = 'signature';
         if (values.some((value) => ['weekend','seat-finder','dj','updates','seating'].includes(value))) slug = 'wedding-hub';
         const tools = values.filter((value) => ['seat-finder','dj','updates','seating','guestbook'].includes(value)).length;
-        if (tools >= 2 || values.includes('live-itinerary')) slug = 'full-experience';
+        if (tools >= 2 || values.includes('live-itinerary') || values.includes('party-guide')) slug = 'full-experience';
       }
       const extras = [];
       if (values.includes('seating')) extras.push('Seating Studio');
