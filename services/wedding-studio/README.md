@@ -66,3 +66,7 @@ node services/wedding-studio/tests/preview.test.mjs
 # Install linkedom@0.18.12 in a temporary QA directory, then:
 NODE_PATH=/path/to/qa/node_modules node services/wedding-studio/tests/intake.test.cjs
 ```
+
+## Shared account signup
+
+Wedding Studio shares the project’s Tiny Site Studios accounts. Supabase can return a successful, obfuscated signup response for an already-confirmed address without sending an email. The interface now uses conditional wording, explains the shared login, and offers sign-in and user-initiated confirmation resend. It does not expose account existence or bypass email verification.
