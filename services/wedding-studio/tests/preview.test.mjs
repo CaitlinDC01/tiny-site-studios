@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {publicIPv4,webURL,parsePreview} from '../link-preview/preview.mjs';
+for(const ip of ['127.0.0.1','10.0.0.1','169.254.169.254','172.16.1.1','192.168.1.1','100.64.0.1','0.0.0.0','224.0.0.1'])assert.equal(publicIPv4(ip),false,ip);
+assert.equal(publicIPv4('8.8.8.8'),true);
+for(const u of ['http://localhost/','http://127.0.0.1/','http://0x7f000001','https://user:pass@example.com','https://example.com:8443','file:///etc/passwd','https://[::1]/'])assert.throws(()=>webURL(u));
+const p=parsePreview(`<head><title>Fallback</title><meta content='Garden &amp; Greenery' property='og:title'><meta property="og:image" content="/photo.jpg"><meta name="description" content="Lovely &#x26; loose"></head>`,'https://example.com/');
+assert.equal(p.title,'Garden & Greenery');assert.equal(p.image,'https://example.com/photo.jpg');assert.equal(p.description,'Lovely & loose');
+assert.equal(parsePreview('<title>Only title</title>','https://example.com/').image,'');
+assert.equal(parsePreview('<meta property="og:image" content="javascript:alert(1)">','https://example.com/').image,'');
+console.log('Preview parsing and private-network rejection checks passed.');

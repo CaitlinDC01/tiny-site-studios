@@ -26,3 +26,43 @@ The browser contains only the public publishable key. Supabase JS is version-pin
 ## Verification
 
 JavaScript syntax checked. Owner read/insert and cross-user isolation verified with rollback-only SQL transactions. Invalid brief tokens return 404. Cloud-browser checks passed for adding a note, canvas keyboard movement, and selected-only brief printing. Real brief-token retrieval and revocation were tested against the deployed edge function; cross-owner file paths are rejected. Signed-in account/upload and narrow mobile browser verification remain untested in this session. Test those before inviting real clients.
+
+## Visual links and quick capture (September 30 update)
+
+- `wedding_studio_items.preview` stores sanitized title, description, image URL,
+  provider, resolved URL, and fetch time. Existing links are enriched on board
+  load (up to 20 per load); Edit details has a refresh action. Failures keep the
+  original link. Uploaded link covers use the existing private storage bucket.
+- `wedding-studio-link-preview` requires a verified Supabase user JWT before
+  fetching arbitrary URLs (`verify_jwt=false` because authentication is in the
+  handler). One fixed public garden-demo URL is allowed for a sample preview.
+  No service-role key is used. Requests carry no user cookies or credentials.
+- URLs/redirects are restricted to HTTP(S) on standard ports, without userinfo.
+  Every hop resolves to vetted public IPv4 addresses; connections are pinned to
+  those addresses. `transport.ts` uses native Deno TCP + TLS with original-host
+  certificate verification. This avoids the Edge runtime's Node HTTPS shim,
+  which does not preserve separate SNI when requesting an IP address.
+  Responses are bounded to 1 MiB; headers to 32 KiB; redirects to five hops;
+  request budget is 10 seconds. Per-instance per-user throttle: 40/minute.
+  This is a lightweight throttle, not a distributed quota. IPv6-only sites,
+  private pages, bot-protected stores, and pages with no metadata use fallbacks.
+- `intake.js` normalizes browser transfer data. File batches, URL lists, linked
+  images (including pin thumbnails), screenshots, and plain text save directly.
+  Each capture is capped at 30 entries, each file at 15 MiB. Editable fields and
+  dialogs retain normal paste behavior. Failed uploads can be retried. Items
+  awaiting sign-in are kept only in memory for this page session.
+- Pinterest support is individual public link capture and previews, not OAuth,
+  board import, or account sync. No Pinterest app credentials are configured.
+- Social tags use the public branded JPEG, never private board contents. The
+  original generated artwork was converted to JPEG without compositional edits.
+  `favicon.svg`, `favicon.ico`, and `apple-touch-icon.png` provide app icons.
+
+Checks:
+
+```sh
+node --check weddings/wedding-studio/studio.js
+node --check weddings/wedding-studio/intake.js
+node services/wedding-studio/tests/preview.test.mjs
+# Install linkedom@0.18.12 in a temporary QA directory, then:
+NODE_PATH=/path/to/qa/node_modules node services/wedding-studio/tests/intake.test.cjs
+```

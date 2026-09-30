@@ -1,0 +1,1 @@
+alter table public.wedding_studio_items add column preview jsonb not null default '{}'::jsonb constraint wedding_studio_preview_size check (jsonb_typeof(preview) = 'object' and octet_length(preview::text) <= 16000);
