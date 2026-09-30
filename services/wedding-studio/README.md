@@ -25,4 +25,4 @@ The browser contains only the public publishable key. Supabase JS is version-pin
 
 ## Verification
 
-JavaScript syntax checked. Owner read/insert and cross-user isolation verified with rollback-only SQL transactions. Invalid brief tokens return 404. Run browser checks for adding/editing/filtering, image upload, canvas movement, selected-only brief printing, mobile layout, and authentication before inviting real clients.
+JavaScript syntax checked. Owner read/insert and cross-user isolation verified with rollback-only SQL transactions. Invalid brief tokens return 404. Cloud-browser checks passed for adding a note, canvas keyboard movement, and selected-only brief printing. Real brief-token retrieval and revocation were tested against the deployed edge function; cross-owner file paths are rejected. Signed-in account/upload and narrow mobile browser verification remain untested in this session. Test those before inviting real clients.

@@ -1,0 +1,1 @@
+grant select on public.wedding_studio_briefs to service_role; revoke truncate, references, trigger on public.wedding_studio_boards, public.wedding_studio_items, public.wedding_studio_briefs from authenticated, service_role;
