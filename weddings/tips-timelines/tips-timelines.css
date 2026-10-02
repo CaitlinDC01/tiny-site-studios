@@ -112,3 +112,16 @@
 .printable-heading.compact{align-items:center}
 .printable-heading.compact h2{font-size:clamp(2.3rem,4vw,3.8rem)}
 .resources-only .editable-downloads{margin-top:28px}
+
+.section-heading-actions{display:flex;justify-content:space-between;gap:24px;align-items:end}
+.section-heading-actions>div{max-width:800px}
+.section-print{flex:none;margin-bottom:6px;padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);font:800 .7rem var(--sans);cursor:pointer}
+@media(max-width:720px){.section-heading-actions{display:block}.section-print{margin-top:12px}}
+@media print{
+  .section-print{display:none!important}
+  body.print-one .guide-section.print-parent{display:block!important}
+  body.print-one .guide-section.print-parent> :not(.timeline-roadmaps){display:none!important}
+  body.print-one .guide-section.print-parent .timeline-roadmaps{display:block!important}
+  body.print-one .guide-section.print-parent .roadmap{display:none!important}
+  body.print-one .guide-section.print-parent .roadmap.print-selected{display:block!important}
+}
