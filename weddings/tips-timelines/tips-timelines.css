@@ -107,3 +107,8 @@
   body.print-one .roadmap.print-selected{break-inside:auto}
   body.print-one .roadmap.print-selected .roadmap-track section{break-inside:avoid}
 }
+
+.resources-only{padding-top:58px;padding-bottom:62px}
+.printable-heading.compact{align-items:center}
+.printable-heading.compact h2{font-size:clamp(2.3rem,4vw,3.8rem)}
+.resources-only .editable-downloads{margin-top:28px}
