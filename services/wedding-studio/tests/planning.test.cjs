@@ -1,0 +1,10 @@
+const assert=require('node:assert/strict');
+const P=require('../../../weddings/wedding-studio/planning.js');
+assert.deepEqual(P.tags(['Flowers','Reception','flowers','  Personal touch  ']),['flowers','Reception','Personal touch']);
+assert.deepEqual(P.tags('All inspiration'),['Sort later']);assert(!P.validDate('2026-02-31'));assert(P.validDate('2028-02-29'));
+const template={groups:[{label:'Start',at:0,tasks:['Budget']},{label:'Middle',at:.5,tasks:['Flowers']},{label:'Finish',at:1,tasks:['Confirm']} ]};
+const tasks=P.schedule(template,'2026-10-01','2027-10-01');assert.equal(tasks.length,3);assert.equal(tasks[0].due,'2026-10-01');assert.equal(tasks[2].due,'2027-10-01');assert.throws(()=>P.schedule(template,'2027-10-01','2026-10-01'));
+const original=[{id:'done',due:'2027-05-01',status:'done'},{id:'fixed',due:'2027-05-01',fixed:true},{id:'moving',due:'2027-05-01',status:'todo'}];
+const shifted=P.shiftTasks(original,'2027-10-01','2027-11-01','2026-10-01');assert.equal(shifted[0],original[0]);assert.equal(shifted[1],original[1]);assert.equal(shifted[2].due,'2027-06-01');assert.equal(original[2].due,'2027-05-01');
+assert(P.allowedFile({name:'quote.pdf',type:'application/pdf'}));assert(!P.allowedFile({name:'clip.mp4',type:'video/mp4'}));assert(!P.allowedFile({name:'fake.jpg',type:'audio/mp3'}));
+console.log('Planning ranges, leap dates, multi-tags, fixed/completed task preservation, and upload types passed.');

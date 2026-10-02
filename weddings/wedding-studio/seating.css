@@ -1,0 +1,27 @@
+.room-studio{min-width:0;max-width:100%;padding-bottom:32px}
+.room-tools{position:sticky;top:0;z-index:15;display:flex;align-items:end;flex-wrap:wrap;gap:12px;background:#f9f5f2;padding:14px;border:1px solid #dfd2d8;border-radius:12px;box-shadow:0 6px 14px #3a202b08}
+.room-tools label{flex:1 1 200px;min-width:0}
+.room-tools label,.room-edit-fields label{display:grid;gap:6px;font-size:.8125rem;font-weight:600;color:var(--plum)}
+.room-tools select,.room-edit-fields select{width:100%;min-width:0;border:1px solid #d9cbd1;border-radius:8px;background:#fff;color:var(--ink);font:400 1rem var(--sans);padding:10px;min-height:44px}
+.room-tools button{min-height:44px}.room-tools button:disabled{opacity:.45;cursor:default}
+.room-heading{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:28px 0 8px}
+.room-heading h2,.room-detail h2{font-family:'DM Serif Display',Georgia,serif;font-size:2.2rem;font-weight:400;margin:8px 0}
+.room-key{font-size:.8125rem;color:#654958}.room-help,.room-notice,.room-seat-help{font-size:.875rem;line-height:1.6;color:#70656b;margin:12px 0}
+.room-map{position:relative;width:100%;aspect-ratio:1.2;background:#fdfbf8;border-radius:16px;isolation:isolate}
+.room-drawing{display:block;width:100%;height:100%;pointer-events:none}
+.room-object{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:44px;min-width:44px;max-width:19%;padding:2px;border:0;background:transparent;color:#50333f;cursor:grab;touch-action:none;font-family:var(--sans);line-height:1.2}
+.room-object:active{cursor:grabbing}.room-object strong{font-size:1.2rem;font-weight:600}.room-object span{font-size:.8125rem}.room-object small{font-size:.75rem}.room-object.is-selected{color:#3b202c}.room-object:focus-visible{outline:3px solid #754e61;outline-offset:4px;border-radius:6px}
+.room-zone-object span{font-size:.8125rem;overflow-wrap:normal}.room-zone-object{max-width:21%}
+.room-notice{padding:10px 0}.room-notice.has-warning{color:#934d36}
+.room-detail{margin-top:24px;padding:24px;background:#fffdfb;border:1px solid #dfd3d8;border-radius:16px}
+.room-detail-heading{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px}
+.room-edit-fields{display:flex;flex-wrap:wrap;align-items:end;gap:10px}.room-edit-fields label{min-width:100px}.room-edit-fields button{min-height:44px}
+.room-nudge{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:14px 0}.room-nudge span{font-size:.8125rem;margin-right:6px;color:#75626c}
+.room-nudge button{width:44px;height:44px;border:1px solid #d9c9d1;border-radius:9px;background:#f8f1f4;color:#694454;font-size:1.2rem;cursor:pointer}
+.room-seat-diagram{position:relative;width:min(440px,100%);aspect-ratio:1;margin:22px auto 26px}
+.room-table-center{position:absolute;left:50%;top:50%;width:45%;height:45%;border-radius:50%;border:2px solid #c5a4b4;background:#f1e4ea;display:grid;place-items:center;text-align:center}
+.room-table-center.rectangular{width:61%;height:29%;border-radius:10px}.room-table-center>span{display:block;font-family:'DM Serif Display',Georgia,serif;font-size:1.6rem}.room-table-center small{display:block;font:400 .75rem var(--sans);color:#6c5661;margin-top:8px}
+.room-seat{position:absolute;transform:translate(-50%,-50%);width:66px;min-height:48px;padding:5px 3px;border:1px solid #d7c3cd;border-radius:10px;background:#f0e5eb;color:#513240;display:flex;flex-direction:column;gap:2px;align-items:center;justify-content:center;font:400 .75rem var(--sans);line-height:1.2;cursor:pointer;overflow-wrap:anywhere}
+.room-seat small{font-size:.6875rem;opacity:.8}.room-seat.empty{border:1px dashed #799381;background:#f8fcf8;color:#45634d}.room-seat.selected-seat{outline:2px solid var(--plum);outline-offset:2px}.room-seat:disabled{opacity:.6;cursor:default}.room-seat:focus-visible{outline:3px solid #73485c;outline-offset:3px}
+.room-roster{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 20px;border-top:1px solid #e5dce0;padding-top:18px;font-size:.875rem}.room-roster span{display:flex;gap:8px;align-items:start;overflow-wrap:anywhere}.room-roster b{color:var(--plum);font-size:.75rem;min-width:20px;line-height:1.7}
+.room-overflow{border:1px solid #e4b8a8;border-radius:10px;padding:14px;background:#fff3ed;color:#884a34;font-size:.875rem;line-height:1.5}.room-overflow p{margin:5px 0 0}

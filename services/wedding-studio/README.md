@@ -1,4 +1,4 @@
-# Wedding Studio v1
+# The Wedding Studio by TSS
 
 Static app: `/weddings/wedding-studio/`. No build step. Published with the existing Tiny Site Studios GitHub/Vercel workflow.
 
@@ -6,7 +6,7 @@ Static app: `/weddings/wedding-studio/`. No build step. Published with the exist
 
 Supabase project: `ubovuhkvtwijtzofsobs` (tiny-site-studios).
 Applied migration: `20260930040725_wedding_studio_v1.sql` (tracked here as an immutable copy of the applied migration).
-Private bucket: `wedding-studio`, 15 MiB per object. All tables and object policies restrict access by authenticated user ID. One board per account. Card updates are saved independently; concurrent edits to the same card use last-write-wins.
+Private bucket: `wedding-studio`, 15 MiB per object. One board per owner; authenticated collaborators see only items matching their shared tags, or the whole board for a partner. Attachment policies explicitly check membership, tag visibility, and the board-owner path prefix. Card updates are saved independently; concurrent edits to the same card use last-write-wins.
 
 Edge function: `wedding-studio-brief`, source in `brief/index.ts`. JWT verification is deliberately off: GET uses the cryptographically random brief token as a scoped, read-only capability. Service role credentials remain exclusively in the function environment. The function loads a single unexpired snapshot, signs only paths beneath the snapshot owner's folder, and never exposes the owner's board. Links expire in 30 days and can be revoked by deleting the private brief row. Already-issued attachment links can last one hour after revocation.
 
@@ -14,7 +14,7 @@ The browser contains only the public publishable key. Supabase JS is version-pin
 
 ## First-version boundaries
 
-- One owner per board; no live multi-editor collaboration.
+- One owner per board, plus an invited partner and unlimited vendor collaborators. View, Comment and Contribute permissions are scoped to tags; the owner manages access. Updates refresh every 30 seconds while idle. Invites are copied links tied to a confirmed email, not automatically emailed.
 - Product, pin, and playlist URLs are saved links, not auto-imports or embedded players.
 - One file per card. Raster images preview; other files are attachments.
 - Share links contain selected snapshots; new private edits do not silently change published briefs.
@@ -24,6 +24,8 @@ The browser contains only the public publishable key. Supabase JS is version-pin
 - No analytics added to the private workspace.
 
 ## Verification
+
+October update: rollback-only SQL tests passed for vendor contribution, tag/file isolation, client purchase-column protection, trial expiry, and archive reads. DOM integration checks cover multi-tags, checklist/kanban updates, dated templates and included seating save/reopen. Square signature/payment matching tests pass. Square checkout is deployed but live payments remain off pending secure account connection and a production purchase test.
 
 JavaScript syntax checked. Owner read/insert and cross-user isolation verified with rollback-only SQL transactions. Invalid brief tokens return 404. Cloud-browser checks passed for adding a note, canvas keyboard movement, and selected-only brief printing. Real brief-token retrieval and revocation were tested against the deployed edge function; cross-owner file paths are rejected. Signed-in account/upload and narrow mobile browser verification remain untested in this session. Test those before inviting real clients.
 
@@ -70,3 +72,13 @@ NODE_PATH=/path/to/qa/node_modules node services/wedding-studio/tests/intake.tes
 ## Shared account signup
 
 Wedding Studio shares the project’s Tiny Site Studios accounts. Supabase can return a successful, obfuscated signup response for an already-confirmed address without sending an email. The interface now uses conditional wording, explains the shared login, and offers sign-in and user-initiated confirmation resend. It does not expose account existence or bypass email verification.
+
+## Planning and access (October update)
+
+Canvas is the default with a remembered Cards/Canvas preference. Each item supports up to 20 tags; checklists support up to 200 tasks with owner, due date, fixed date and To do/In progress/Done views. Comments remain scoped to visible items. Group headings help arrange the canvas.
+
+The template shelf includes the existing TSS 18-, 12- and 6-month timelines plus 14 guides, copied from the Just Engaged tool. Dates are previewed across the chosen start/end range before import. Completed/fixed tasks remain unchanged when unfinished planning dates shift. Free tools can be linked onto the board.
+
+Seat Studio is included as a board item, with guest assignments and room layout saved to the account. Demo data remains temporary. Raster images/documents are permitted uploads; video and audio use links.
+
+Applied immutable collaboration and Square checkout migrations are in `supabase/migrations/`. Purchase configuration, webhook and activation instructions are in `checkout/README.md`. The public offer starts at $29 introductory/$49 regular, one payment, 14 days free. Payment setup holds editing open until checkout is activated.

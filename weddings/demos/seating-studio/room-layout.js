@@ -23,7 +23,7 @@
   }
   function create(d) {
     let downloadURL=null;
-    let state, selected='magnolia', selectedGuest=d.unassignedGuests()[0]?.id||'', container=null, ignoreClick=false;
+    let state, selected=d.tables[0]?.id||'magnolia', selectedGuest=d.unassignedGuests()[0]?.id||'', container=null, ignoreClick=false;
     const initial = () => ({tables:d.tables.map((t,i)=>({id:t.id,x:240+(i%3)*360,y:i<3?350:650,shape:i%3===1?'rect':'round',capacity:8,rotation:0,seats:Array(8).fill(null)})),zones:copy(zones)});
     function normalize(raw) {
       const base=initial();
@@ -43,7 +43,7 @@
       }
       return base;
     }
-    try {state=normalize(JSON.parse(localStorage.getItem(KEY)||'null'));} catch {state=initial();}
+    try {state=d.storage===false?initial():normalize(JSON.parse(localStorage.getItem(KEY)||'null'));} catch {state=initial();}
     function sync() {
       for(const t of state.tables) {
         d.tables.find(x=>x.id===t.id).capacity=t.capacity;
@@ -56,9 +56,9 @@
       }
     }
     sync();
-    function persist() {sync();localStorage.setItem(KEY,JSON.stringify(state));}
+    function persist() {sync();if(d.storage!==false)localStorage.setItem(KEY,JSON.stringify(state));}
     function restore(value) {state=normalize(value);sync();}
-    function reset() {state=initial();selected='magnolia';selectedGuest='';sync();}
+    function reset() {state=initial();selected=d.tables[0]?.id||'magnolia';selectedGuest='';sync();}
     const snapshot=()=>{sync();return copy(state);};
     const guest=id=>d.guests().find(g=>g.id===id);
     const table=id=>state.tables.find(t=>t.id===id);
