@@ -4,8 +4,9 @@ const base=require('path').resolve(__dirname,'../../../weddings/wedding-studio')
 const {document,Event}=parseHTML(fs.readFileSync(base+'index.html','utf8'));
 // Linkedom omits the browser's writable select.value property.
 for(const el of document.querySelectorAll('select'))Object.defineProperty(el,'value',{value:'',writable:true});
-const ctx=vm.createContext({document,window:{},DOMParser,Event,URL,crypto,console,setTimeout,clearTimeout,AbortController,AbortSignal,location:{search:'',href:'https://tinysitestudios.com/weddings/wedding-studio/'}});
+const ctx=vm.createContext({document,window:{},DOMParser,Event,URL,URLSearchParams,crypto,console,setTimeout,clearTimeout,AbortController,AbortSignal,location:{search:'',href:'https://tinysitestudios.com/weddings/wedding-studio/'}});
 vm.runInContext(fs.readFileSync(base+'intake.js','utf8'),ctx);
+vm.runInContext(fs.readFileSync(base+'palette.js','utf8'),ctx);
 vm.runInContext(fs.readFileSync(base+'studio.js','utf8').replace('init();',''),ctx);
 const run=s=>vm.runInContext(s,ctx);
 const transfer=(plain='',html='',uri='',files=[])=>({files,getData:type=>({'text/plain':plain,'text/html':html,'text/uri-list':uri})[type]||''});
@@ -25,6 +26,23 @@ assert.equal(read(transfer('','','',[{name:'one.pdf'},{name:'two.png'}])).entrie
  ctx.capture=read(transfer('','','',[new File(['test document'],'quote.txt',{type:'text/plain'}),new File(['image'],'flowers.png',{type:'image/png'})]));await run('importCapture(capture)');assert.equal(document.querySelectorAll('#board .card').length,10);assert.equal(run("items.at(-2).kind"),'file');assert.equal(run("items.at(-1).kind"),'image');
  document.querySelector('#auth-email').value='qa@example.test';document.querySelector('#auth-password').value='Local-test-only-123';document.querySelector('#auth-password').focus=()=>{};
  run("authMode='signup';db={auth:{signUp:async()=>({data:{user:{identities:[]},session:null}})}}");await document.querySelector('#auth-form').onsubmit({preventDefault(){}});assert.equal(document.querySelector('#auth-next').hidden,false);assert.match(document.querySelector('#auth-message').textContent,/If this is a new email address/);assert.equal(document.querySelector('#auth-submit').hidden,true);document.querySelector('#auth-go-login').onclick();assert.equal(run('authMode'),'login');assert.equal(document.querySelector('#auth-submit').hidden,false);assert.equal(document.querySelector('#auth-email').value,'qa@example.test');
+ // Browser-only dialog/form APIs are modeled here to test full editor and tour flows.
+ for(const dialog of document.querySelectorAll('dialog')){dialog.showModal=()=>dialog.setAttribute('open','');dialog.close=()=>{dialog.removeAttribute('open');dialog.dispatchEvent(new Event('close'))}};
+ document.querySelector('#item-form').reset=()=>{};
+ Object.defineProperty(document.querySelector('#item-file'),'files',{value:[]});
+ run("openEditor('palette')");assert.equal(document.querySelectorAll('[data-color]').length,4);
+ const first=document.querySelector('[data-color]');first.value='#112233';first.oninput();assert.match(document.querySelector('#item-colors').value,/#112233/);
+ document.querySelector('#item-colors').value='abc 743b61, #43867b';document.querySelector('#palette-apply').onclick();assert.equal(document.querySelectorAll('[data-color]').length,3);
+ document.querySelector('#item-title').value='Test visual palette';await document.querySelector('#item-form').onsubmit({preventDefault(){}});assert.equal(run('items.at(-1).colors.join(",")'),'#AABBCC,#743B61,#43867B');
+ run("openEditor(null,items.at(-1))");assert.equal(document.querySelectorAll('[data-color]').length,3);document.querySelector('#editor').close();
+ run("view='canvas'");document.querySelector('#board').getBoundingClientRect=()=>({left:100,top:200});
+ document.querySelector('#board-wrap').ondblclick({target:document.querySelector('#board'),clientX:360,clientY:525});assert.equal(run('draftPosition.x'),260);assert.equal(run('draftPosition.y'),325);
+ document.querySelector('#item-title').value='At the click';await document.querySelector('#item-form').onsubmit({preventDefault(){}});assert.equal(run('items.at(-1).x'),260);assert.equal(run('items.at(-1).y'),325);
+ document.querySelector('#board-wrap').ondblclick({target:document.querySelector('.card'),clientX:50,clientY:50});assert.equal(document.querySelector('#editor').hasAttribute('open'),false);
+ const stored=new Map();ctx.localStorage={getItem:k=>stored.get(k),setItem:(k,v)=>stored.set(k,v)};
+ run('maybeShowTour()');assert.equal(document.querySelector('#tour').hasAttribute('open'),true);document.querySelector('#tour-skip').onclick();run('maybeShowTour()');assert.equal(document.querySelector('#tour').hasAttribute('open'),false);
+ document.querySelector('#tour-open').onclick();assert.equal(document.querySelector('#tour').hasAttribute('open'),true);document.querySelector('#tour').close();run("tourSeen=false;maybeShowTour()");assert.equal(document.querySelector('#tour').hasAttribute('open'),false);
+ console.log('Visual palette save/edit, double-click coordinates, card exclusion, and first-visit/replay tour passed.');
  console.log('Signup without a session offers sign-in without claiming an email was sent.');
  console.log('Direct URL/text paste, multi-file capture, pin destination + thumbnail, and editable-field checks passed.');
 })().catch(e=>{console.error(e);process.exitCode=1});

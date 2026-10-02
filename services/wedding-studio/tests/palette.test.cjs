@@ -1,0 +1,10 @@
+const assert=require('node:assert/strict');
+const {extract,parse}=require('../../../weddings/wedding-studio/palette.js');
+assert.deepEqual(extract(new Uint8ClampedArray([255,0,0,255,255,0,0,255,0,0,255,0])),['#FF0000']);
+assert.deepEqual(extract(new Uint8ClampedArray([0,0,0,0,255,255,255,100])),[]);
+const pixels=[];for(const c of [[23,44,58],[116,59,97],[67,134,123],[247,244,239]])for(let i=0;i<10;i++)pixels.push(...c,255);
+assert.deepEqual(extract(pixels),['#172C3A','#743B61','#43867B','#F7F4EF']);
+assert.deepEqual(extract([23,44,58,255,24,45,59,255]),['#182D3B']);
+assert.deepEqual(parse('abc, #743b61 43867b'),['#AABBCC','#743B61','#43867B']);
+assert.equal(extract(pixels,2).length,2);
+console.log('Palette extraction: transparency, solid and distinct colors, averaging, limits, and pasted codes passed.');
