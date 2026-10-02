@@ -4,7 +4,9 @@
   if (!form || !results) return;
 
   const storageKey = 'tssWeddingHashtagFavoritesV1';
-  let favorites = new Set(JSON.parse(localStorage.getItem(storageKey) || '[]'));
+  let favorites = new Set();
+  try { const saved=JSON.parse(localStorage.getItem(storageKey)||'[]');if(Array.isArray(saved))favorites=new Set(saved.filter(tag=>typeof tag==='string'&&tag.startsWith('#')).slice(0,200)); } catch {}
+  const saveFavorites=()=>{try{localStorage.setItem(storageKey,JSON.stringify([...favorites]));}catch{}};
   let state = null;
 
   const clean = (s='') => s.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-zA-Z0-9]/g,'');
@@ -164,18 +166,19 @@
     favBtn.classList.toggle('is-favorite', fav);
 
     card.querySelector('[data-copy]').addEventListener('click', async e => {
+      const button = e.currentTarget;
       try {
         await navigator.clipboard.writeText(tag);
-        e.currentTarget.textContent = 'Copied!';
-        setTimeout(() => e.currentTarget.textContent = 'Copy', 1200);
+        button.textContent = 'Copied!';
+        setTimeout(() => button.textContent = 'Copy', 1200);
       } catch {
-        e.currentTarget.textContent = 'Select + copy';
+        button.textContent = 'Select + copy';
       }
     });
 
     favBtn.addEventListener('click', () => {
       favorites.has(tag) ? favorites.delete(tag) : favorites.add(tag);
-      localStorage.setItem(storageKey, JSON.stringify([...favorites]));
+      saveFavorites();
       renderAll();
     });
     return card;
@@ -203,7 +206,7 @@
       btn.title = 'Remove favorite';
       btn.addEventListener('click', () => {
         favorites.delete(tag);
-        localStorage.setItem(storageKey, JSON.stringify([...favorites]));
+        saveFavorites();
         renderAll();
       });
       list.appendChild(btn);
@@ -248,12 +251,13 @@
     renderCategory(name, ideas[name]);
   }));
   results.querySelector('[data-copy-favorites]').addEventListener('click', async e => {
+    const button = e.currentTarget;
     const vals = [...favorites];
-    if (!vals.length) { e.currentTarget.textContent = 'Favorite some first'; setTimeout(()=>e.currentTarget.textContent='Copy favorites',1400); return; }
+    if (!vals.length) { button.textContent = 'Favorite some first'; setTimeout(()=>button.textContent='Copy favorites',1400); return; }
     try {
       await navigator.clipboard.writeText(vals.join('\n'));
-      e.currentTarget.textContent = 'Favorites copied!';
-      setTimeout(()=>e.currentTarget.textContent='Copy favorites',1400);
+      button.textContent = 'Favorites copied!';
+      setTimeout(()=>button.textContent='Copy favorites',1400);
     } catch {}
   });
 })();

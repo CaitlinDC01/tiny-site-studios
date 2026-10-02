@@ -10,8 +10,8 @@
   const radio=n=>form.querySelector(`input[name="${n}"]:checked`)?.value||'';
   const checked=n=>[...form.querySelectorAll(`input[name="${n}"]:checked`)].map(x=>x.value);
   const val=n=>String(form.elements[n]?.value||'').trim();
-  const num=n=>Number(String(val(n)).replace(/[^0-9.]/g,''))||0;
-  const fmt=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(Math.round(n/25)*25);
+  const num=n=>Number(val(n).replace(/[$,\s]/g,''));
+  const fmt=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(Math.round(n));
 
   const guestMid={under50:40,'50-100':75,'100-150':125,'150-200':175,'200plus':225,unsure:100};
   const guestBase={under50:14500,'50-100':23000,'100-150':33000,'150-200':43000,'200plus':55500,unsure:30000};
@@ -19,14 +19,14 @@
   const styleMult={simple:.82,classic:1,formal:1.22,luxury:1.5};
   const priorityLabels={photos:'photo/video',food:'food + drinks',venue:'venue/setting',music:'music + party',florals:'flowers + décor',attire:'attire + beauty',guest:'guest experience',lowstress:'planning support'};
 
-  function show(i){
+  function show(i, scroll = true){
     current=Math.max(0,Math.min(i,panels.length-1));
     panels.forEach((p,x)=>p.hidden=x!==current);
     steps.forEach((s,x)=>{s.classList.toggle('active',x===current);s.classList.toggle('done',x<current)});
     if(progress)progress.style.width=`${((current+1)/panels.length)*100}%`;
     if(error)error.textContent='';
     const target=panels[current];
-    window.scrollTo({top:target.getBoundingClientRect().top+window.scrollY-24,behavior:'smooth'});
+    if (scroll) window.scrollTo({top:target.getBoundingClientRect().top+window.scrollY-24,behavior:'smooth'});
   }
 
   function validate(){
@@ -34,6 +34,7 @@
     const req=panel.querySelector('[data-required-radio]');
     if(req&&!radio(req.dataset.requiredRadio))return 'Choose the option that fits you best.';
     for(const f of panel.querySelectorAll('[required]')) if(!String(f.value||'').trim()) return 'Fill in the required field before continuing.';
+    if(current===0&&(!Number.isFinite(num('totalBudget'))||num('totalBudget')<=0))return 'Enter a budget greater than zero, using numbers only.';
     return '';
   }
 
@@ -129,5 +130,5 @@
   document.querySelector('[data-print-afford]')?.addEventListener('click',()=>window.print());
 
   loadProfile();
-  show(0);
+  show(0, false);
 })();

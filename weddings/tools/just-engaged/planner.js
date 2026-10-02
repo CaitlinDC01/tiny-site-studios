@@ -19,7 +19,7 @@
   };
   const radio = (name) => form.querySelector(`input[name="${name}"]:checked`)?.value || '';
 
-  function show(index) {
+  function show(index, scroll = true) {
     current = Math.max(0, Math.min(index, panels.length - 1));
     panels.forEach((p, i) => p.hidden = i !== current);
     steps.forEach((s, i) => {
@@ -30,7 +30,7 @@
     if (error) error.textContent = '';
     const target = panels[current];
     const y = target.getBoundingClientRect().top + window.scrollY - 24;
-    window.scrollTo({top:y, behavior:'smooth'});
+    if (scroll) window.scrollTo({top:y, behavior:'smooth'});
   }
 
   function validateStep() {
@@ -43,6 +43,11 @@
     const requiredFields = [...panel.querySelectorAll('[required]')];
     for (const field of requiredFields) {
       if (!field.value.trim()) return 'Fill in the required field before continuing.';
+    }
+    if (current === 0 && radio('dateStatus') === 'yes') {
+      const target = new Date(value('weddingDate') + 'T12:00:00');
+      const today = new Date(); today.setHours(0,0,0,0);
+      if (!Number.isFinite(target.getTime()) || target < today) return 'Choose today or a future wedding date.';
     }
     return '';
   }
@@ -281,5 +286,5 @@
     }
   });
 
-  show(0);
+  show(0, false);
 })();
