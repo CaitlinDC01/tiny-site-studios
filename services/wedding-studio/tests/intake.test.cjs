@@ -64,6 +64,24 @@ assert.equal(read(transfer('','','',[{name:'one.pdf'},{name:'two.png'}])).entrie
  const progress=document.querySelector('[data-task-status]');Object.defineProperty(progress,'value',{value:'doing',writable:true});await progress.onchange();await new Promise(r=>setTimeout(r,10));ctx.changedTask=progress.dataset.taskStatus;assert.equal(run("items.find(i=>i.kind==='checklist').tasks.find(t=>t.id===changedTask).status"),'doing');
  document.querySelector('#templates-open').onclick();document.querySelector('#template-select').value=ctx.window.StudioTemplates[0].id;document.querySelector('#template-start').value='2026-10-01';document.querySelector('#template-end').value='2027-10-01';document.querySelector('#template-preview').onclick();assert.equal(document.querySelector('#template-import').disabled,false);await document.querySelector('#template-import').onclick();assert(run("items.at(-1).tasks.length>20"));assert.equal(run("items.at(-1).template_meta.end"),'2027-10-01');
  document.querySelector('#seating-open').onclick();document.querySelector('#seating-guests').value='Alice\nBob';document.querySelector('#seating-tables').value='2';document.querySelector('#seating-apply').onclick();assert.equal(run('seatDraft.guests.length'),2);assert(run("seatRoom.seatGuest(seatDraft.guests[0].id,'table-1',0)"));await document.querySelector('#seating-save').onclick();assert.equal(run("items.at(-1).seating.guests[0].table"),'table-1');document.querySelector('#seating-modal').close();run("openSeating(items.at(-1))");assert.equal(run("seatRoom.snapshot().tables[0].seats[0]"),run("seatDraft.guests[0].id"));document.querySelector('#seating-modal').close();
+ // Pricing must work before sign-in; trials require confirmation before board creation.
+ run("demo=false;user=null;board={title:'Our wedding'};render()");
+ assert(document.querySelector('#seating-open').closest('aside'));
+ assert(document.querySelector('#tools-open').closest('aside'));
+ assert(document.querySelector('#purchase-open').closest('.access-banner'));
+ document.querySelector('#purchase-open').onclick();assert(document.querySelector('#purchase-modal').hasAttribute('open'));assert.equal(document.querySelector('#checkout-start').hidden,true);document.querySelector('#purchase-modal').close();
+ document.querySelector('#trial-open').onclick();assert.equal(run('authMode'),'signup');document.querySelector('#auth').close();
+ ctx.trialWrites=0;ctx.trialRecord=null;
+ run(`user={id:'trial-owner'};boardOwner=null;items=[];loading=false;db={from:table=>({
+   select(){return this},eq(){return this},in(){return this},
+   maybeSingle:async()=>({data:trialRecord}),single:async()=>({data:trialRecord}),
+   then(resolve){resolve({data:table==='wedding_studio_boards'?(trialRecord?[trialRecord]:[]):[]})},
+   order:async()=>({data:[]}),insert:async()=>{trialWrites++;trialRecord={user_id:user.id,title:'Our wedding',created_at:new Date().toISOString()};return {data:null}}
+ })}`);
+ const declined=run('loadCloud()');await new Promise(r=>setTimeout(r,10));assert(document.querySelector('#trial-modal').hasAttribute('open'));assert.equal(ctx.trialWrites,0);document.querySelector('#trial-later').onclick();await declined;assert.equal(ctx.trialWrites,0);
+ const accepted=run('loadCloud()');await new Promise(r=>setTimeout(r,10));document.querySelector('#trial-confirm').onclick();await accepted;assert.equal(ctx.trialWrites,1);assert.equal(document.querySelector('#trial-open').hidden,true);assert.match(document.querySelector('#access-state').textContent,/Trial through/);
+ const startedAt=ctx.trialRecord.created_at;await run('loadCloud()');assert.equal(ctx.trialWrites,1);assert.equal(ctx.trialRecord.created_at,startedAt);assert.equal(document.querySelector('#trial-modal').hasAttribute('open'),false);
+ console.log('Visible guest pricing, sidebar tools, explicit trial confirmation/cancel, and unchanged trial dates on reload passed.');
  console.log('Multi-tag filtering, checklist-to-kanban updates, template dates, and seating assignment save/reopen passed.');
  console.log('Expired-link recovery, canonical reset redirect, and new-password mode passed.');
  console.log('Visual palette save/edit, double-click coordinates, card exclusion, and first-visit/replay tour passed.');
