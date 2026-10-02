@@ -39,14 +39,14 @@
   const skillLabels={design:'Design / Canva',craft:'Crafts / making things',tech:'Tech / websites / apps',organization:'Spreadsheets / logistics',culinary:'Cooking / baking',photo:'Photography / video',beauty:'Hair / makeup',logistics:'Event logistics'};
   const guestLarge=()=>['150-200','200plus'].includes(radio('guestCount'));
 
-  function show(index){
+  function show(index, scroll = true){
     current=Math.max(0,Math.min(index,panels.length-1));
     panels.forEach((p,i)=>p.hidden=i!==current);
     steps.forEach((s,i)=>{s.classList.toggle('active',i===current);s.classList.toggle('done',i<current);});
     if(progress)progress.style.width=`${((current+1)/panels.length)*100}%`;
     if(error)error.textContent='';
     const target=panels[current];
-    window.scrollTo({top:target.getBoundingClientRect().top+window.scrollY-24,behavior:'smooth'});
+    if (scroll) window.scrollTo({top:target.getBoundingClientRect().top+window.scrollY-24,behavior:'smooth'});
   }
 
   function validate(){
@@ -200,5 +200,5 @@
   document.querySelector('[data-print-diy]')?.addEventListener('click',()=>window.print());
 
   loadProfile();
-  show(0);
+  show(0, false);
 })();

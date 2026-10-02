@@ -24,7 +24,7 @@
 
   const shell = (content, navLinks = "") => `
     <div class="demo-ribbon">
-      <a href="../../#experiences">← Wedding collection</a>
+      <a href="/weddings/demos/#more-examples">← Wedding collection</a>
       Fictional example · every client experience is designed from scratch
     </div>
     <header class="experience-nav">
@@ -34,7 +34,7 @@
     <main class="experience-page" id="top">${content}</main>
     <footer class="experience-footer">
       <strong>${identity[0]}</strong>
-      <a href="../../#experiences">Explore another wedding experience →</a>
+      <a href="/weddings/demos/#more-examples">Explore another wedding experience →</a>
     </footer>
   `;
 
@@ -115,7 +115,7 @@
           <div>
             <p class="kicker">You’re invited</p>
             <h1 class="hero-names">Ari &amp; Simone</h1>
-            <p class="hero-date">October 2, 2027 · Brooklyn</p>
+            <p class="hero-date">October 2, 2027 · Long Island City</p>
             <div class="button-row"><button class="button" type="button" data-enter-invitation>Open the invitation</button></div>
           </div>
         </div>
@@ -583,8 +583,8 @@
     }));
     root.querySelector("[data-rsvp-form]").addEventListener("submit", (event) => {
       event.preventDefault();
-      root.querySelector("[data-rsvp-status]").textContent = "Response received. A confirmation has been prepared for Taylor.";
-      event.currentTarget.querySelector("button").textContent = "Response sent";
+      root.querySelector("[data-rsvp-status]").textContent = "Demo preview only—no response was saved or confirmation sent.";
+      event.currentTarget.querySelector("button").textContent = "Demo response previewed";
     });
   }
 
