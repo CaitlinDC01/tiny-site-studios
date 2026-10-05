@@ -2,7 +2,7 @@
 /* Optional account sync. The public publishable key is never a privileged credential. */
 (() => {
   const SESSION_KEY='birthday-adventure-account-v1';
-  let session=null, saving=null, timer=null;
+  let session=null, saving=null, timer=null, pendingEmail='';
   try { session=JSON.parse(localStorage.getItem(SESSION_KEY)); } catch {}
   const setSession=s=>{session=s; if(s)localStorage.setItem(SESSION_KEY,JSON.stringify(s));else localStorage.removeItem(SESSION_KEY)};
   async function api(path,options={}) {
@@ -44,7 +44,7 @@
   }
   function accountDialog(){
     if(session){open(`<span class="eyebrow">YOUR BIRTHDAY ACCOUNT</span><h2>Saved across devices.</h2><p>Signed in as ${esc(session.user.email)}. Changes sync to your private account when online. Your plan also stays in this browser.</p><div class="actions"><button class="outline" id="pullCloud">Check my saved plan</button><button class="outline" id="accountSignOut">Sign out</button></div><p class="tiny">Signing out clears the plan from this browser after it has synced. Keep a JSON backup if you want another copy.</p>`);return}
-    open(`<span class="eyebrow">OPTIONAL ACCOUNT</span><h2>Take your adventure with you.</h2><p class="subtle">Enter your email to create a free account or sign in. We’ll send a one-time link. Your email is for account access only; no marketing signup.</p><form id="accountForm"><label>Email<input name="email" type="email" autocomplete="email" maxlength="254" required></label><p id="accountError" class="error" role="alert"></p><button class="primary" style="margin-top:18px">Email me a sign-in link →</button></form><p class="tiny">Open the newest link on this device, then your private plan can sync. You can keep using Birthday Adventure without an account.</p>`);
+    open(`<span class="eyebrow">OPTIONAL ACCOUNT</span><h2>Take your adventure with you.</h2><p class="subtle">Enter your email to create a free account or sign in. We’ll send a one-time code and link. Your email is for account access only; no marketing signup.</p><form id="accountForm"><label>Email<input name="email" type="email" autocomplete="email" maxlength="254" required></label><p id="accountError" class="error" role="alert"></p><button class="primary" style="margin-top:18px">Email me a sign-in code →</button></form><p class="tiny">Enter the newest code here to sync your private plan. You can keep using Birthday Adventure without an account.</p>`);
   }
   document.addEventListener('click',async e=>{
     const b=e.target.closest('button');if(!b)return;
@@ -63,14 +63,31 @@
     error.textContent='';f.querySelector('button').disabled=true;
     try{
       await api('auth/v1/otp?redirect_to='+encodeURIComponent('https://tinysitestudios.com/birthday-adventure/'),{method:'POST',body:JSON.stringify({email:v.email,create_user:true})});
-      error.textContent='Check your inbox (and spam) for a one-time sign-in link. No account is created until you open it.';
+      pendingEmail=v.email;
+      open(`<span class="eyebrow">CHECK YOUR INBOX</span><h2>Enter your sign-in code.</h2><p class="subtle">We sent a one-time code to ${esc(v.email)}. Enter it here to save your adventure to your account. You can also use the email link, but the code keeps you on this page.</p><form id="otpCodeForm"><label>Sign-in code<input name="code" type="text" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6,8}" minlength="6" maxlength="8" required></label><p id="codeError" class="error" role="alert"></p><button class="primary" style="margin-top:18px">Sign in & save my plan →</button></form><p class="tiny">Use the newest email. Each code works once and expires in one hour. Need another? <button class="text-button" data-account="again">Request a new code</button></p>`);
     }catch(err){error.textContent=err.message}
     finally{f.querySelector('button').disabled=false}
 
   });
+  document.addEventListener('submit',async e=>{
+    if(e.target.id!=='otpCodeForm')return;e.preventDefault();
+    const f=e.target,error=f.querySelector('#codeError'),code=new FormData(f).get('code')?.toString().trim();
+    error.textContent='';f.querySelector('button').disabled=true;
+    try{
+      const s=await api('auth/v1/verify',{method:'POST',body:JSON.stringify({email:pendingEmail,token:code,type:'email'})});
+      if(!s?.access_token||!s?.user)throw Error('The code could not be verified. Please try the newest email.');
+      setSession({...s,expires_at:s.expires_at||Math.floor(Date.now()/1000)+Number(s.expires_in||3600)});
+      close();await reconcile();
+    }catch(err){error.textContent=err.message}
+    finally{f.querySelector('button').disabled=false}
+  });
   window.birthdayAccount={scheduleSave,signedIn:()=>!!session};
   (async()=>{
     const hash=new URLSearchParams(location.hash.slice(1));
+    if(hash.has('error')){
+      history.replaceState(null,'',location.pathname+location.search);
+      toast('That email link has expired or was already used. Request a new code from Account.');
+    }
     if(hash.has('access_token')&&hash.has('refresh_token')){
       const token=hash.get('access_token'),refresh_token=hash.get('refresh_token');
       setSession({access_token:token,refresh_token,expires_at:Math.floor(Date.now()/1000)+Number(hash.get('expires_in')||3600),user:{id:'',email:''}});
