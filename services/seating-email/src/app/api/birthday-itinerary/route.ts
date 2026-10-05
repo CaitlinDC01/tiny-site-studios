@@ -1,0 +1,28 @@
+import { createHmac } from "node:crypto";
+import { z } from "zod";
+
+export const runtime = "nodejs";
+const ORIGIN="https://tinysitestudios.com";
+const item=z.object({date:z.string().regex(/^\d{4}-\d{2}-\d{2}$/),business:z.string().trim().min(1).max(120),offer:z.string().trim().min(1).max(500),signup:z.string().trim().max(1000),source:z.url().startsWith("https://"),enroll:z.url().startsWith("https://").optional()});
+const schema=z.object({name:z.string().trim().min(1).max(50),email:z.email().max(254),birthday:z.string().regex(/^\d{4}-\d{2}-\d{2}$/),city:z.string().trim().min(1).max(120),items:z.array(item).min(1).max(30),website:z.string().max(200).default("")});
+const escape=(v:string)=>v.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]!);
+const headers=(origin:string|null)=>({...origin===ORIGIN?{"Access-Control-Allow-Origin":ORIGIN}:{},"Access-Control-Allow-Methods":"POST, OPTIONS","Access-Control-Allow-Headers":"Content-Type","Cache-Control":"no-store",Vary:"Origin"});
+const json=(body:unknown,status:number,origin:string|null)=>Response.json(body,{status,headers:headers(origin)});
+const buckets=new Map<string,{count:number;until:number}>();
+function limited(key:string,max:number){const now=Date.now(),entry=buckets.get(key);if(!entry||entry.until<now){buckets.set(key,{count:1,until:now+3600000});return false}entry.count++;return entry.count>max}
+function sender(){const domain=process.env.RESEND_EMAIL_DOMAIN?.trim();if(!domain)throw Error("Sender unavailable");return `Tiny Site Studios <${domain.includes("@")?domain:`memories@${domain}`}>`}
+export async function OPTIONS(request:Request){const origin=request.headers.get("origin");return new Response(null,{status:origin===ORIGIN?204:403,headers:headers(origin)})}
+export async function POST(request:Request){
+ const origin=request.headers.get("origin");if(origin!==ORIGIN)return json({error:"Please open Birthday Adventure and try again."},403,origin);
+ if(Number(request.headers.get("content-length")||0)>20000)return json({error:"The itinerary is too large."},413,origin);
+ let input:unknown;try{const body=await request.text();if(body.length>20000)return json({error:"The itinerary is too large."},413,origin);input=JSON.parse(body)}catch{return json({error:"Check your itinerary and try again."},400,origin)}
+ const result=schema.safeParse(input);if(!result.success||result.data.website)return json({error:"Check your email and itinerary and try again."},400,origin);
+ const data=result.data,ip=(request.headers.get("x-vercel-forwarded-for")||request.headers.get("x-forwarded-for")||"unknown").split(",")[0].trim();
+ if(limited(`birthday:${ip}`,6)||limited(`birthday-email:${data.email.toLowerCase()}`,3))return json({error:"Too many itinerary emails were requested. Please try again later."},429,origin);
+ const key=process.env.RESEND_API_KEY,secret=process.env.RATE_LIMIT_SECRET;if(!key||!secret)return json({error:"Email is temporarily unavailable. Save a backup or print your plan."},503,origin);
+ const day=new Date().toISOString().slice(0,10),fingerprint=createHmac("sha256",secret).update(JSON.stringify([data.email.toLowerCase(),data.birthday,data.items,day])).digest("hex").slice(0,40);
+ const rows=data.items.map(d=>`<div style="padding:16px 0;border-bottom:1px solid #e7d7dd"><strong>${escape(d.date)} · ${escape(d.business)}</strong><p style="margin:6px 0">${escape(d.offer)}</p><p style="font-size:13px;color:#6e5862">${escape(d.signup)}</p><a href="${escape(d.source)}">Official terms</a>${d.enroll?` · <a href="${escape(d.enroll)}">Join rewards</a>`:""}</div>`).join("");
+ const html=`<!doctype html><html><body style="margin:0;background:#fffaf3;color:#57283e;font:15px/1.6 Arial,sans-serif"><div style="max-width:620px;margin:24px auto;padding:32px;background:#fffdf9;border-radius:18px"><p style="font-size:12px;letter-spacing:2px">TINY SITE STUDIOS · BIRTHDAY ADVENTURE</p><h1 style="font:36px Georgia,serif">Your birthday adventure, ${escape(data.name)}.</h1><p>${escape(data.city)} · ${escape(data.birthday)}</p>${rows}<p style="font-size:13px;margin-top:24px">Suggested dates are for confirmed offers in your plan. Check your actual reward, store participation, and current merchant terms before visiting.</p><p style="font-size:12px;color:#806874">You requested this one-time email. Birthday Adventure is free; you were not added to a marketing list or enrolled in merchant rewards. <a href="https://tinysitestudios.com/birthday-adventure/">Open Birthday Adventure</a>.</p></div></body></html>`;
+ const text=`${data.name}'s Birthday Adventure — ${data.birthday} · ${data.city}\n\n${data.items.map(d=>`${d.date}: ${d.business} — ${d.offer}\nRequirements: ${d.signup}\nOfficial terms: ${d.source}${d.enroll?`\nJoin rewards: ${d.enroll}`:""}`).join("\n\n")}\n\nCheck your actual reward and participating location. This is a one-time email you requested; you have not been added to marketing or merchant programs.`;
+ try{const response=await fetch("https://api.resend.com/emails",{method:"POST",headers:{Authorization:`Bearer ${key}`,"Content-Type":"application/json","Idempotency-Key":`birthday-itinerary-${fingerprint}`},body:JSON.stringify({from:sender(),to:data.email,reply_to:"caitlin@tinysitestudios.com",subject:"Your Birthday Adventure itinerary ✳",html,text,tags:[{name:"category",value:"birthday-itinerary"}]})});const sent=await response.json().catch(()=>null) as {id?:string}|null;if(!response.ok||!sent?.id)throw Error("send failed");return json({ok:true},200,origin)}catch(error){console.error("[birthday-itinerary] delivery failed",error);return json({error:"We couldn’t send the email right now. Save a backup or try again later."},502,origin)}
+}
