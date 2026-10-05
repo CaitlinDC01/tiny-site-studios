@@ -34,8 +34,13 @@
     clearTimeout(timer);
     timer=setTimeout(async()=>{try{saving=upload();await saving}catch(e){toast('Saved on this device; cloud sync failed. '+e.message)}finally{saving=null}},900);
   }
+  function samePlan(a,b){
+    const normalize=v=>Array.isArray(v)?v.map(normalize):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,normalize(v[k])])):v;
+    return JSON.stringify(normalize(a))===JSON.stringify(normalize(b));
+  }
   async function reconcile(){
     const rows=await cloudRequest();const cloud=rows?.[0]?.plan;
+    if(cloud?.profile&&state.profile&&samePlan(cloud,state))return;
     if(cloud?.profile&&state.profile){
       open(`<span class="eyebrow">TWO SAVED ADVENTURES</span><h2>Which plan should we keep?</h2><p>This device and your account both have a birthday plan. Choose before syncing; the other copy will be replaced.</p><div class="actions"><button class="primary" id="useCloud">Use my account plan</button><button class="outline" id="useDevice">Use this device’s plan</button></div>`);
     } else if(cloud?.profile){state=cloud;save();view='plan';render();toast('Your account plan is ready.');}
