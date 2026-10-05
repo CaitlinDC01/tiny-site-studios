@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A digital wedding invitation and RSVP experience by Tiny Site Weddings." />
+  <title>Sloane & Elliot | October 17, 2027</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#4a1f32">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Wedding invitations, beautifully simplified. | Tiny Site Weddings">
+  <meta property="og:description" content="Try a custom digital wedding invitation with easy RSVPs, guest counts and individual meal choices.">
+  <meta property="og:url" content="https://tinysitestudios.com/weddings/rsvp/demo/">
+  <meta property="og:image" content="https://tinysitestudios.com/weddings/rsvp/demo/og.png">
+  <meta property="og:image:alt" content="Tiny Site Weddings — Wedding invitations, beautifully simplified. Custom design. Easy RSVPs.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wedding invitations, beautifully simplified.">
+  <meta name="twitter:description" content="Custom design. Easy RSVPs. Try the Tiny Site Weddings invitation demo.">
+  <meta name="twitter:image" content="https://tinysitestudios.com/weddings/rsvp/demo/og.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero" id="top">
+    <img class="hero-image" src="assets/garden-evening.png" alt="An elegant candlelit garden table with ivory and plum flowers" />
+    <div class="hero-shade"></div>
+    <nav class="nav" aria-label="Invitation navigation">
+      <a href="#top" class="monogram" aria-label="Sloane and Elliot, home">S <span>+</span> E</a>
+      <button class="text-button" data-open-rsvp>RSVP</button>
+    </nav>
+    <div class="hero-copy">
+      <p class="eyebrow">Together with their families</p>
+      <h1><span>Sloane</span><em>&amp;</em><span>Elliot</span></h1>
+      <div class="date-lockup">
+        <span>Sunday</span><strong>17</strong><span>October<br>2027</span>
+      </div>
+      <p class="venue">The Glasshouse at Willow Creek<br><span>Houston, Texas · 5:30 in the evening</span></p>
+      <button class="primary-button" data-open-rsvp>Kindly respond</button>
+      <p class="deadline">Please reply by September 5</p>
+    </div>
+    <a class="scroll-cue" href="#details">View the details <span aria-hidden="true">↓</span></a>
+  </header>
+
+  <main>
+    <section class="welcome" id="details">
+      <p class="section-kicker">We can’t wait to celebrate with you</p>
+      <h2>An evening in the garden</h2>
+      <p class="intro">Join us for vows beneath the oaks, dinner by candlelight, and dancing under the stars.</p>
+      <div class="schedule" aria-label="Wedding day schedule">
+        <article><time>5:00 PM</time><div><h3>Guest arrival</h3><p>Welcome drinks in the courtyard</p></div></article>
+        <article><time>5:30 PM</time><div><h3>Ceremony</h3><p>The garden lawn</p></div></article>
+        <article><time>6:15 PM</time><div><h3>Dinner &amp; dancing</h3><p>The glasshouse</p></div></article>
+      </div>
+      <div class="details-grid">
+        <article><span class="detail-number">01</span><h3>Attire</h3><p>Garden formal. Rich colors, florals, and dancing shoes encouraged.</p></article>
+        <article><span class="detail-number">02</span><h3>Good to know</h3><p>Adults-only celebration. Complimentary valet parking will be available.</p></article>
+      </div>
+      <button class="primary-button dark" data-open-rsvp>RSVP for the celebration</button>
+    </section>
+
+    <section class="experience">
+      <div class="experience-card">
+        <p class="section-kicker">A Tiny Site Weddings demo</p>
+        <h2>Your invitation can be just the beginning.</h2>
+        <p>Turn a custom invitation into your complete wedding experience—with your story, itinerary, wedding party, menu, seat finder, song requests, photo and video sharing, and audio or written guest messages.</p>
+        <div class="feature-list" aria-label="Available wedding site features">
+          <a href="#top">Digital invitation</a><button data-open-rsvp>Smart RSVP</button><button id="open-seats">Seat finder</button><a href="https://guestbook-live.com" target="_blank" rel="noreferrer">Guestbook Live ↗</a>
+        </div>
+        <a class="outline-button" href="https://tinysitestudios.com/weddings" target="_blank" rel="noreferrer">Explore Tiny Site Weddings <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>S <span>+</span> E</p>
+    <p>October 17, 2027 · Houston, Texas</p>
+    <a href="https://tinysitestudios.com/weddings" target="_blank" rel="noreferrer">Made with care by Tiny Site Weddings</a>
+  </footer>
+
+  <div class="modal" id="rsvp-modal" role="dialog" aria-modal="true" aria-labelledby="rsvp-title" hidden>
+    <button class="modal-backdrop" data-close-rsvp aria-label="Close RSVP form"></button>
+    <div class="modal-panel">
+      <button class="close-button" data-close-rsvp aria-label="Close RSVP form">×</button>
+      <div id="rsvp-form-view">
+        <p class="section-kicker">October 17, 2027</p>
+        <h2 id="rsvp-title">Will you join us?</h2>
+        <p class="form-intro">Enter your name as it appears on your invitation.</p>
+        <form id="rsvp-form">
+          <label>Guest name<input id="guest-name" name="name" autocomplete="name" placeholder="First and last name" required /></label>
+          <fieldset><legend>Are you able to attend?</legend><div class="choice-row">
+            <label class="choice"><input type="radio" name="attendance" value="yes" required checked><span>Joyfully accepts</span></label>
+            <label class="choice"><input type="radio" name="attendance" value="no"><span>Regretfully declines</span></label>
+          </div></fieldset>
+          <div id="attending-fields">
+            <label>Party size<select name="party"><option value="1">1 guest</option><option value="2">2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option></select></label>
+            <div id="guest-meals"></div>
+          </div>
+          <label>Note for the couple <span class="optional">Optional</span><textarea name="message" rows="3" placeholder="Share a wish or dietary note"></textarea></label>
+          <button class="primary-button dark submit-button" type="submit">Send my response</button>
+          <p class="demo-note">Demo only—your response won’t be saved.</p>
+        </form>
+      </div>
+      <div class="success" id="rsvp-success" hidden>
+        <div class="success-mark" aria-hidden="true">✓</div>
+        <p class="section-kicker">Demo response complete</p>
+        <h2>Thank you, <span id="success-name">friend</span>.</h2>
+        <p id="success-message">We’ve saved you a place at the table.</p>
+        <p class="demo-note">This is a sample confirmation. Nothing is saved or sent.</p>
+        <button class="primary-button dark" data-close-rsvp>Back to the invitation</button>
+        <a href="https://tinysitestudios.com/weddings" target="_blank" rel="noreferrer">Want an invitation like this? See what else yours can do <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </div>
+  <dialog id="seat-dialog" class="seat-dialog">
+    <button class="close-button" id="close-seats" aria-label="Close seat finder">×</button>
+    <p class="section-kicker">Try the seat finder · Sample guests only</p>
+    <h2>Your place awaits.</h2>
+    <p>Choose a sample guest to reveal their table.</p>
+    <form id="seat-form">
+      <label for="seat-guest">Guest name</label>
+      <select id="seat-guest" required><option value="">Choose a sample guest</option><option value="3">Alex Morgan</option><option value="5">Jordan Lee</option><option value="7">Taylor Rivera</option></select>
+      <button class="primary-button dark" type="submit">Find my seat</button>
+    </form>
+    <p id="seat-result" role="status"></p>
+    <a href="https://tinysitestudios.com/weddings" target="_blank" rel="noreferrer">Explore a personalized seat finder for your wedding ↗</a>
+  </dialog>
+  <script src="script.js"></script>
+</body>
+</html>
