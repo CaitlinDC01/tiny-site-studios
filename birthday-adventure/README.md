@@ -28,3 +28,10 @@ Starter catalog terms were checked October 4, 2026 against the linked merchant p
 ## Verification
 
 JavaScript syntax checks passed. Planner tests cover month boundaries, birthday windows, Sunday closure, city matching, skip/claim totals, late signup, and leap day. Database tests verified anonymous pending submissions are allowed while private reads, self-approval, and publishing are denied; test records were rolled back.
+
+## Expanded discovery and optional account (October 2026)
+
+- The dated 47-program audit is the editorial backup. The generated `catalog.js` adds 35 current conditional candidates to the nine launch entries; three outdated or unsupported claims stay out. Run `python3 research/build-catalog.py` after reviewing a CSV change.
+- Explore presents 44 offers, including candidates with missing terms. Unknown windows do not get guessed dates. Only confirmed offers and rewards explicitly confirmed by a visitor enter the itinerary. Merchant signup links and official sources appear separately.
+- Visitor plans remain usable without an account on the same browser. Optional one-time email-link accounts use the existing Supabase Auth project and a private `birthday_plans` table. RLS allows only the authenticated user to read/write that user's plan. When both device and account plans exist, the visitor chooses which to keep. Signout clears the device copy after successful sync.
+- The itinerary email button sends a one-time message through the existing Tiny Site Studios transactional email service. The address is not added to marketing or saved to the Birthday Adventure database. Sending is rate limited; failed delivery keeps the visitor on the form with a backup/print option.
