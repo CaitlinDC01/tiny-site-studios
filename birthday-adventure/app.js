@@ -35,7 +35,7 @@ function inCity(d){const p=state.profile;if(!p)return true;return d.city==='Nati
 function active(d){if(!state.profile)return false;const p=state.profile,e=eligibility(d);return inCity(d)&&p.categories.includes(d.category)&&(p.cost!=='free'||d.purchase==='no')&&!['Expired','Signup deadline passed','Confirm first'].includes(e)}
 function selected(d){return state.selected?!!state.selected[key(d)]:active(d)&&record(d).status!=='skip'}
 function planned(){return offers.filter(d=>active(d)&&selected(d)&&record(d).status!=='skip')}
-function scheduleDate(d,i){const w=win(d);let date=state.bookings[key(d)]|| (d.reward_window==='day'?state.profile.birthday:d.reward_window==='week'?shift(state.profile.birthday,-3):d.reward_window==='month'?shift(w.start,Math.floor(i/2)*3):w.start);if(date<w.start)date=w.start;if(date<today())date=today();if(date>w.end)date=w.end;if(d.id==='chickfila'&&parseDate(date).getDay()===0){const next=shift(date,1);date=next<=w.end?next:shift(date,-1)}return date}
+function scheduleDate(d,i){const w=win(d);let date=state.bookings[key(d)]|| state.profile.birthday;if(date<w.start)date=w.start;if(date<today())date=today();if(date>w.end)date=w.end;if(d.id==='chickfila'&&parseDate(date).getDay()===0){const next=shift(date,1);date=next<=w.end?next:shift(date,-1)}return date}
 function toast(m){const el=document.querySelector('#toast');el.textContent=m;el.style.display='block';clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.style.display='none',4500)}
 function open(html){modalContent.innerHTML=html;modal.showModal()}
 function close(){modal.close()}
