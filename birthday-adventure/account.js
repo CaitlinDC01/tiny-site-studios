@@ -49,7 +49,7 @@
   }
   function accountDialog(){
     if(session){open(`<span class="eyebrow">YOUR BIRTHDAY ACCOUNT</span><h2>Saved across devices.</h2><p>Signed in as ${esc(session.user.email)}. Changes sync to your private account when online. Your plan also stays in this browser.</p><div class="actions"><button class="outline" id="pullCloud">Check my saved plan</button><button class="outline" id="accountSignOut">Sign out</button></div><p class="tiny">Signing out clears the plan from this browser after it has synced. Keep a JSON backup if you want another copy.</p>`);return}
-    open(`<span class="eyebrow">OPTIONAL ACCOUNT</span><h2>Take your adventure with you.</h2><p class="subtle">Enter your email to create a free account or sign in. We’ll send a one-time code and link. Your email is for account access only; no marketing signup.</p><form id="accountForm"><label>Email<input name="email" type="email" autocomplete="email" maxlength="254" required></label><p id="accountError" class="error" role="alert"></p><button class="primary" style="margin-top:18px">Email me a sign-in code →</button></form><p class="tiny">Enter the newest code here to sync your private plan. You can keep using Birthday Adventure without an account.</p>`);
+    open(`<span class="eyebrow">OPTIONAL ACCOUNT</span><h2>Take your adventure with you.</h2><p class="subtle">Enter your email to create a free account or sign in. We’ll send a one-time code and link. Your email is for account access only; no marketing signup.</p><form id="accountForm"><label>Email<input name="email" type="email" autocomplete="email" maxlength="254" required></label><p id="accountError" class="error" role="alert"></p><button class="primary" style="margin-top:18px">Email me a sign-in code →</button></form><p class="tiny">Enter the newest code here to sync your private plan. You can keep using Birthday Treat Trail without an account.</p>`);
   }
   document.addEventListener('click',async e=>{
     const b=e.target.closest('button');if(!b)return;
@@ -102,3 +102,4 @@
     if(await ready()){try{await reconcile()}catch(err){toast('Account plan could not load. Device plan is still here.')}}
   })();
 })();
+
