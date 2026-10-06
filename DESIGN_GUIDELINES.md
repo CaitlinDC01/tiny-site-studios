@@ -7,6 +7,6 @@ Recorded October 6, 2026. Apply to future Tiny Site Studios website work unless 
 - Keep navigation, forms and primary tasks simple. Make layouts mobile friendly, with comfortable touch targets, readable text, visible focus and reduced-motion support.
 - Large cards and excessive upfront information are unwanted. Reveal detailed requirements when needed.
 - Use these references for inspiration, not imitation: https://lovable.dev/guides/website-design-trends-2026 ; https://land-book.com/ ; https://www.cssdesignawards.com/
-- Birthday app name: **Birthday Treat Trail**. Its direction is a playful evening trail, with dark charcoal, warm cream, citrus, pink and custom trail artwork.
+- Birthday app name: **Birthday Treat Trail**. Its direction combines a plum frame with bright celebratory panels, pastel deal cards and clearly contrasting light input boxes. Dark backgrounds must not swallow the cards or controls. Keep deal cards to the business, treat and main action; detailed rules and signup links belong inside the opened deal. Do not show location-verification terminology in the visitor interface.
 
 Choose a concept for each new project before styling. These preferences are a starting point, not a requirement to make every future site dark or use identical gradients.
