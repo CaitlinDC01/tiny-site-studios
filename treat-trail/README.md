@@ -1,0 +1,49 @@
+# Birthday Treat Trail
+
+Public planner: `/treat-trail/`
+Private review screen: `/treat-trail/admin/`
+
+Buildless HTML/CSS/JavaScript, hosted with the existing Tiny Site Studios repository on GitHub Pages and Vercel. There are no server dependencies or build changes.
+
+## Behavior
+
+- Personalizes name, birthday month/day/year, city, Houston neighborhood, categories, and purchase preference.
+- Stores plans and claims on the current device; supports JSON backup/restore and calendar export.
+- Only confirmed short signup offers enter the itinerary. Unknown signup timing requires an actual reward plus user-confirmed dates.
+- Checks reward windows, late signup, and Chick-fil-A Sunday closure.
+- Claim totals use user-entered item value and qualifying spend, not invented estimates.
+- Neighborhood runs are groupings, not distance or travel-time estimates.
+- Community submissions, business submissions, and corrections persist in Supabase's private `birthday_submissions` queue.
+- Contact email is required for business submissions, optional otherwise, and never published.
+- Reviewer authenticates with the existing owner account (Caitlin's Gmail). RLS restricts private queue reads, changes, and publishing to the owner.
+- Approved listings in `birthday_offers` feed the public catalog. Unknown/custom windows cannot be approved into automatic scheduling. Listings can be edited or paused.
+- Correction reports are reviewed separately and never published as offers.
+
+## Limits
+
+Houston pilot with nine researched program entries, including candidates requiring confirmation. National chains require choosing a participating branch. No geocoding, computed route optimization, business-hours lookup, account sync, or paid placement. Some merchant signup cutoffs aren't published; candidates are not guarantees.
+
+Starter catalog terms were checked October 4, 2026 against the linked merchant pages. Supply and participation may vary. Store-address links should be checked before travel.
+
+## Verification
+
+JavaScript syntax checks passed. Planner tests cover month boundaries, birthday windows, Sunday closure, city matching, skip/claim totals, late signup, and leap day. Database tests verified anonymous pending submissions are allowed while private reads, self-approval, and publishing are denied; test records were rolled back.
+
+## Expanded discovery and optional account (October 2026)
+
+- The dated 47-program audit is the editorial backup. The generated `catalog.js` adds 35 current conditional candidates to the nine launch entries; three outdated or unsupported claims stay out. Run `python3 research/build-catalog.py` after reviewing a CSV change.
+- Explore presents 44 offers, including candidates with missing terms. Unknown windows do not get guessed dates. Only confirmed offers and rewards explicitly confirmed by a visitor enter the itinerary. Merchant signup links and official sources appear separately.
+- Visitor plans remain usable without an account on the same browser. Optional one-time email-link accounts use the existing Supabase Auth project and a private `birthday_plans` table. RLS allows only the authenticated user to read/write that user's plan. When both device and account plans exist, the visitor chooses which to keep. Signout clears the device copy after successful sync.
+- The itinerary email button sends a one-time message through the existing Tiny Site Studios transactional email service. The address is not added to marketing or saved to the Birthday Treat Trail database. Sending is rate limited; failed delivery keeps the visitor on the form with a backup/print option.
+
+## Houston-area discovery update (October 6, 2026)
+
+The browse-first experience uses compact cards, All deals/My itinerary/Claimed tabs, and explicit itinerary selection. The starting-area dropdown covers Houston, Katy, Cypress, The Woodlands, Humble, Sugar Land, Pearland, Baytown, and League City. Listings cover the metro area and national programs; a starting area is not a distance filter or a guarantee of a branch in that suburb.
+
+Browse and itinerary views have independent search and filters for purchase rules, signup, location scope, reward window, and availability. Itinerary additionally filters by category. Sorting supports business A–Z/Z–A, category, no-purchase-first, soonest expiry (with a birthday), reward window (browse), and planned day (itinerary). Filtering never removes saved deals or narrows email/calendar exports. Saved stop dates remain editable.
+
+Community suggestions require only business, offer, and city. Optional source/contact fields stay private. Missing fields are stored as Unknown/custom/unknown with explicit verification-needed notes, not invented terms. Migration `allow_minimal_birthday_community_suggestions` permits a blank source and Unknown category only for community records. Business and correction sources remain required. Reviewers must supply a valid verified source, category, signup eligibility, and supported reward window before publishing.
+
+## URL migration (October 6, 2026)
+
+The canonical planner is `/treat-trail/`; the legacy planner and admin entrypoints redirect here while preserving query strings and fragments. Keep the existing browser storage keys to retain plans and sessions. The registered email authentication callback remains the legacy URL and forwards to the new entrypoint; do not remove that compatibility redirect without first updating the authentication allowlist and handling older email links.
