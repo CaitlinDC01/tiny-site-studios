@@ -1,7 +1,7 @@
 /* Coverage is positive evidence, not a complete store census. Missing area = unverified,
    never "no store exists". Branch existence does not verify reward participation. */
 const locationCoverage={};
-function cover(id,areas,url,address=''){for(const area of areas)(locationCoverage[id]??={})[area]={url,address,checked:'2026-10-06'}}
+function cover(id,areas,url,address='',checked='2026-10-06'){for(const area of areas)(locationCoverage[id]??={})[area]={url,address,checked}}
 cover('bundt',['Houston','Katy','Cypress','The Woodlands','Humble','Sugar Land','Pearland','Baytown','League City'],'https://www.nothingbundtcakes.com/find-a-bakery/tx/');
 cover('sephora',['Houston','Katy','Cypress','The Woodlands','Humble','Sugar Land'],'https://www.sephora.com/happening/storelist');
 cover('audit-ulta-beauty',['Houston','Katy','The Woodlands','Humble','Sugar Land','League City'],'https://www.ulta.com/stores/directory');
@@ -110,3 +110,16 @@ cover("dennys",["Katy"],"https://locations.dennys.com/tx/katy/247836","2405 Texm
 cover("audit-qdoba",["Humble"],"https://locations.qdoba.com/us/tx/humble/7405-fm-1960-road-e","7405 FM 1960 Road E, Humble, TX");
 cover("audit-starbucks",["Sugar Land"],"https://www.sugarlandtownsquare.com/stores/starbucks-coffee/","16089 City Walk, Sugar Land, TX");
 cover("audit-grimaldis-pizzeria",["Houston"],"https://www.grimaldispizzeria.com/location/citycentre/","12848 Queensbury Lane, Suite 101, Houston, TX 77024");
+
+// College Station branch evidence checked October 7, 2026.
+cover("bundt",["College Station"],"https://www.nothingbundtcakes.com/find-a-bakery/tx/collegestation/bakery-184.html","1713 South Texas Avenue S., College Station, TX 77840","2026-10-07");
+cover("sephora",["College Station"],"https://www.sephora.com/happening/stores/century-square","1133 University Drive, Suite 300, College Station, TX 77840","2026-10-07");
+cover("chickfila",["College Station"],"https://www.chick-fil-a.com/locations/tx/jones-crossing","1700 Harvey Mitchell Pkwy S, College Station, TX 77845","2026-10-07");
+cover("audit-ulta-beauty",["College Station"],"https://www.ulta.com/stores/college-station-tx-326","1505 University Drive East, Ste 250, College Station, TX 77840","2026-10-07");
+cover("chilis",["College Station"],"https://www.chilis.com/locations/us/texas/college-station","1063 Texas, College Station, TX 77840","2026-10-07");
+cover("audit-crumbl",["College Station"],"https://crumblcookies.com/stores/tx","11659 FM 2154, Ste 150, College Station, TX 77845","2026-10-07");
+cover("audit-chipotle",["College Station"],"https://locations.chipotle.com/tx/college-station/815-university-dr","815 University Dr, College Station, TX 77840","2026-10-07");
+cover("audit-tropical-smoothie-cafe",["College Station"],"https://locations.tropicalsmoothiecafe.com/tx/college-station/1255-arrington-road","1255 Arrington Road, Suite 600, College Station, TX 77845","2026-10-07");
+cover("audit-ihop",["College Station"],"https://restaurants.ihop.com/en-us/tx/college-station/","4434 State Highway 6 South, College Station, TX 77845","2026-10-07");
+cover("audit-dutch-bros",["College Station"],"https://www.dutchbros.com/locations/","2424 Texas Ave S, College Station, TX 77840","2026-10-07");
+cover("audit-torchys-tacos",["College Station"],"https://torchystacos.com/college-station/order","1037 Texas Ave. South, College Station, TX 77840","2026-10-07");

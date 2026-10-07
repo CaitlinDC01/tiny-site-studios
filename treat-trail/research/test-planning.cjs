@@ -19,5 +19,21 @@ const date=run('state.profile.birthday');await b.handlers.submit({preventDefault
 run("state.profile.city='The Woodlands';section='schedule';view='plan'");assert.equal(run('planned().length'),1);assert(run('card(seed.find(d=>d.id==="bundt")).includes("Mark claimed")'));
 b=boot();run=b.run;assert.equal(run('planned().length'),1);assert(run("mapQuery(seed.find(d=>d.id==='bundt')).includes('Houston')"));b.click({claim:'bundt'});assert.equal(run('totals().count'),1);assert.equal(run('savedTreats().length'),0);
 assert(run('dealControls("browse").includes("Filters & sort")'));assert(!run('dealControls("browse").includes("open>")'));
-console.log('PASS: upcoming/invalid/leap dates, first-visit itinerary setup, area/filter carryover, save-before-birthday, reload persistence, saved-vs-ready separation, removal, confirmation, branch retention, claimed flow.');
+// College Station selection, catalog coverage, Maps addresses, and saved-stop retention.
+stored=null;b=boot();run=b.run;
+run(`state.profile={name:"QA",birthday:nextBirthday(1,15),city:"College Station",area:"Other city",cost:"all",categories:cats}`);
+run("state.profile.city='College Station';state.profile.cost='all';state.profile.categories=cats;filter='All';search='';browseFilters=defaultFilters();locationMode='verified'");
+assert(run(`locationControls().includes('value="College Station" selected')`));
+assert(run(`builder().includes('value="College Station" selected')`));
+assert.equal(run('catalogList().length'),11);
+assert(run('catalogList().every(d=>coverage(d).address.includes("College Station"))'));
+assert(run('catalogList().every(d=>coverage(d).checked==="2026-10-07")'));
+assert(!run('catalogList().some(d=>d.id==="tacos")'));
+assert(run('mapQuery(seed.find(d=>d.id==="sephora")).includes("1133 University Drive")'));
+b.click({add:'sephora'});
+assert(run('runs().includes("College Station")'));
+assert(run('decodeURIComponent(runs()).includes("1133 University Drive")'));
+run("state.profile.city='Houston'");
+assert(run('mapQuery(seed.find(d=>d.id==="sephora")).includes("College Station")'));
+console.log('PASS: upcoming/invalid/leap dates, first-visit itinerary setup, area/filter carryover, save-before-birthday, reload persistence, saved-vs-ready separation, removal, confirmation, branch retention, claimed flow, College Station coverage, map addresses and saved branch retention.');
 })().catch(e=>{console.error(e);process.exitCode=1});

@@ -14,3 +14,7 @@ The Woodlands Velvet Taco is at 9120 Gosling Road; its presence must not be remo
 
 Future reviewers should extend `locations.js` with sourced branch evidence and recheck closures. New database offers with an explicit city and address can be shown for that exact city; national records never imply universal coverage.
 
+
+## College Station — October 7, 2026
+
+College Station is a separate supported area with 11 existing catalog programs backed by official branch pages/directories and exact College Station addresses. See `college-station-2026-10-07.json` for evidence. Maps links use these addresses; no Bryan locations are grouped into College Station. Existing reward rules and confirmation requirements still apply.

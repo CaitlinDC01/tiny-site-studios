@@ -51,3 +51,7 @@ The canonical planner is `/treat-trail/`; the legacy planner and admin entrypoin
 ## Social sharing preview (October 7, 2026)
 
 The public entrypoint includes Open Graph and Twitter large-image metadata. Its versioned preview asset is `social-preview-20261007.jpg` (1200 × 630), served from the canonical planner URL. Use a new asset filename when replacing the graphic to help refresh cached link previews.
+
+## College Station (October 7, 2026)
+
+College Station is available in browsing and birthday setup, with 11 officially sourced local branches for existing catalog programs. Treat details and birthday runs open Maps with College Station addresses. Saved stops retain their original branches when visitors change areas.

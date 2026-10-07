@@ -1,0 +1,62 @@
+{
+  "area": "College Station",
+  "checked": "2026-10-07",
+  "note": "Positive branch evidence for existing catalog programs. Reward participation and eligibility remain governed by the existing offer terms. Bryan is not silently included.",
+  "branches": [
+    {
+      "id": "bundt",
+      "url": "https://www.nothingbundtcakes.com/find-a-bakery/tx/collegestation/bakery-184.html",
+      "address": "1713 South Texas Avenue S., College Station, TX 77840"
+    },
+    {
+      "id": "sephora",
+      "url": "https://www.sephora.com/happening/stores/century-square",
+      "address": "1133 University Drive, Suite 300, College Station, TX 77840"
+    },
+    {
+      "id": "chickfila",
+      "url": "https://www.chick-fil-a.com/locations/tx/jones-crossing",
+      "address": "1700 Harvey Mitchell Pkwy S, College Station, TX 77845"
+    },
+    {
+      "id": "audit-ulta-beauty",
+      "url": "https://www.ulta.com/stores/college-station-tx-326",
+      "address": "1505 University Drive East, Ste 250, College Station, TX 77840"
+    },
+    {
+      "id": "chilis",
+      "url": "https://www.chilis.com/locations/us/texas/college-station",
+      "address": "1063 Texas, College Station, TX 77840"
+    },
+    {
+      "id": "audit-crumbl",
+      "url": "https://crumblcookies.com/stores/tx",
+      "address": "11659 FM 2154, Ste 150, College Station, TX 77845"
+    },
+    {
+      "id": "audit-chipotle",
+      "url": "https://locations.chipotle.com/tx/college-station/815-university-dr",
+      "address": "815 University Dr, College Station, TX 77840"
+    },
+    {
+      "id": "audit-tropical-smoothie-cafe",
+      "url": "https://locations.tropicalsmoothiecafe.com/tx/college-station/1255-arrington-road",
+      "address": "1255 Arrington Road, Suite 600, College Station, TX 77845"
+    },
+    {
+      "id": "audit-ihop",
+      "url": "https://restaurants.ihop.com/en-us/tx/college-station/",
+      "address": "4434 State Highway 6 South, College Station, TX 77845"
+    },
+    {
+      "id": "audit-dutch-bros",
+      "url": "https://www.dutchbros.com/locations/",
+      "address": "2424 Texas Ave S, College Station, TX 77840"
+    },
+    {
+      "id": "audit-torchys-tacos",
+      "url": "https://torchystacos.com/college-station/order",
+      "address": "1037 Texas Ave. South, College Station, TX 77840"
+    }
+  ]
+}
