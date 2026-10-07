@@ -1,0 +1,23 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+let stored=null;
+function boot(){const handlers={},els={};const el=()=>({innerHTML:'',textContent:'',style:{},addEventListener(){},showModal(){},close(){}});const ctx={console,URL,Intl,Date,Math,JSON,Object,Number,String,Array,Blob,setTimeout:()=>1,clearTimeout(){},localStorage:{getItem(){return stored},setItem(k,v){stored=v}},document:{querySelector(s){return els[s]??=el()},addEventListener(k,f){handlers[k]=f}},window:{scrollTo(){}},fetch:()=>new Promise(()=>{}),matchMedia:()=>({matches:true}),navigator:{},FormData:class{constructor(f){this.values=f.values}get(k){return this.values[k]}getAll(k){return this.values[k]||[]}*[Symbol.iterator](){yield* Object.entries(this.values)}}};vm.createContext(ctx);for(const f of ['catalog.js','locations.js','app.js'])vm.runInContext(fs.readFileSync(f,'utf8'),ctx);return {run:s=>vm.runInContext(s,ctx),els,handlers,click:data=>handlers.click({target:{closest:()=>({dataset:data})}})}}
+(async()=>{let b=boot(),run=b.run;
+assert.equal(run("nextBirthday(1,15,'2026-10-06')"),'2027-01-15');
+assert.equal(run("nextBirthday(10,6,'2026-10-06')"),'2026-10-06');
+assert.equal(run("nextBirthday(2,29,'2026-10-06')"),'2028-02-29');
+assert.equal(run("nextBirthday(2,30,'2026-10-06')"),null);
+b.click({section:'schedule'});assert.equal(run('view'),'edit');assert(b.els['#app'].innerHTML.includes('Let’s start your itinerary'));
+run("view='deals';browseArea='The Woodlands';filter='Coffee';search='coffee'");
+assert(run('builder()').includes('value="The Woodlands" selected'));
+b.click({saveTreat:'bundt'});assert(run("isSaved(seed.find(d=>d.id==='bundt'))"));assert.equal(run('planned().length'),0);
+b=boot();run=b.run;assert(run("isSaved(seed.find(d=>d.id==='bundt'))"));assert.equal(run('state.profile'),null);
+run("browseArea='The Woodlands';filter='Coffee';search='coffee'");
+await b.handlers.submit({preventDefault(){},target:{id:'profileForm',dataset:{},values:{name:'QA',year:'auto',month:'1',day:'15',city:'The Woodlands',area:'Other city',cost:'all',category:['Beauty','Food','Dessert','Coffee','Shopping','Entertainment']}}});
+assert.equal(run('state.profile.birthday.slice(5)'),'01-15');assert(run('state.profile.birthday>=today()'));assert.equal(run('filter'),'Coffee');assert.equal(run('search'),'coffee');assert(run("isSaved(seed.find(d=>d.id==='bundt'))"));assert.equal(run('planned().length'),0);
+run("state.profile.city='Houston'");b.click({add:'sephora'});assert.equal(run('planned().length'),1);b.click({remove:'sephora'});assert.equal(run('planned().length'),0);assert(run("isSaved(seed.find(d=>d.id==='sephora'))"));b.click({unsave:'sephora'});assert(!run("isSaved(seed.find(d=>d.id==='sephora'))"));
+const date=run('state.profile.birthday');await b.handlers.submit({preventDefault(){},target:{id:'confirmForm',dataset:{id:'bundt'},values:{start:date,end:date}}});assert.equal(run('planned().length'),1);assert(run("state.branches[key(seed.find(d=>d.id==='bundt'))].area==='Houston'"));
+run("state.profile.city='The Woodlands';section='schedule';view='plan'");assert.equal(run('planned().length'),1);assert(run('card(seed.find(d=>d.id==="bundt")).includes("Mark claimed")'));
+b=boot();run=b.run;assert.equal(run('planned().length'),1);assert(run("mapQuery(seed.find(d=>d.id==='bundt')).includes('Houston')"));b.click({claim:'bundt'});assert.equal(run('totals().count'),1);assert.equal(run('savedTreats().length'),0);
+assert(run('dealControls("browse").includes("Filters & sort")'));assert(!run('dealControls("browse").includes("open>")'));
+console.log('PASS: upcoming/invalid/leap dates, first-visit itinerary setup, area/filter carryover, save-before-birthday, reload persistence, saved-vs-ready separation, removal, confirmation, branch retention, claimed flow.');
+})().catch(e=>{console.error(e);process.exitCode=1});
