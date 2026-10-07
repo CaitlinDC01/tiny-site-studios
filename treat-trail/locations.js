@@ -109,3 +109,4 @@ cover("dennys",["Houston"],"https://locations.dennys.com/tx/houston/247917","976
 cover("dennys",["Katy"],"https://locations.dennys.com/tx/katy/247836","2405 Texmati Dr, Katy, TX");
 cover("audit-qdoba",["Humble"],"https://locations.qdoba.com/us/tx/humble/7405-fm-1960-road-e","7405 FM 1960 Road E, Humble, TX");
 cover("audit-starbucks",["Sugar Land"],"https://www.sugarlandtownsquare.com/stores/starbucks-coffee/","16089 City Walk, Sugar Land, TX");
+cover("audit-grimaldis-pizzeria",["Houston"],"https://www.grimaldispizzeria.com/location/citycentre/","12848 Queensbury Lane, Suite 101, Houston, TX 77024");

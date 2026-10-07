@@ -8,7 +8,7 @@ Official directories checked: Sephora's complete store list; Nothing Bundt Cakes
 
 Coverage is intentionally incomplete. The default view filters to verified branches in the selected area. Visitors can explicitly browse all researched programs, with details available when opened. Any treat may be saved for later without confirmation. Programs lacking local coverage require the visitor to enter the location they will visit before adding a ready itinerary stop. Area changes never delete saved stops. Existing backups and account data remain compatible. A new optional saved map stores favorites by offer ID; selected remains the date-specific itinerary.
 
-The October 6 expansion adds 80 sourced program/city pairs. See coverage-expansion-2026-10-06.md and its JSON evidence for sources and exclusions. Houston now has 33 catalog programs with positive branch evidence. These are programs, not a guarantee of 33 immediately redeemable freebies.
+The October 6 expansion adds 81 sourced program/city pairs. See coverage-expansion-2026-10-06.md and its JSON evidence for sources and exclusions. Houston now has 34 catalog programs with positive branch evidence. These are programs, not a guarantee of 33 immediately redeemable freebies.
 
 The Woodlands Velvet Taco is at 9120 Gosling Road; its presence must not be removed based on an assumption. No neighboring municipality is silently grouped into a suburb.
 

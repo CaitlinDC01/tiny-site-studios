@@ -1,6 +1,6 @@
 # Coverage expansion — 2026-10-06
 
-80 positive program/city pairs across 25 existing programs are in coverage-expansion-2026-10-06.json. These add 22 currently missing Houston programs. Each row includes the source URL, checked date and optional exact address. Branch existence is not evidence that a visitor personally qualifies for an offer, or that every franchise participates. Keep existing conditional offer rules. Missing city coverage remains unknown, never an assertion of no store.
+81 positive program/city pairs across 25 existing programs are in coverage-expansion-2026-10-06.json. These add 23 currently missing Houston programs. Each row includes the source URL, checked date and optional exact address. Branch existence is not evidence that a visitor personally qualifies for an offer, or that every franchise participates. Keep existing conditional offer rules. Missing city coverage remains unknown, never an assertion of no store.
 
 ## Source basis
 
@@ -32,7 +32,7 @@ Review merchant source and actual branch before publishing community/local offer
 
 ## Extended Houston pass
 
-The final JSON contains 80 unique positive program/city pairs across 25 programs, including 22 distinct Houston programs absent from the prior coverage file. The second pass adds 11 Houston programs: Jersey Mike's, Firehouse Subs, Subway, Papa Johns, Tropical Smoothie Cafe, Menchie's, 7-Eleven, Gap, Ben & Jerry's, Houston TX Hot Chicken and Denny's.
+The final JSON contains 81 unique positive program/city pairs across 25 programs, including 23 distinct Houston programs absent from the prior coverage file. The second pass adds 11 Houston programs: Jersey Mike's, Firehouse Subs, Subway, Papa Johns, Tropical Smoothie Cafe, Menchie's, 7-Eleven, Gap, Ben & Jerry's, Houston TX Hot Chicken and Denny's.
 
 Official source links and optional exact branch addresses are in the JSON. Subway and Papa Johns official Texas directories list all nine selected cities. Tropical Smoothie Cafe lists eight, excluding The Woodlands; Shenandoah is not reassigned. Official HHC Houston Metro lists Houston and Katy with open status, so both added. Gap Houston Galleria is a full Gap store; nearby Gap Factory branches are not treated as identical reward participation. QDOBA's official Humble branch is positive but no Houston city branch was verified.
 
@@ -40,3 +40,5 @@ Starbucks official locator returns generic map text even at store-specific URLs,
 
 Baskin-Robbins, Dunkin', Krispy Kreme and Buffalo Wild Wings were named as possible expansion targets but do not currently exist in catalog.js or seed. Branch existence alone does not authorize inventing their birthday offers. Official Baskin-Robbins Texas directory is a good future coverage source; Dunkin' requires a new current rewards-terms audit before any specific birthday item or bonus is promised. Krispy Kreme official/location search and current press coverage point to Pearland/Humble shops, not a currently verified Houston-city store. No absent programs inserted here.
 
+
+Final source check added Grimaldi’s Houston CITYCENTRE at 12848 Queensbury Lane, Suite 101 from the current merchant-owned location page.

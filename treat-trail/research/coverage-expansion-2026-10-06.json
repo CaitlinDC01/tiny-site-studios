@@ -558,5 +558,12 @@
     "url": "https://www.sugarlandtownsquare.com/stores/starbucks-coffee/",
     "address": "16089 City Walk, Sugar Land, TX",
     "checked": "2026-10-06"
+  },
+  {
+    "id": "audit-grimaldis-pizzeria",
+    "city": "Houston",
+    "url": "https://www.grimaldispizzeria.com/location/citycentre/",
+    "address": "12848 Queensbury Lane, Suite 101, Houston, TX 77024",
+    "checked": "2026-10-06"
   }
 ]
