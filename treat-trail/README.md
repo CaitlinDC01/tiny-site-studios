@@ -47,3 +47,7 @@ Community suggestions require only business, offer, and city. Optional source/co
 ## URL migration (October 6, 2026)
 
 The canonical planner is `/treat-trail/`; the legacy planner and admin entrypoints redirect here while preserving query strings and fragments. Keep the existing browser storage keys to retain plans and sessions. The registered email authentication callback remains the legacy URL and forwards to the new entrypoint; do not remove that compatibility redirect without first updating the authentication allowlist and handling older email links.
+
+## Social sharing preview (October 7, 2026)
+
+The public entrypoint includes Open Graph and Twitter large-image metadata. Its versioned preview asset is `social-preview-20261007.jpg` (1200 × 630), served from the canonical planner URL. Use a new asset filename when replacing the graphic to help refresh cached link previews.
