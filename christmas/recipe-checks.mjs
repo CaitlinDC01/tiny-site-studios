@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {publicIPv4,checkedUrl,parseRecipe,minutes,fetchRecipeHtml} from './lib/recipe-import.js';
+import {GET,OPTIONS} from './api/recipe.js';
+for(const ip of ['127.0.0.1','10.0.0.1','172.16.2.1','192.168.1.1','169.254.169.254','100.64.0.1','0.0.0.0','224.0.0.1','198.18.1.1','::1','::ffff:127.0.0.1'])assert.equal(publicIPv4(ip),false,ip);
+assert.equal(publicIPv4('8.8.8.8'),true);
+for(const u of ['https://127.0.0.1','https://2130706433','https://[::1]','http://example.com','https://a:b@example.com','https://example.com:8443'])assert.throws(()=>checkedUrl(u));
+let requestCalled=false;await assert.rejects(fetchRecipeHtml('https://example.com',{lookup:async()=>[{address:'127.0.0.1'}],request:()=>{requestCalled=true}}));assert.equal(requestCalled,false);
+const recipe={'@type':['Recipe'],name:'Christmas &amp; cookies',recipeIngredient:['2 cups flour','1/2 cup butter','2 eggs'],recipeYield:['12 cookies'],prepTime:'PT15M',cookTime:'PT1H10M',totalTime:'PT1H25M',recipeInstructions:[{'@type':'HowToSection',name:'Prep',itemListElement:[{text:'Mix <b>well</b> &amp; chill.'}]},{text:'Bake at 350&#176;F.'}]};
+const html='<script type="application/ld+json">'+JSON.stringify({'@graph':[{'@type':'WebPage'},recipe]})+'</script>';
+const r=parseRecipe(html,'https://example.com/cookies');assert.equal(r.title,'Christmas & cookies');assert.equal(r.ingredients.length,3);assert.equal(r.prepMinutes,15);assert.equal(r.cookMinutes,70);assert.equal(r.servings,'12 cookies');assert.match(r.instructions,/350°F/);assert.match(r.instructions,/Mix well & chill/);assert.equal(r.partial,false);
+assert.equal(minutes('P1DT2H30M'),1590);assert.equal(minutes('PT90S'),2);assert.equal(minutes('nonsense'),0);
+assert.equal(parseRecipe('<title>Recipe collection</title>','https://example.com').partial,true);
+assert.throws(()=>parseRecipe('No recipe','https://example.com'));
+const blocked=await GET(new Request('https://merry-and-managed.vercel.app/api/recipe?url=https://127.0.0.1'));assert.equal(blocked.status,422);
+const cors=await GET(new Request('https://merry-and-managed.vercel.app/api/recipe',{headers:{Origin:'https://tinysitestudios.com'}}));assert.equal(cors.headers.get('Access-Control-Allow-Origin'),'https://tinysitestudios.com');assert.equal(cors.status,400);
+assert.equal((await OPTIONS(new Request('https://merry-and-managed.vercel.app/api/recipe',{headers:{Origin:'https://attacker.example'}}))).status,403);
+console.log('Passed: structured recipe extraction, servings, instructions, durations, partial results, URL/DNS restrictions, and cross-origin endpoint behavior.');

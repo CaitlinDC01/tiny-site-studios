@@ -1,0 +1,11 @@
+const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');
+const source=fs.readFileSync('christmas-site/index.html','utf8');const kitchen=source.slice(source.indexOf('// Meal menus and a reusable dish collection.'),source.indexOf("$('#meals').addEventListener('click'"));const shopping=source.slice(source.indexOf('function migrateShopping'),source.indexOf('function ingredientHtml'));
+const tests=`
+let old={year:2026,people:[{id:'person1'}],meals:[{id:'r1',name:'Dinner',dish:'Cookies',person:'Mom',link:'',note:'Old note'}]};migrateShopping(old);migrateKitchen(old);assert.deepEqual(old.shopping,[]);assert.equal(old.mealPlans[0].items[0].dish,'Cookies');assert.equal(old.people[0].id,'person1');shoppingValidate(old);
+const first=reconcileIngredients('2 eggs\\n1 cup flour\\n2 eggs');assert.equal(first.length,3);assert.notEqual(first[0].id,first[2].id);const moved=reconcileIngredients('1 cup flour\\n2 eggs\\n2 eggs',first);assert.equal(moved[0].id,first[1].id);assert.equal(moved[1].id,first[0].id);assert.equal(moved[2].id,first[2].id);
+const recipe={...old.meals[0],ingredients:first,servings:'12',prepMinutes:10,cookMinutes:20,totalMinutes:30,instructions:'Mix, then bake.'};const copied=recipeExtras(recipe);copied.ingredients[0].text='4 eggs';assert.equal(recipe.ingredients[0].text,'2 eggs');
+const invalid={...old,shopping:[{id:'s1',text:'Eggs',sourceKey:'r1:i1',dish:'Cookies',meal:'Dinner',done:'yes'}]};assert.throws(()=>shoppingValidate(invalid));assert.throws(()=>validateRecipeExtras({...recipe,cookMinutes:-5}));
+const p={serveAt:'2026-12-25T18:00',steps:[]};const step={duration:60,mode:'relative',offset:30};assert.equal(localStamp(stepWindow(p,step).start),'2026-12-25T16:30');const fixed={duration:30,mode:'fixed',at:'2026-12-23T10:00'};p.serveAt='2026-12-25T19:00';assert.equal(localStamp(stepWindow(p,step).start),'2026-12-25T17:30');assert.equal(localStamp(stepWindow(p,fixed).start),'2026-12-23T10:00');
+console.log('Passed: legacy data migration, quantity and duplicate-line preservation, stable ingredient IDs, independent meal copies, backup validation, and cooking-time regression checks.');
+`;
+let seq=0;vm.runInNewContext(kitchen+shopping+tests,{assert,console,Date,Math,Set,Map,URL,id:()=>`test${++seq}`});
