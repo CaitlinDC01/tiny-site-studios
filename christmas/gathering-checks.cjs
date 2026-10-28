@@ -1,0 +1,22 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),path=require('node:path');
+const html=fs.readFileSync(path.join(__dirname,'index.html'),'utf8');
+const timing=html.slice(html.indexOf('function localStamp'),html.indexOf('function renderKitchen'));
+const gathering=html.slice(html.indexOf('function validateGatheringExtras'),html.indexOf('let kitchenMode=false'));
+const checks=`
+const dish={id:'dish1',dish:'Casserole',person:'Mom',link:'',note:''};
+const p={id:'meal1',name:'Dinner',notes:'',eventId:'event1',serveAt:'2026-12-24T18:00',items:[dish],steps:[]};
+const d={events:[{id:'event1',date:'2026-12-25',time:'17:30',location:'Home'}],mealPlans:[p]};
+syncLinkedMeals(d);assert.equal(p.serveAt,'2026-12-25T17:30');
+d.events[0].time='';d.events[0].date='2026-12-26';syncLinkedMeals(d);assert.equal(p.serveAt,'2026-12-26T17:30');
+const r={itemId:'dish1',include:true,prep:20,cook:60,rest:15,reheat:10,buffer:5,days:1,prepTime:'09:15',person:'Mom',resource:'Oven'};
+p.serveAt='2026-12-25T18:00';const steps=suggestedSteps(p,[r]);assert.equal(steps.length,4);assert.equal(steps[0].at,'2026-12-24T09:15');assert.equal(localStamp(stepWindow(p,steps[1]).start),'2026-12-25T16:30');assert.equal(localStamp(stepWindow(p,steps[1]).end),'2026-12-25T17:30');assert.equal(localStamp(stepWindow(p,steps[2]).end),'2026-12-25T17:45');assert.equal(localStamp(stepWindow(p,steps[3]).end),'2026-12-25T17:55');
+const sameDay=suggestedSteps(p,[{...r,days:0}]);assert.equal(localStamp(stepWindow(p,sameDay[0]).end),'2026-12-25T16:30');
+assert.equal(suggestedSteps(p,[{...r,include:false}]).length,0);assert.throws(()=>suggestedSteps(p,[{...r,prep:-1}]));assert.throws(()=>suggestedSteps(p,[{...r,days:1.2}]));
+p.steps=steps.map((s,n)=>({...s,id:'s'+n}));p.steps[0].done=true;const buckets=kitchenBuckets(p,new Date('2026-12-25T17:00'));assert.equal(buckets.done.length,1);assert.equal(buckets.now.length,1);assert.equal(buckets.next.length,2);const late=kitchenBuckets(p,new Date('2026-12-26T18:00'));assert.equal(late.now.length,3);assert.equal(late.next.length,0);
+const oldPrep=p.steps[0].at;d.events[0].time='19:00';syncLinkedMeals(d);assert.equal(p.steps[0].at,oldPrep);assert.equal(localStamp(stepWindow(p,p.steps[3]).end),'2026-12-26T18:55');
+kitchenValidate({mealPlans:[p]});const roundTrip=JSON.parse(JSON.stringify(d));validateGatheringExtras(roundTrip);assert.equal(roundTrip.mealPlans[0].steps[0].at,oldPrep);const longNamePlan={...p,items:[{...dish,dish:'X'.repeat(2000)}]};assert.ok(suggestedSteps(longNamePlan,[r]).every(s=>s.name.length<=200));validateGatheringExtras(d);assert.throws(()=>validateGatheringExtras({events:[{time:'25:00'}]}));assert.throws(()=>validateGatheringExtras({mealPlans:[{eventId:123}]}));
+d.events=[];const retained=p.serveAt;syncLinkedMeals(d);assert.equal(p.serveAt,retained);assert.equal(p.eventId,undefined);
+assert.equal(prepStartStamp('2026-03-09T18:00',1,'09:00'),'2026-03-08T09:00');
+console.log('Passed: linked-event time/date changes and deletion, sequential suggested steps, make-ahead prep, missing times, invalid inputs, fixed prep preservation, and Now/Next/Done boundaries.');
+`;
+vm.runInNewContext(timing+gathering+checks,{assert,console,Date,Math,Set,Map});

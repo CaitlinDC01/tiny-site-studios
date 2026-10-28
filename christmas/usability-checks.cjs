@@ -11,4 +11,4 @@ window.localStorage=originalBackend;nodeAssert.equal(save(),true);nodeAssert.equ
 nodeAssert.deepEqual(emptyPlanner(2027).people,[]);nodeAssert.deepEqual(emptyPlanner(2027).mealPlans,[]);
 console.log('Passed: existing planner preservation, corrupt-data protection, blocked storage, honest failure feedback, successful retry, and empty planner initialization.');
 `;
-vm.runInNewContext(block+checks,{window:{localStorage:backend},originalBackend:backend,nodeAssert:assert,console,JSON,Date,defaultYear:2026,data:stored,key:'test-planner',$:s=>s==='#notice'?notice:null});
+vm.runInNewContext(html.slice(html.indexOf('function syncLinkedMeals'),html.indexOf('function linkedEvent('))+block+checks,{window:{localStorage:backend},originalBackend:backend,nodeAssert:assert,console,JSON,Date,defaultYear:2026,data:stored,key:'test-planner',$:s=>s==='#notice'?notice:null});
